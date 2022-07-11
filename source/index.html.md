@@ -78,7 +78,7 @@ Lix expects for the API key to be included in all API requests to the server in 
 
 or with a query variable:
 
-`https://api.lix-it.com/v1/person?profile=alfie-lambert&api_key=lixApiKey`
+`https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert&api_key=lixApiKey`
 
 Please bear in mind to also specify the Content-Type as application/json format.
 
