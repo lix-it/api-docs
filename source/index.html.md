@@ -9,7 +9,6 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='/api/#contact-form'>Contact sales</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
   - errors
@@ -20,7 +19,7 @@ code_clipboard: true
 
 meta:
   - name: Lix's Real Time API
-    content: Documentation for the Lix API
+    content: Lix LinkedIn API Documentation
 ---
 
 # Introduction
@@ -29,9 +28,9 @@ Welcome to Lix's API! You can use this API to access all our API endpoints, such
 
 The API is organized around REST. All requests should be made over SSL. All request and response bodies, including errors, are encoded in JSON.
 
-We also have some specific language bindings to make integration easier. You can switch the programming language of the examples with the tabs in the top right.
+We also have some specific language code examples to make integration easier. You can switch the programming language of the examples with the tabs in the top right.
 
-Currently we support the following official client bindings:
+Currently we have code examples for the following languages:
 
 - Node
 - Python
@@ -39,7 +38,7 @@ Currently we support the following official client bindings:
 - Javascript
 - Java
 
-Should you have further questions, feel free to contact our tech team via help@lix-it.com.
+Should you have further questions, feel free to contact our tech team via email at [help@lix-it.com](mailto:help@lix-it.com) or by using the web chat in the bottom right of your screen.
 
 # Authentication
 
@@ -71,7 +70,7 @@ let api = lix.authorize('lixApiKey');
 
 > Make sure to replace `lixApiKey` with your API key.
 
-Lix uses API keys to allow access to the API. Should you not have an API Token yet, please [mailto:help@lix-it.com]contact our sales team to receive one.
+Lix uses API keys to allow access to the API. If you do not have an API Token yet, please [contact our sales team](mailto:help@lix-it.com) to receive one.
 
 Lix expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
@@ -87,45 +86,6 @@ Please bear in mind to also specify the Content-Type as application/json format.
 <aside class="notice">
 You must replace <code>lixApiKey</code> with your personal API key.
 </aside>
-
-# Response Codes
-## HTTP Status Codes
-Our API returns standard HTTP success or error status codes as listed below. For errors, we will also include extra information about what went wrong encoded in the response as JSON. The various HTTP status codes we might return are listed below.
-
-CODE | TITLE | DESCRIPTION
------ | ---- | -----------
-200 |	Success |	The request was successful
-400 |	Bad Request |	The request data has not been provided correctly
-401 |	Unauthorized |	Your API key is not authorised to access this endpoint
-402 |	Over quota |	Over plan quota on this endpoint. Please top-up your account or [mailto:] speak to sales to increase your quota.
-404 |	Not found |	The endpoint does not exist
-429 |	Too Many Requests |	The rate limit was exceeded
-500 |	Internal Server Error |	An error occurred on the server. Should this error persis, please contact our technical team.
-503 | Service Unavailable |	The API is temporarily unavailable
-
-## Error types
-All errors are returned in the form of JSON with a type and optional message.
-
-> Example error response:
-
-```
-   {
-     "error": {
-       "type": "params_invalid",
-       "message": "profile_id is required"
-     }
-   }
-```
-
-Type |  Description
----- | ------------
-params_invalid |  Your parameters were not valid
-unknown_record |  Record was not found
-unknown_route | URL was not valid
-queued |  Lookup queued. Try this request again in a few minutes
-rate_limit |  The request has been rate limited
-api_error | Internal API error
-
 
 # Profiles API
 
@@ -198,7 +158,7 @@ include_cats | false | If set to true, the result will also include cats.
 available | true | If set to false, the result will include kittens that have already been adopted.
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — a happy profile is an authenticated profile!
 </aside>
 
 ## Get a Specific Kitten
@@ -241,7 +201,7 @@ let max = api.kittens.get(2);
 }
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint retrieves a specific profile.
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 
@@ -253,47 +213,7 @@ This endpoint retrieves a specific kitten.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'lix'
-
-api = Lix::APIClient.authorize!('lixApiKey')
-api.kittens.delete(2)
-```
-
-```python
-import lix
-
-api = lix.authorize('lixApiKey')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -X DELETE \
-  -H "Authorization: lixApiKey"
-```
-
-```javascript
-const lix = require('lix');
-
-let api = lix.authorize('lixApiKey');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
+ID | The ID of the profile to retrieve
 
 ### HTTP Request
 
@@ -303,5 +223,5 @@ This endpoint deletes a specific kitten.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
+ID | The ID of the profile to delete
 
