@@ -10,7 +10,7 @@ CODE | TITLE | DESCRIPTION
 402 |	Over quota |	Over plan quota on this endpoint. Please top-up your account or [mailto:] speak to sales to increase your quota.
 404 |	Not found |	The endpoint does not exist
 429 |	Too Many Requests |	The rate limit was exceeded
-500 |	Internal Server Error |	An error occurred on the server. Should this error persis, please contact our technical team.
+500 |	Internal Server Error |	An error occurred on the server. Should this error persist, please contact our technical team.
 503 | Service Unavailable |	The API is temporarily unavailable
 
 ## Error types
