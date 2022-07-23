@@ -101,18 +101,18 @@ Please be aware if some data points of profiles do not exist, these will be retu
 require 'lix'
 
 api = Lix::APIClient.authorize!('lixApiKey')
-api.kittens.get
+api.people.get
 ```
 
 ```python
 import lix
 
 api = lix.authorize('lixApiKey')
-api.kittens.get()
+api.people.get()
 ```
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "http://example.com/api/people" \
   -H "Authorization: lixApiKey"
 ```
 
@@ -120,7 +120,7 @@ curl "http://example.com/api/kittens" \
 const lix = require('lix');
 
 let api = lix.authorize('lixApiKey');
-let kittens = api.kittens.get();
+let people = api.people.get();
 ```
 
 > The above command returns JSON structured like this:
@@ -144,18 +144,18 @@ let kittens = api.kittens.get();
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all people.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET http://example.com/api/people`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
 include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+available | true | If set to false, the result will include people that have already been adopted.
 
 <aside class="success">
 Remember — a happy profile is an authenticated profile!
@@ -167,18 +167,18 @@ Remember — a happy profile is an authenticated profile!
 require 'lix'
 
 api = Lix::APIClient.authorize!('lixApiKey')
-api.kittens.get(2)
+api.people.get(2)
 ```
 
 ```python
 import lix
 
 api = lix.authorize('lixApiKey')
-api.kittens.get(2)
+api.people.get(2)
 ```
 
 ```shell
-curl "http://example.com/api/kittens/2" \
+curl "http://example.com/api/people/2" \
   -H "Authorization: lixApiKey"
 ```
 
@@ -186,7 +186,7 @@ curl "http://example.com/api/kittens/2" \
 const lix = require('lix');
 
 let api = lix.authorize('lixApiKey');
-let max = api.kittens.get(2);
+let max = api.people.get(2);
 ```
 
 > The above command returns JSON structured like this:
@@ -207,7 +207,7 @@ This endpoint retrieves a specific profile.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET http://example.com/people/<ID>`
 
 ### URL Parameters
 
@@ -217,7 +217,7 @@ ID | The ID of the profile to retrieve
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`DELETE http://example.com/people/<ID>`
 
 ### URL Parameters
 
