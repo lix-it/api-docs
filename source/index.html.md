@@ -161,7 +161,7 @@ available | true | If set to false, the result will include people that have alr
 Remember — a happy profile is an authenticated profile!
 </aside>
 
-## Get a Specific Kitten
+## Get a Specific Profile
 
 ```ruby
 require 'lix'
