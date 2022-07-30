@@ -87,7 +87,7 @@ Please bear in mind to also specify the Content-Type as application/json format.
 You must replace <code>lixApiKey</code> with your personal API key.
 </aside>
 
-# Profiles API
+# Enrichment API
 
 This section describes the data you can expect from each returned profile. The same profile data structure will be returned from multiple profile collection endpoints as described below. Each profile is equivalent to 1 credit.
 
@@ -95,73 +95,7 @@ This section describes the data you can expect from each returned profile. The s
 Please be aware if some data points of profiles do not exist, these will be returned as null.
 </aside>
 
-## Profile Schema
-
-```ruby
-require 'lix'
-
-api = Lix::APIClient.authorize!('lixApiKey')
-api.people.get
-```
-
-```python
-import lix
-
-api = lix.authorize('lixApiKey')
-api.people.get()
-```
-
-```shell
-curl "http://example.com/api/people" \
-  -H "Authorization: lixApiKey"
-```
-
-```javascript
-const lix = require('lix');
-
-let api = lix.authorize('lixApiKey');
-let people = api.people.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all people.
-
-### HTTP Request
-
-`GET http://example.com/api/people`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include people that have already been adopted.
-
-<aside class="success">
-Remember — a happy profile is an authenticated profile!
-</aside>
-
-## Get a Specific Profile
+## Person
 
 ```ruby
 require 'lix'
@@ -178,7 +112,7 @@ api.people.get(2)
 ```
 
 ```shell
-curl "http://example.com/api/people/2" \
+curl "https://api.lix-it.com/v1/api/people/2" \
   -H "Authorization: lixApiKey"
 ```
 
@@ -205,21 +139,12 @@ This endpoint retrieves a specific profile.
 
 ### HTTP Request
 
-`GET http://example.com/people/<ID>`
+`GET https://api.lix-it.com/v1/person`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the profile to retrieve
+profile_link | The link to the profile of the person.
 
-### HTTP Request
-
-`DELETE http://example.com/people/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the profile to delete
 
