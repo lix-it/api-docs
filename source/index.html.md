@@ -117,6 +117,7 @@ curl "https://api.lix-it.com/v1/connections?viewer_id=alfie-lambert&count=1000&s
 ```
 
 > The above command returns JSON structured like this:
+
 ```json
 {
   "connections_response": {
