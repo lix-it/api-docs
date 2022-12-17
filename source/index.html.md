@@ -87,6 +87,45 @@ Please bear in mind to also specify the Content-Type as application/json format.
 You must replace <code>lixApiKey</code> with your personal API key.
 </aside>
 
+# Search API
+
+## Connections
+
+This endpoint retrieves the connections for the viewerId.
+
+<aside class="notice">
+You need to have your LinkedIn account connected to your Lix account using the Lix extension. You will get 400 Bad Request errors otherwise.
+</aside>
+
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/connections`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you want to get the connections from.
+count     | Set as high a number as you can here - 1,000 works.
+start     | The start offset for the search paging.
+
+
+```shell
+curl "https://api.lix-it.com/v1/connections?viewer_id=alfie-lambert&count=1000&start=10" \
+  -H "Authorization: lixApiKey"
+```
+
+> The above command returns JSON structured like this:
+```json
+{
+  "connections_response": {
+    "elements": [ Connection ],
+    "paging": { "count": 10 }
+  }
+}
+```
+
 # Enrichment API
 
 This section describes the data you can expect from each returned profile. The same profile data structure will be returned from multiple profile collection endpoints as described below. Each profile is equivalent to 1 credit.
