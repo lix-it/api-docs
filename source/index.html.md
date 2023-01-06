@@ -129,7 +129,10 @@ lix_id | The Lix unique ID.
 curl "https://api.lix-it.com/v1/person/ids?li_flagship_id=alfie-lambert" \
   -H "Authorization: [lixApiKey]"
 ```
+
 > Returns:
+
+```json
 {
  "person_ids": {
   "liFlagshipID": "alfie-lambert",
@@ -137,6 +140,7 @@ curl "https://api.lix-it.com/v1/person/ids?li_flagship_id=alfie-lambert" \
   "lixID": "cGVyc29uOjk3MDgyNQ=="
  }
 }
+```
 
 ## Connections
 
@@ -163,6 +167,21 @@ start     | The start offset for the search paging.
 ```shell
 curl "https://api.lix-it.com/v1/connections?viewer_id=alfie-lambert&count=1000&start=10" \
   -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/connections?count=1000&start=0&viewer_id=alfie-lambert"
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
 ```
 
 > The above command returns JSON structured like this:
