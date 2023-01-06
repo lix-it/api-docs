@@ -51,21 +51,24 @@ api = Lix::APIClient.authorize!('lixApiKey')
 ```
 
 ```python
-import lix
+import requests
 
-api = lix.authorize('lixApiKey')
+url = "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert"
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
 ```
 
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here" \
   -H "Authorization: lixApiKey"
-```
-
-```javascript
-const lix = require('lix');
-
-let api = lix.authorize('lixApiKey');
 ```
 
 > Make sure to replace `lixApiKey` with your API key.
@@ -205,30 +208,24 @@ Please be aware if some data points of profiles do not exist, these will be retu
 
 ## Person
 
-```ruby
-require 'lix'
-
-api = Lix::APIClient.authorize!('lixApiKey')
-api.people.get(2)
-```
-
 ```python
-import lix
+import requests
 
-api = lix.authorize('lixApiKey')
-api.people.get(2)
+url = "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
 ```
 
 ```shell
-curl "https://api.lix-it.com/v1/api/people/alfie-lambert" \
+curl "https://api.lix-it.com/v1/api/person?profile_link=https://linkedin.com/in/alfie-lambert" \
   -H "Authorization: lixApiKey"
-```
-
-```javascript
-const lix = require('lix');
-
-let api = lix.authorize('lixApiKey');
-let max = api.people.get(alfie-lambert);
 ```
 
 > The above command returns JSON structured like this:
