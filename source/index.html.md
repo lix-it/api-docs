@@ -9,8 +9,10 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='/api/#contact-form'>Contact sales</a>
+  - We are not affiliated with LinkedIn in any way.
 
 includes:
+  - linkedin
   - errors
 
 search: true
@@ -89,6 +91,13 @@ Please bear in mind to also specify the Content-Type as application/json format.
 <aside class="notice">
 You must replace <code>lixApiKey</code> with your personal API key.
 </aside>
+
+# Using the API
+
+## Sequence IDs
+
+Some endpoints require you to use a `sequence_id` query parameter, which is a unique identifier for a sequence of requests. This sequence parameter is returned from any endpoint where there are multiple pages, and allows you to use the same settings in the Lix's crawling systems from request-to-request. If you omit the sequence parameter you will be in danger of producing different duplicate search results.
+
 
 # Search API
 
