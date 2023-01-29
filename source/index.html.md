@@ -16,6 +16,7 @@ includes:
   - enrichment
   - linkedin
   - ai
+  - contact
   - errors
 
 search: true
