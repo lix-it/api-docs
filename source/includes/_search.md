@@ -61,14 +61,6 @@ This endpoint retrieves the connections for the viewerId.
 You need to have your LinkedIn account connected to your Lix account using the Lix extension. You will get 400 Bad Request errors otherwise.
 </aside>
 
-## Connections
-
-This endpoint retrieves the connections for the viewerId.
-
-<aside class="notice">
-You need to have your LinkedIn account connected to your Lix account using the Lix extension. You will get 400 Bad Request errors otherwise.
-</aside>
-
 
 ### HTTP Request
 
