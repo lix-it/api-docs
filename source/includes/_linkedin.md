@@ -1,4 +1,4 @@
-# LinkedIn API
+# LinkedIn Search API
 
 ## LinkedIn People Search
 
