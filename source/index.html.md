@@ -12,6 +12,7 @@ toc_footers:
   - We are not affiliated with LinkedIn.
 
 includes:
+  - account
   - search
   - enrichment
   - linkedin
