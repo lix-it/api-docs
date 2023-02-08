@@ -70,7 +70,7 @@ print(response.text)
 ```
 
 ```shell
-curl "https://api.lix-it.com/v1/api/person?profile_link=https://linkedin.com/in/alfie-lambert" \
+curl "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert" \
   -H "Authorization: lixApiKey"
 ```
 
