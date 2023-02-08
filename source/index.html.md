@@ -99,6 +99,9 @@ You must replace <code>lixApiKey</code> with your personal API key.
 
 # Using the API
 
+## Passing URLs
+When passing URLs to an endpoint ensure that the URL is 'URL Encoded'. You can see the description of what that is [here](https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding). Most programming languages have standard libraries that deal with encoding values for URLs.
+
 ## Sequence IDs
 
 Some endpoints require you to use a `sequence_id` query parameter, which is a unique identifier for a sequence of requests. This sequence parameter is returned from any endpoint where there are multiple pages, and allows you to use the same settings in the Lix's crawling systems from request to request. If you omit the sequence parameter you will be in danger of producing different duplicate search results.

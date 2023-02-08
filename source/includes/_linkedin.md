@@ -15,7 +15,7 @@ This endpoint retrieves a single page for a LinkedIn People search.
 
 Parameter | Description
 --------- | -----------
-url       | The LinkedIn search URL
+url       | The url-encoded LinkedIn search URL
 
 #### Optional Parameters
 Parameter | Description
@@ -69,7 +69,7 @@ This endpoint retrieves a single page for a LinkedIn Job search.
 
 Parameter | Description
 --------- | -----------
-url       | The LinkedIn search URL
+url       | The url-encoded LinkedIn search URL
 
 #### Optional Parameters
 Parameter | Description
@@ -123,7 +123,7 @@ This endpoint retrieves a single page for a LinkedIn Posts search.
 
 Parameter | Description
 --------- | -----------
-url       | The LinkedIn search URL
+url       | The url-encoded LinkedIn search URL
 
 #### Optional Parameters
 Parameter | Description
@@ -177,7 +177,7 @@ This endpoint retrieves a single search page for a LinkedIn Sales Navigator lead
 
 Parameter | Description
 --------- | -----------
-url       | The LinkedIn search URL
+url       | The url-encoded LinkedIn search URL
 
 #### Optional Parameters
 Parameter | Description

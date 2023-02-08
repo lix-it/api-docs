@@ -16,7 +16,7 @@ Retrieve Validated Email address for any LinkedIn user.
 
 Parameter | Description
 --------- | -----------
-url       | The URL of the LinkedIn profile you would like to get an email address for.
+url       | The url-encoded URL of the LinkedIn profile you would like to get an email address for.
 
 
 ```shell
