@@ -19,6 +19,7 @@ includes:
   - ai
   - contact
   - errors
+  - lix_account
 
 search: true
 
