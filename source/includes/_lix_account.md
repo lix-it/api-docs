@@ -1,4 +1,4 @@
-# Contact Information API
+# Lix Account API
 
 ## Balances
 

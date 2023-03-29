@@ -12,6 +12,7 @@ toc_footers:
   - We are not affiliated with LinkedIn.
 
 includes:
+  - lix_account
   - account
   - search
   - enrichment
@@ -19,7 +20,6 @@ includes:
   - ai
   - contact
   - errors
-  - lix_account
 
 search: true
 
