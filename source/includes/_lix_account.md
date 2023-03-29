@@ -26,9 +26,10 @@ print(response.text)
 ```
 
 > The above command returns JSON structured like this:
+
 ```json
 {
-  "email_balance": 10000,
-  "linkedin_balance": 50000,
+  "emailBalance": 10000,
+  "linkedinBalance": 50000
 }
 ```
