@@ -30,6 +30,6 @@ print(response.text)
 ```json
 {
   "emailBalance": 10000,
-  "linkedinBalance": 50000
+  "linkedInBalance": 50000
 }
 ```
