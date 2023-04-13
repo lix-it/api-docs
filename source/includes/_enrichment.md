@@ -35,7 +35,7 @@ viewer_id | The LinkedIn ID of the account you would like to view this profile a
 ```python
 import requests
 
-url = "https://api.lix-it.com/v1/enrich/job?profile_link=https://linkedin.com/in/alfie-lambert"
+url = "https://api.lix-it.com/v1/enrich/job?job_id=3556453411"
 
 payload={}
 headers = {
@@ -48,7 +48,7 @@ print(response.text)
 ```
 
 ```shell
-curl "https://api.lix-it.com/v1/enrich/job?profile_link=https://linkedin.com/in/alfie-lambert" \
+curl "https://api.lix-it.com/v1/enrich/job?job_id=3556453411" \
   -H "Authorization: lixApiKey"
 ```
 
