@@ -4,7 +4,7 @@
 
 Retrieve Validated Email address for any LinkedIn user.
 
-<aside class="notice"> Uses 1 Email Credit.</aside>
+<aside class="notice"> Uses 1 Email Credit and 1 LinkedIn API credit.</aside>
 
 ### HTTP Request
 
