@@ -6,6 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - ruby
   - python
   - javascript
+  - Go
 
 toc_footers:
   - <a href='/api/#contact-form'>Contact sales</a>
@@ -32,7 +33,7 @@ meta:
 
 # Introduction
 
-Welcome to Lix's API! You can use this API to access all our API endpoints, such as the Person API to look up email addresses, or the Company API to look up company information related to a domain name.
+Welcome to Lix's API! You can use this API to access all our API endpoints, such as the Contact API to look up email addresses by LinkedIn profile ID, or the People API to look up professional information for a person.
 
 The API is organized around REST. All requests should be made over SSL. All request and response bodies, including errors, are encoded in JSON.
 
@@ -71,6 +72,107 @@ headers = {
 response = requests.request("GET", url, headers=headers, data=payload)
 
 print(response.text)
+```
+
+```r
+library(httr)
+library(jsonlite)
+
+url <- "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert"
+
+httr.set_config(httr::config(ssl_verifypeer = 0L))
+```
+
+```c#
+using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+
+namespace LixAPI
+{
+    class Program
+    {
+        static HttpClient client = new HttpClient();
+
+        static void Main()
+        {
+            RunAsync().GetAwaiter().GetResult();
+        }
+
+        static async Task RunAsync()
+        {
+            // Update port # in the following line.
+            client.BaseAddress = new Uri("https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("lixApiKey");
+
+            try
+            {
+                await GetPersonAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            Console.ReadLine();
+        }
+
+        static async Task GetPersonAsync()
+        {
+            HttpResponseMessage response = await client.GetAsync("https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert");
+            if (response.IsSuccessStatusCode)
+            {
+                Person person = await response.Content.ReadAsAsync<Person>();
+                Console.WriteLine("{0}", person.Name);
+            }
+        }
+    }
+}
+```
+
+```javascript
+const axios = require('axios');
+
+const url = "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert";
+
+const headers = {
+  'Authorization': lixApiKey,
+}
+
+const response = axios.get(url, headers);
+
+console.log(response.data);
+```
+
+```java
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+
+```
+
+```Go
+package main
+
+import (
+  "fmt"
+  "io/ioutil"
+  "net/http"
+)
+
+func main() {
+  req, _ := http.NewRequest("GET", "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert", nil)
+
+  req.SetHeaders
+
+}
 ```
 
 ```shell
