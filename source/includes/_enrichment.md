@@ -1,12 +1,16 @@
 # Enrichment API
 
-This section describes the data you can expect from each returned profile. The same profile data structure will be returned from multiple profile collection endpoints as described below. Each profile is equivalent to 1 credit.
+This section describes the data you can expect from each returned profile. The same profile data structure will be returned from multiple profile collection endpoints as described below. Credit usage is dependent on the endpoint used.
 
 <aside class="notice">
 Please be aware if some data points of profiles do not exist, these will be returned as null.
 </aside>
 
 ## Job Posting
+
+<aside class="notice">
+Uses 1 LinkedIn credit.
+</aside>
 
 This endpoint retrieves a single publicly available LinkedIn Job Posting.
 
@@ -54,6 +58,10 @@ curl "https://api.lix-it.com/v1/enrich/job?job_id=3556453411" \
 
 ## Person
 
+<aside class="notice">
+Uses 1 LinkedIn credit.
+</aside>
+
 ```python
 import requests
 
@@ -93,3 +101,64 @@ Parameter | Description
 profile_link | The link to the profile of the person.
 
 
+## Organisation
+<aside class="notice">
+Uses 1 Organisation credit.
+</aside>
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/organisations/by-linkedin?linkedin_url=https://linkedin.com/company/linkedin"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+```
+
+```shell
+curl "https://api.lix-it.com/v1/organisations/by-linkedin?linkedin_url=https://linkedin.com/company/linkedin" \
+  -H "Authorization: lixApiKey"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "liOrganisation": {
+        "name": "LinkedIn",
+        "link": "https://www.linkedin.com/company/linkedin",
+        "industry": "Computer Software",
+        "website": "https://careers.linkedin.com",
+        "description": "Founded in 2003, LinkedIn connects the world's professionals to make them more productive and successful. With more than 850 million members worldwide, including executives from every Fortune 500 company, LinkedIn is the world's largest professional network. The company has a diversified business model with revenue coming from Talent Solutions, Marketing Solutions, Sales Solutions and Premium Subscriptions products. Headquartered in Silicon Valley, LinkedIn has offices across the globe.",
+        "headquarters": "Sunnyvale, US",
+        "companyType": "Public Company",
+        "liEmployeeCount": "26383",
+        "size": "10001+",
+        "specialities": "Online Professional Network, Jobs, People Search, Company Search, Address Book, Advertising, Professional Identity, Group Collaboration, Recruiting",
+        "numberOfInvestmentRounds": "7",
+        "followers": "25072627",
+        "crunchbaseId": "linkedin",
+        "salesNavLink": "https://www.linkedin.com/sales/accounts/insights?companyId=1337&trk=li_comp_page",
+        "logoUrl": "https://media.licdn.com/dms/image/C560BAQHaVYd13rRz3A/company-logo_",
+    }
+}
+```
+
+This endpoint retrieves a specific profile.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/organisations/by-linkedin`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+linkedin_url | The link to the profile of the company
+sales_nav_url | The link to the Sales Navigator profile for the company
