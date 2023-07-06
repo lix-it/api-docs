@@ -183,7 +183,7 @@ curl "api_endpoint_here" \
 
 > Make sure to replace `lixApiKey` with your API key.
 
-Lix uses API keys to allow access to the API. If you do not have an API Token yet, please [contact our sales team](mailto:help@lix-it.com) to receive one.
+Lix uses API keys to allow access to the API. If you do not have an API Token yet, please [visit your API dashboard](https://lix-it.com/home/api) to generate one. You will need to verify your identity first, it's a simple process that takes less than a minute. You can see more information about our verification process [here](https://help.lix-it.com/en/articles/8074514-how-to-verify-your-identity).
 
 Lix expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
