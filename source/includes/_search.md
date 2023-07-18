@@ -10,13 +10,13 @@ You can use this endpoint to convert LinkedIn Sales Navigator profile URLs to Li
 
 Attribute | Description
 --------- | -----------
-liFlagshipID | The ID of the 'Flagship' LinkedIn profile. You can create a profile URL by passing in `https://www.linkedin.com/in/[liFlagshipID]`.
-salesNavID     | The Sales Navigator ID. You can create a profile URL by passing in `https://www.linkedin.com/sales/people/[salesNavID],NAME,undefined`.
-lixID     | The unique Lix ID for this person.
+li_flagship_id | The ID of the 'Flagship' LinkedIn profile. You can create a profile URL by passing in `https://www.linkedin.com/in/[liFlagshipID]`.
+sales_nav_id     | The Sales Navigator ID. You can create a profile URL by passing in `https://www.linkedin.com/sales/people/[salesNavID],NAME,undefined`.
+lix_id     | The unique Lix ID for this person.
 
 ```shell
 {
-  "flagshipID": "alfie-lambert",
+  "liID": "alfie-lambert",
   "salesNavID": "ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg",
   "lixID": "cGVyc29uOjk3MDgyNQ=="
 }
@@ -46,7 +46,7 @@ curl "https://api.lix-it.com/v1/person/ids?li_flagship_id=alfie-lambert" \
 ```json
 {
  "person_ids": {
-  "liFlagshipID": "alfie-lambert",
+  "liID": "alfie-lambert",
   "salesNavID": "ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg",
   "lixID": "cGVyc29uOjk3MDgyNQ=="
  }
