@@ -132,14 +132,14 @@ viewer_id | The LinkedIn ID of the account you would like to view this search as
 sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids)
 
 ```shell
-curl "https://api.lix-it.com/v1/li/linkedin/search/posts?viewer_id=alfie-lambert&url=https://www.linkedin.com/search/results/CONTENT/?keywords=lix&origin=SWITCH_SEARCH_VERTICAL&sid=V2J" \
+curl "https://api.lix-it.com/v1/li/linkedin/search/posts?url=https%3A%2F%2Fwww.linkedin.com%2Fsearch%2Fresults%2Fcontent%2F%3Fkeywords%3Dlix%26origin%3DSWITCH_SEARCH_VERTICAL%26sid%3DV2J" \
   -H "Authorization: lixApiKey"
 ```
 
 ```python
 import requests
 
-url = "https://api.lix-it.com/v1/li/linkedin/search/posts?viewer_id=alfie-lambert&url=https://www.linkedin.com/search/results/CONTENT/?keywords=lix&origin=SWITCH_SEARCH_VERTICAL&sid=V2J"
+url = "https://api.lix-it.com/v1/li/linkedin/search/posts?url=https%3A%2F%2Fwww.linkedin.com%2Fsearch%2Fresults%2Fcontent%2F%3Fkeywords%3Dlix%26origin%3DSWITCH_SEARCH_VERTICAL%26sid%3DV2J"
 
 payload={}
 headers = {
