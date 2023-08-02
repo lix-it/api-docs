@@ -56,6 +56,56 @@ curl "https://api.lix-it.com/v1/enrich/job?job_id=3556453411" \
   -H "Authorization: lixApiKey"
 ```
 
+## Post
+
+<aside class="notice">
+Uses 1 LinkedIn credit.
+</aside>
+
+This endpoint retrieves a single publicly available LinkedIn Feed Update (Post).
+
+<aside class="notice">
+Please be aware if some data points do not exist, these will be returned as null.
+</aside>
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/enrich/post`
+
+### URL Parameters
+
+#### Required parameters
+
+Parameter | Description
+--------- | -----------
+post_urn | The LinkedIn URN of the post, URI encoded. For example `urn%3Ali%3Aactivity%3A7019605025920286720`, which is the URI-encoded form of `urn:li:activity:7019605025920286720`. You can find these post URNs in the response to the Posts Search API.
+
+#### Optional parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this post as.
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/enrich/post?post_urn=urn%3Ali%3Aactivity%3A7019605025920286720"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+```
+
+```shell
+curl "https://api.lix-it.com/v1/enrich/post?post_urn=urn%3Ali%3Aactivity%3A7019605025920286720" \
+  -H "Authorization: lixApiKey"
+```
+
 ## Person
 
 <aside class="notice">
