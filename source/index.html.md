@@ -42,7 +42,7 @@ We also have some specific language code examples to make integration easier. Yo
 Currently we have code examples for the following languages:
 
 - Node
-- Python
+- Python 3
 - Go
 - Javascript
 - Java

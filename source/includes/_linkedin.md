@@ -30,8 +30,15 @@ curl "https://api.lix-it.com/v1/li/linkedin/search/people?url=https://www.linked
 
 ```python
 import requests
+import urllib.parse
 
-url = "https://api.lix-it.com/v1/li/linkedin/search/people?url=https://www.linkedin.com/search/results/people/?keywords=lix&origin=SWITCH_SEARCH_VERTICAL&sid=%40%2Co"
+linkedin_url = "https://www.linkedin.com/search/results/people/?keywords=lix&origin=SWITCH_SEARCH_VERTICAL&sid=%40%2Co"
+
+# encode the URL
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/li/linkedin/search/people?url=" + linkedin_url
+
 
 payload={}
 headers = {
@@ -84,8 +91,14 @@ curl "https://api.lix-it.com/v1/li/linkedin/search/jobs?url=https://www.linkedin
 
 ```python
 import requests
+import urllib.parse
 
-url = "https://api.lix-it.com/v1/li/linkedin/search/jobs?url=https://www.linkedin.com/jobs/search/?currentJobId=3436671233&keywords=lix"
+linkedin_url = "https://www.linkedin.com/jobs/search/?currentJobId=3436671233&keywords=lix"
+
+# encode the URL
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/li/linkedin/search/jobs?url=" + linkedin_url
 
 payload={}
 headers = {
@@ -138,8 +151,14 @@ curl "https://api.lix-it.com/v1/li/linkedin/search/posts?url=https%3A%2F%2Fwww.l
 
 ```python
 import requests
+import urllib.parse
 
-url = "https://api.lix-it.com/v1/li/linkedin/search/posts?url=https%3A%2F%2Fwww.linkedin.com%2Fsearch%2Fresults%2Fcontent%2F%3Fkeywords%3Dlix%26origin%3DSWITCH_SEARCH_VERTICAL%26sid%3DV2J"
+linkedin_url = "https://www.linkedin.com/search/results/content/?keywords=lix&origin=SWITCH_SEARCH_VERTICAL&sid=V2J"
+
+# encode the URL
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/li/linkedin/search/posts?url=" + linkedin_url
 
 payload={}
 headers = {
@@ -192,8 +211,14 @@ curl "https://api.lix-it.com/v1/li/sales/search/people?url=https://www.linkedin.
 
 ```python
 import requests
+import urllib.parse
 
-url = "https://api.lix-it.com/v1/li/sales/search/people?url=https://www.linkedin.com/sales/search/people?query=(spellCorrectionEnabled%3Atrue%2CrecentSearchParam%3A(id%3A2154062338%2CdoLogHistory%3Atrue)%2Ckeywords%3Alix)&sessionId=GumqcP8vR0aPVWr3cNR74A%3D%3D"
+linkedin_url = "https://www.linkedin.com/sales/search/people?query=(spellCorrectionEnabled%3Atrue%2CrecentSearchParam%3A(id%3A2154062338%2CdoLogHistory%3Atrue)%2Ckeywords%3Alix)&sessionId=GumqcP8vR0aPVWr3cNR74A%3D%3D"
+
+# encode the URL
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/li/sales/search/people?url=" + linkedin_url
 
 payload={}
 headers = {
