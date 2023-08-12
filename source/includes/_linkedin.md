@@ -262,7 +262,7 @@ If you are trying to build a search URL, you can use this endpoint to get the ty
 Parameter | Description
 --------- | -----------
 query     | The search query. For instance 'Goog' with a type of 'COMPANY_TITLE' will return 'Google' as a typeahead.
-type      | The type of search you would like to perform. Available options are `BING_GEO` (geography),`COMPANY_TITLE` (company name), `SENIORITY` (seniority).
+type      | The type of search you would like to perform. Available options are `BING_GEO` (geography);`COMPANY_WITH_LIST` (company name); `SENIORITY` (seniority); `TITLE` (Job Title).
 
 
 #### Optional Parameters
