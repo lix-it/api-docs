@@ -243,3 +243,90 @@ print(response.text)
   }
 }
 ```
+
+## Search Facet Typeahead
+
+This endpoint retrieves typeaheads for a LinkedIn search facet.
+
+If you are trying to build a search URL, you can use this endpoint to get the typeahead for a search facet. For example, if you want to search for people who work at Google, you can use this endpoint to get the typeahead for the company facet. Then you can use the typeahead to build your search URL.
+
+<aside class="notice">This endpoint is free of charge to customers who have available credits in their account.</aside>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/search/sales/facet`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+query     | The search query. For instance 'Goog' with a type of 'COMPANY_TITLE' will return 'Google' as a typeahead.
+type      | The type of search you would like to perform. Available options are `BING_GEO` (geography),`COMPANY_TITLE` (company name), `SENIORITY` (seniority).
+
+
+#### Optional Parameters
+Parameter | Description
+--------- | -----------
+count     | The number of typeaheads you would like to return. The default is 100.
+start     | The index of the first typeahead you would like to return. The default is 0.
+viewer_id | The LinkedIn ID of the account you would like to view this search as
+
+```shell
+curl "https://api.lix-it.com/v1/search/sales/facet?query=E&type=SENIORITY&count=100&start=0" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/search/sales/facet?query=E&type=SENIORITY&count=100&start=0"
+
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "elements": [
+            {
+                "displayValue": "Entry",
+                "id": "3"
+            },
+            {
+                "displayValue": "Owner",
+                "id": "10"
+            },
+            {
+                "displayValue": "Partner",
+                "id": "9"
+            },
+            {
+                "displayValue": "Director",
+                "id": "6"
+            },
+            {
+                "displayValue": "Manager",
+                "id": "5"
+            },
+            {
+                "displayValue": "Senior",
+                "id": "4"
+            }
+        ],
+        "paging": {
+            "count": 100
+        }
+    }
+}
+```
