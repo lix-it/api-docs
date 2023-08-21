@@ -205,6 +205,46 @@ You must replace <code>lixApiKey</code> with your personal API key.
 ## Passing URLs
 When passing URLs to an endpoint ensure that the URL is 'URL Encoded'. You can see the description of what that is [here](https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding). Most programming languages have standard libraries that deal with encoding values for URLs.
 
+```javascript
+const encoded = encodeURIComponent('https://linkedin.com/in/alfie-lambert');
+const url = "https://api.lix-it.com/v1/person?profile_link=" + encoded;
+```
+
+```ruby
+require 'uri'
+
+encoded = URI.encode('https://linkedin.com/in/alfie-lambert')
+
+url = "https://api.lix-it.com/v1/person?profile_link=" + encoded
+
+puts url
+```
+
+```python
+import urllib.parse
+
+linkedin_url = "https://linkedin.com/in/alfie-lambert"
+
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+```
+
+```Go
+import (
+  "net/url"
+)
+
+linkedin_url := "https://linkedin.com/in/alfie-lambert"
+
+linkedin_url = url.QueryEscape(linkedin_url)
+
+url := "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+```
+
+### Postman
+There is more information on how to URI encode values in Postman [here](https://learning.postman.com/docs/sending-requests/requests/#sending-parameters).
+
 ## Sequence IDs
 
 Some endpoints require you to use a `sequence_id` query parameter, which is a unique identifier for a sequence of requests. This sequence parameter is returned from any endpoint where there are multiple pages, and allows you to use the same settings in the Lix's crawling systems from request to request. If you omit the sequence parameter you will be in danger of producing different duplicate search results.
