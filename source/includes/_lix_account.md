@@ -22,7 +22,7 @@ headers = {
   'Authorization': lix_api_key
 }
 response = requests.request("GET", url, headers=headers, data=payload)
-print(response.text)
+print(response.json())
 ```
 
 > The above command returns JSON structured like this:
