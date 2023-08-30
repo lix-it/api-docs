@@ -69,9 +69,11 @@ lix_id     | The unique Lix ID for this organisation.
 
 ```shell
 {
-  "liID": "lix",
-  "salesNavID": "1670390",
-  "lixID": "cGVyc29uOjk3MDgyNQ=="
+    "id": "59688920",
+    "name": "Lix",
+    "liID": "lix",
+    "salesNavID": "1670390",
+    "uuid": "b3JnYW5pc2F0aW9uOjA="
 }
 ```
 
@@ -98,10 +100,12 @@ curl "https://api.lix-it.com/v1/organisation/ids?li_flagship_id=lix" \
 
 ```json
 {
- "organisationIds": {
-  "liID": "lix",
-  "salesNavID": "1670390",
-  "lixID": "cGVyc29uOjk3MDgyNQ=="
- }
+  "organisationIds": {
+      "id": "59688920",
+      "name": "Lix",
+      "liID": "lix",
+      "salesNavID": "1670390",
+      "uuid": "b3JnYW5pc2F0aW9uOjA="
+  }
 }
 ```
