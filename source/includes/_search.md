@@ -26,7 +26,7 @@ lix_id     | The unique Lix ID for this person.
 
 Retrieve the Person IDs. Pass in any ID you would like to cross-reference, but only pass one in. 
 
-<aside class="notice"> Uses 1 Search Credit.</aside>
+<aside class="notice"> Uses 1 Standard Credit.</aside>
 
 `GET https://api.lix-it.com/v1/person/ids`
 
@@ -48,6 +48,59 @@ curl "https://api.lix-it.com/v1/person/ids?li_flagship_id=alfie-lambert" \
  "person_ids": {
   "liID": "alfie-lambert",
   "salesNavID": "ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg",
+  "lixID": "cGVyc29uOjk3MDgyNQ=="
+ }
+}
+```
+
+## Organisation IDs
+
+This endpoint retrieves ids for various B2B data products. You query it using an ID and it will fetch the ids.
+
+You can use this endpoint to convert LinkedIn Sales Navigator profile URLs to LinkedIn profile URLs and vice versa.
+
+### The OrganisationIDs Object
+
+Attribute | Description
+--------- | -----------
+li_flagship_id | The ID of the 'Flagship' LinkedIn profile. You can create a profile URL by passing in `https://www.linkedin.com/company/[liFlagshipID]`.
+sales_nav_id     | The Sales Navigator ID. You can create a profile URL by passing in `https://www.linkedin.com/sales/people/[salesNavID],NAME,undefined`.
+lix_id     | The unique Lix ID for this organisation.
+
+```shell
+{
+  "liID": "lix",
+  "salesNavID": "1670390",
+  "lixID": "cGVyc29uOjk3MDgyNQ=="
+}
+```
+
+### Get OrganisationIDs
+
+Retrieve the Organisation IDs. Pass in any ID you would like to cross-reference, but only pass one in. 
+
+<aside class="notice">This endpoint is FREE</aside>
+
+`GET https://api.lix-it.com/v1/organisation/ids`
+
+Parameter | Description
+--------- | -----------
+sales_nav_id | The Sales Nav ID of the organisation. You can find this from a profile link: `https://www.linkedin.com/sales/company/[sales_nav_id]`
+li_flagship_id | The Linkedin profile public identifier. You can find this from a profile link: `https://www.linkedin.com/company/[li_flagship_id]`
+lix_id | The Lix unique ID.
+
+```shell
+curl "https://api.lix-it.com/v1/organisation/ids?li_flagship_id=lix" \
+  -H "Authorization: [lixApiKey]"
+```
+
+> Returns:
+
+```json
+{
+ "organisation_ids": {
+  "liID": "lix",
+  "salesNavID": "1670390",
   "lixID": "cGVyc29uOjk3MDgyNQ=="
  }
 }
