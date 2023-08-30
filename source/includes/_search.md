@@ -98,7 +98,7 @@ curl "https://api.lix-it.com/v1/organisation/ids?li_flagship_id=lix" \
 
 ```json
 {
- "organisation_ids": {
+ "organisationIds": {
   "liID": "lix",
   "salesNavID": "1670390",
   "lixID": "cGVyc29uOjk3MDgyNQ=="
