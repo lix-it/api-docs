@@ -18,6 +18,7 @@ includes:
   - search
   - enrichment
   - linkedin
+  - lookc
   - ai
   - contact
   - errors
@@ -245,8 +246,12 @@ url := "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
 ### Postman
 There is more information on how to URI encode values in Postman [here](https://learning.postman.com/docs/sending-requests/requests/#sending-parameters).
 
-## Sequence IDs
+## Sequence IDs & Pagination
 
 Some endpoints require you to use a `sequence_id` query parameter, which is a unique identifier for a sequence of requests. This sequence parameter is returned from any endpoint where there are multiple pages, and allows you to use the same settings in the Lix's crawling systems from request to request. If you omit the sequence parameter you will be in danger of producing different duplicate search results.
 
 If you use the `viewer_id` field you do not need to use the `sequence_id` parameter.
+
+## Rate Limiting
+
+We have a default rate limit of 1 request per 3 seconds. If you exceed this limit you will receive a 429 error. If you need to make more requests please contact our team or upgrade your plan.
