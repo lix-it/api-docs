@@ -19,9 +19,8 @@ Parameter | Description
 request_id     | The request ID of the asynchronous request you are checking.
 
 
-
 ```shell
-curl "https://api.lix-it.com/v1/request?request_id=1234-f197-1fsd8-fs987"
+curl "https://api.lookc.io/v1/request?request_id=1234-f197-1fsd8-fs987"
 ```
 
 > Returns: 
@@ -120,4 +119,4 @@ curl "https://api.lookc.io/v1/search/person/by-email?email=alfie@lix-it.com \
 ```
 
 ### Async Requests
-Name: `search.person.by-email`
+Type: `search.person.by-email`
