@@ -10,8 +10,18 @@ If an endpoint is asynchronous it will be designated as `async enabled` in the d
 
 You can check the status of an asynchronous request by passing the `request_id` into the `request_id` query parameter.
 
+### HTTP Request
+
+`GET https://api.lookc.io/v1/search/person/by-email`
+
+Parameter | Description
+--------- | -----------
+request_id     | The request ID of the asynchronous request you are checking.
+
+
+
 ```shell
-curl "https://api.lix-it.com/v1/request?request_id=1234"
+curl "https://api.lix-it.com/v1/request?request_id=1234-f197-1fsd8-fs987"
 ```
 
 > Returns: 
