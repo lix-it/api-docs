@@ -10,12 +10,12 @@ If an endpoint is asynchronous it will be designated as `async enabled` in the d
 
 You can check the status of an asynchronous request by passing the `request_id` into the `request_id` query parameter.
 
-### Example
 ```shell
 curl "https://api.lix-it.com/v1/request?request_id=1234"
 ```
 
-### Response
+> Returns: 
+
 ```json
 {
   "status": "complete",
