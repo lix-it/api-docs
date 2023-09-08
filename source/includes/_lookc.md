@@ -32,14 +32,14 @@ curl "https://api.lookc.io/v1/request?request_id=1234-f197-1fsd8-fs987"
     "hits": [
       {
         "name": "Alfie Lambert",
-        "liProfileLink": "alfie-lambert",
-        "salesNavLink": "https://linkedin.com/sales/ACwAAAXQSFkBI1hIhlJLnr04EL-0FSqe1SIXTEM,NAME,undefined",
+        "liProfileUrl": "alfie-lambert",
+        "salesNavUrl": "https://linkedin.com/sales/ACwAAAXQSFkBI1hIhlJLnr04EL-0FSqe1SIXTEM,NAME,undefined",
       },
     ],
     "org": {
       "name": "Lix",
-      "liProfileLink": "https://linkedin.com/company/lix",
-      "salesNavLink": "https://linkedin.com/sales/company/1670390",
+      "liProfileUrl": "https://linkedin.com/company/lix",
+      "salesNavUrl": "https://linkedin.com/sales/company/1670390",
     },
     "domainInfo": {
       "isFreeEmailDomain": false
@@ -59,14 +59,14 @@ If you have set up a webhook in your dashboard the webhook will be notified when
         "hits": [
         {
             "name": "Alfie Lambert",
-            "liProfileLink": "alfie-lambert",
-            "salesNavLink": "https://linkedin.com/sales/ACwAAAXQSFkBI1hIhlJLnr04EL-0FSqe1SIXTEM,NAME,undefined",
+            "liProfileUrl": "alfie-lambert",
+            "salesNavUrl": "https://linkedin.com/sales/ACwAAAXQSFkBI1hIhlJLnr04EL-0FSqe1SIXTEM,NAME,undefined",
         },
         ],
         "org": {
             "name": "Lix",
-            "liProfileLink": "https://linkedin.com/company/lix",
-            "salesNavLink": "https://linkedin.com/sales/company/1670390",
+            "liProfileUrl": "https://linkedin.com/company/lix",
+            "salesNavUrl": "https://linkedin.com/sales/company/1670390",
         },
         "domainInfo": {
             "isFreeEmailDomain": false
@@ -103,14 +103,14 @@ curl "https://api.lookc.io/v1/search/person/by-email?email=alfie@lix-it.com \
   "hits": [
     {
       "name": "Alfie Lambert",
-      "liProfileLink": "alfie-lambert",
-      "salesNavLink": "https://linkedin.com/sales/ACwAAAXQSFkBI1hIhlJLnr04EL-0FSqe1SIXTEM,NAME,undefined",
+      "liProfileUrl": "alfie-lambert",
+      "salesNavUrl": "https://linkedin.com/sales/ACwAAAXQSFkBI1hIhlJLnr04EL-0FSqe1SIXTEM,NAME,undefined",
     },
   ],
   "org": {
     "name": "Lix",
-    "liProfileLink": "https://linkedin.com/company/lix",
-    "salesNavLink": "https://linkedin.com/sales/company/1670390",
+    "liProfileUrl": "https://linkedin.com/company/lix",
+    "salesNavUrl": "https://linkedin.com/sales/company/1670390",
   },
   "domainInfo": {
     "isFreeEmailDomain": false
