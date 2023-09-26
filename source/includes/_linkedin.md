@@ -21,7 +21,7 @@ url       | The url-encoded LinkedIn search URL
 Parameter | Description
 --------- | -----------
 viewer_id | The LinkedIn ID of the account you would like to view this search as
-sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids)
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 ```shell
 curl "https://api.lix-it.com/v1/li/linkedin/search/people?url=https://www.linkedin.com/search/results/people/?keywords=lix&origin=SWITCH_SEARCH_VERTICAL&sid=%40%2Co" \
@@ -82,7 +82,7 @@ url       | The url-encoded LinkedIn search URL
 Parameter | Description
 --------- | -----------
 viewer_id | The LinkedIn ID of the account you would like to view this search as
-sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids)
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 ```shell
 curl "https://api.lix-it.com/v1/li/linkedin/search/jobs?url=https://www.linkedin.com/jobs/search/?currentJobId=3436671233&keywords=lix" \
@@ -142,7 +142,7 @@ url       | The url-encoded LinkedIn search URL
 Parameter | Description
 --------- | -----------
 viewer_id | The LinkedIn ID of the account you would like to view this search as
-sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids)
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 ```shell
 curl "https://api.lix-it.com/v1/li/linkedin/search/posts?url=https%3A%2F%2Fwww.linkedin.com%2Fsearch%2Fresults%2Fcontent%2F%3Fkeywords%3Dlix%26origin%3DSWITCH_SEARCH_VERTICAL%26sid%3DV2J" \
@@ -202,7 +202,7 @@ url       | The url-encoded LinkedIn search URL
 Parameter | Description
 --------- | -----------
 viewer_id | The LinkedIn ID of the account you would like to view this search as
-sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids)
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 ```shell
 curl "https://api.lix-it.com/v1/li/sales/search/people?url=https://www.linkedin.com/sales/search/people?query=(spellCorrectionEnabled%3Atrue%2CrecentSearchParam%3A(id%3A2154062338%2CdoLogHistory%3Atrue)%2Ckeywords%3Alix)&sessionId=GumqcP8vR0aPVWr3cNR74A%3D%3D" \
