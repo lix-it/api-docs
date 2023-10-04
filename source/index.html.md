@@ -84,58 +84,6 @@ url <- "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/al
 httr.set_config(httr::config(ssl_verifypeer = 0L))
 ```
 
-```c#
-using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-
-namespace LixAPI
-{
-    class Program
-    {
-        static HttpClient client = new HttpClient();
-
-        static void Main()
-        {
-            RunAsync().GetAwaiter().GetResult();
-        }
-
-        static async Task RunAsync()
-        {
-            // Update port # in the following line.
-            client.BaseAddress = new Uri("https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("lixApiKey");
-
-            try
-            {
-                await GetPersonAsync();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            Console.ReadLine();
-        }
-
-        static async Task GetPersonAsync()
-        {
-            HttpResponseMessage response = await client.GetAsync("https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert");
-            if (response.IsSuccessStatusCode)
-            {
-                Person person = await response.Content.ReadAsAsync<Person>();
-                Console.WriteLine("{0}", person.Name);
-            }
-        }
-    }
-}
-```
-
 ```javascript
 const axios = require('axios');
 
