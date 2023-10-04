@@ -49,3 +49,47 @@ print(response.json())
   }
 }
 ```
+
+## Daily Allowance
+
+This endpoint retrieves your remaining daily allowance for your account.
+
+<aside class="notice">
+This endpoint is free to use.
+</aside>
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/account/allowances/daily`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+
+```shell
+curl "https://api.lix-it.com/v1/account/allowances/daily \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/account/allowances/daily"
+
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.json())
+```
+
+> The above command returns JSON structured like this:
+```json
+{
+  "requestsRemaining": 10000,
+  "refreshesAt": 1696512494 // represents the unix timestamp of when the daily allowance will refresh
+}
+```
