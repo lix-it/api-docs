@@ -71,6 +71,7 @@ print(response.json())
 ```
 
 > The above command returns JSON structured like this:
+
 ```json
 {
   "requestsRemaining": 10000,
