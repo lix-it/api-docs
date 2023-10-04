@@ -54,12 +54,6 @@ Should you have further questions, feel free to contact our tech team via email 
 
 > To authorize, use this code:
 
-```ruby
-require 'lix'
-
-api = Lix::APIClient.authorize!('lixApiKey')
-```
-
 ```python
 import requests
 
@@ -75,15 +69,6 @@ response = requests.request("GET", url, headers=headers, data=payload)
 print(response.json())
 ```
 
-```r
-library(httr)
-library(jsonlite)
-
-url <- "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert"
-
-httr.set_config(httr::config(ssl_verifypeer = 0L))
-```
-
 ```javascript
 const axios = require('axios');
 
@@ -96,15 +81,6 @@ const headers = {
 const response = axios.get(url, headers);
 
 console.log(response.data);
-```
-
-```java
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-
 ```
 
 ```Go
@@ -157,16 +133,6 @@ When passing URLs to an endpoint ensure that the URL is 'URL Encoded'. You can s
 ```javascript
 const encoded = encodeURIComponent('https://linkedin.com/in/alfie-lambert');
 const url = "https://api.lix-it.com/v1/person?profile_link=" + encoded;
-```
-
-```ruby
-require 'uri'
-
-encoded = URI.encode('https://linkedin.com/in/alfie-lambert')
-
-url = "https://api.lix-it.com/v1/person?profile_link=" + encoded
-
-puts url
 ```
 
 ```python
