@@ -50,6 +50,16 @@ Currently we have code examples for the following languages:
 
 Should you have further questions, feel free to contact our tech team via email at [help@lix-it.com](mailto:help@lix-it.com) or by using the web chat in the bottom right of your screen.
 
+# API Productivity
+
+We organise our APIs into different collections, each of which we call an 'API', with each API having a number of endpoints.
+
+## API Specs & Postman 
+
+At Lix, we love Postman, we think it's a great way to share APIs and make them easily accessible for your team. If a Postman collection is available for an API, you will find a 'Run in Postman' link at the top of the API collection.
+
+If you would like our OpenAPI v3.1 specification we can also send that across, let us know through our live chat.
+
 # Authentication
 
 > To authorize, use this code:

@@ -2,6 +2,8 @@
 
 This section describes the data you can expect from each returned profile. The same profile data structure will be returned from multiple profile collection endpoints as described below. Credit usage is dependent on the endpoint used.
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/5140183-9a686ca7-a917-415b-bba4-071ccff66158?action=collection%2Ffork&collection-url=entityId%3D5140183-9a686ca7-a917-415b-bba4-071ccff66158%26entityType%3Dcollection%26workspaceId%3Dcc78921f-4152-4fc0-9c2f-75ef5c7a5895)
+
 <aside class="notice">
 Please be aware if some data points of profiles do not exist, these will be returned as null.
 </aside>
