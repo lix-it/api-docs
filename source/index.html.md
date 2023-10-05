@@ -56,7 +56,7 @@ We organise our APIs into different collections, each of which we call an 'API',
 
 ## API Specs & Postman 
 
-At Lix, we love Postman, we think it's a great way to share APIs and make them easily accessible for your team. If a Postman collection is available for an API, you will find a 'Run in Postman' link at the top of the API collection.
+At Lix, we love [Postman](https://postman.com), we think it's a great way to share APIs and make them easily accessible for your team. If a Postman collection is available for an API, you will find a 'Run in Postman' link at the top of the API collection.
 
 If you would like our OpenAPI v3.1 specification we can also send that across, let us know through our live chat.
 
