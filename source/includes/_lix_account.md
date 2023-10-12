@@ -2,7 +2,7 @@
 
 ## Balances
 
-Retrieve the current balance of your account. Returns the number of email credits and LinkedIn credits available.
+Retrieve the current balance of your account. Returns the number of email credits and Standard Credits available.
 
 ### HTTP Request
 

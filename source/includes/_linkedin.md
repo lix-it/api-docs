@@ -6,7 +6,7 @@
 
 This endpoint retrieves a single page for a LinkedIn People search. 
 
-<aside class="notice"> Uses 1 Search Credit.</aside>
+<aside class="notice"> Uses 1 Standard Credit.</aside>
 
 ### HTTP Request
 `GET https://api.lix-it.com/v1/li/linkedin/search/people`
@@ -67,7 +67,7 @@ print(response.json())
 
 This endpoint retrieves a single page for a LinkedIn Job search. 
 
-<aside class="notice"> Uses 1 Search Credit.</aside>
+<aside class="notice"> Uses 1 Standard Credit.</aside>
 
 ### HTTP Request
 `GET https://api.lix-it.com/v1/li/linkedin/search/jobs`
@@ -127,7 +127,7 @@ print(response.json())
 
 This endpoint retrieves a single page for a LinkedIn Posts search. 
 
-<aside class="notice"> Uses 1 Search Credit.</aside>
+<aside class="notice"> Uses 1 Standard Credit.</aside>
 
 ### HTTP Request
 `GET https://api.lix-it.com/v1/li/linkedin/search/posts`
@@ -187,7 +187,7 @@ print(response.json())
 
 This endpoint retrieves a single search page for a LinkedIn Sales Navigator lead search.
 
-<aside class="notice"> Uses 1 Search Credit.</aside>
+<aside class="notice"> Uses 1 Standard Credit.</aside>
 
 ### HTTP Request
 `GET https://api.lix-it.com/v1/li/sales/search/people`

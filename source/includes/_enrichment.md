@@ -11,7 +11,7 @@ Please be aware if some data points of profiles do not exist, these will be retu
 ## Job Posting
 
 <aside class="notice">
-Uses 1 LinkedIn credit.
+Uses 1 Standard Credit.
 </aside>
 
 This endpoint retrieves a single publicly available LinkedIn Job Posting.
@@ -61,7 +61,7 @@ curl "https://api.lix-it.com/v1/enrich/job?job_id=3556453411" \
 ## Post
 
 <aside class="notice">
-Uses 1 LinkedIn credit.
+Uses 1 Standard Credit.
 </aside>
 
 This endpoint retrieves a single publicly available LinkedIn Feed Update (Post).
@@ -111,7 +111,7 @@ curl "https://api.lix-it.com/v1/enrich/post?post_urn=urn%3Ali%3Aactivity%3A70196
 ## Person
 
 <aside class="notice">
-Uses 1 LinkedIn credit.
+Uses 1 Standard Credit.
 </aside>
 
 ```python
