@@ -1,6 +1,8 @@
+const colors = require('tailwindcss/colors')
 const typographyStyles = require('./typography')
 const typographyPlugin = require('@tailwindcss/typography')
 const headlessuiPlugin = require('@headlessui/tailwindcss')
+
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -39,6 +41,46 @@ module.exports = {
         2.5: '0.025',
         7.5: '0.075',
         15: '0.15',
+      },
+      colors: {
+        sky: colors.sky,
+        teal: colors.teal,
+        rose: colors.rose,
+        transparent: 'transparent',
+        black: '#000',
+        white: '#fff',
+        blue: {
+          100: '#E1F2FF',
+          200: '#51C8FF',
+          300: '#0095FF',
+          400: '#0077FF',
+          500: '#0653A0',
+          600: '#002A3A',
+        },
+        red: {
+          100: '#FCEFF3',
+          200: '#E94168',
+        },
+        gray: {
+          100: '#FAFAFD',
+          300: '#88ABB8',
+          400: '#4F6B87',
+        },
+        purple: {
+          100: '#F7F3FC',
+          200: '#A06FDD',
+          500: '#7127F6', // CTA
+          700: '#5b0aed',
+        },
+        yellow: {
+          100: '#FAF2E5',
+          200: '#F1A33C',
+        },
+        green: {
+          100: '#E2F7E9',
+          200: '#2ACE5A',
+          300: '#34c759',
+        },
       },
     },
   },
