@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme');
 const typographyStyles = require('./typography')
 const typographyPlugin = require('@tailwindcss/typography')
 const headlessuiPlugin = require('@headlessui/tailwindcss')
@@ -82,6 +83,10 @@ module.exports = {
           300: '#34c759',
         },
       },
+      fontFamily: {
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      },
+     
     },
   },
   plugins: [typographyPlugin, headlessuiPlugin],
