@@ -203,6 +203,15 @@ export const navigation = [
       { title: 'Errors', href: '/errors' },
       { title: 'Webhooks', href: '/webhooks' },
       { title: 'Contact Information API', href: '/contact' },
+      { title: 'LIX AI API', href: '/lix-ai' },
+      { title: 'LinkedIn Account API', href: '/linkedin-account' },
+      { title: 'Lix Account API', href: '/lix-account' },
+      { title: 'Enrichment API', href: '/enrichment' },
+      { title: 'LookC API', href: '/lookc' },
+      { title: 'Search API', href: '/search-api' },
+      { title: 'Response Codes', href: '/response-codes' },
+      { title: 'LinkedIn Search API', href: '/linkedin-search' },
+      
     ],
   },
   {
