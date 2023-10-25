@@ -208,6 +208,8 @@ export const navigation = [
   {
     title: 'APIs',
     links: [
+      { title: 'API Productivity', href: '/API-productivity' },
+      { title: 'Authentication', href: '/authentication' },
       { title: 'Lix Account API', href: '/lix-account' },
       { title: 'LinkedIn Account API', href: '/linkedin-account' },
       { title: 'Search API', href: '/search-api' },
