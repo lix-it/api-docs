@@ -196,14 +196,6 @@ export const navigation = [
     title: 'Guides',
     links: [
       { title: 'Introduction', href: '/' },
-      { title: 'Lix Account API', href: '/lix-account' },
-      { title: 'LinkedIn Account API', href: '/linkedin-account' },
-      { title: 'Search API', href: '/search-api' },
-      { title: 'Enrichment API', href: '/enrichment' },
-      { title: 'LinkedIn Search API', href: '/linkedin-search' },
-      { title: 'LookC API', href: '/lookc' },
-      { title: 'LIX AI API', href: '/lix-ai' },
-      { title: 'Contact Information API', href: '/contact' },
       { title: 'Response Codes', href: '/response-codes' },  
       // { title: 'Quickstart', href: '/quickstart' },
       // { title: 'SDKs', href: '/sdks' },
@@ -213,16 +205,25 @@ export const navigation = [
       // { title: 'Webhooks', href: '/webhooks' },
     ],
   },
-  // {
-  //   title: 'Resources',
-  //   links: [
-  //     { title: 'Contacts', href: '/contacts' },
-  //     { title: 'Conversations', href: '/conversations' },
-  //     { title: 'Messages', href: '/messages' },
-  //     { title: 'Groups', href: '/groups' },
-  //     { title: 'Attachments', href: '/attachments' },
-  //   ],
-  // },
+  {
+    title: 'APIs',
+    links: [
+      { title: 'Lix Account API', href: '/lix-account' },
+      { title: 'LinkedIn Account API', href: '/linkedin-account' },
+      { title: 'Search API', href: '/search-api' },
+      { title: 'Enrichment API', href: '/enrichment' },
+      { title: 'LinkedIn Search API', href: '/linkedin-search' },
+      { title: 'LookC API', href: '/lookc' },
+      { title: 'LIX AI API', href: '/lix-ai' },
+      { title: 'Contact Information API', href: '/contact' },
+
+      // { title: 'Contacts', href: '/contacts' },
+      // { title: 'Conversations', href: '/conversations' },
+      // { title: 'Messages', href: '/messages' },
+      // { title: 'Groups', href: '/groups' },
+      // { title: 'Attachments', href: '/attachments' },
+    ],
+  },
 ]
 
 export function Navigation(props) {
