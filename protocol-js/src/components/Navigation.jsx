@@ -210,6 +210,7 @@ export const navigation = [
     links: [
       { title: 'API Productivity', href: '/API-productivity' },
       { title: 'Authentication', href: '/authentication' },
+      { title: 'Using the API', href: '/using-the-api' },
       { title: 'Lix Account API', href: '/lix-account' },
       { title: 'LinkedIn Account API', href: '/linkedin-account' },
       { title: 'Search API', href: '/search-api' },
