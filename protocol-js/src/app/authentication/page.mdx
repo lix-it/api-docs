@@ -6,9 +6,21 @@ export const metadata = {
 
 # Authentication
 
-Lix uses API keys to allow access to the API. If you do not have an API Token yet, please [visit your API dashboard](https://lix-it.com/home/api) to generate one. You will need to verify your identity first, it's a simple process that takes less than a minute. You can see more information about our verification process [here](https://help.lix-it.com/en/articles/8074514-how-to-verify-your-identity).
+
+  Lix uses API keys to allow access to the API. If you do not have an API Token yet, please [visit your API dashboard](https://lix-it.com/home/api) to generate one. You will need to verify your identity first, it's a simple process that takes less than a minute. You can see more information about our verification process [here](https://help.lix-it.com/en/articles/8074514-how-to-verify-your-identity).
+
+
+---
+
+## Authentication {{ tag: 'GET', label: '/v1/person' }}
+
+<Row>
+  <Col>
+
+  
 
 Lix expects for the API key to be included in all API requests to the server in a header that looks like the following:
+
 
 `Authorization: lixApiKey`
 
@@ -18,14 +30,19 @@ or with a query variable:
 
 Please bear in mind to also specify the Content-Type as application/json format.
 
-
-<aside class="notice">
+<Note>
 You must replace <code>lixApiKey</code> with your personal API key.
-</aside>
+</Note>
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="Request" tag="GET" label="/v1/person">
+
+    ```python
 
 > To authorize, use this code:
 
-```python
 import requests
 
 url = "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert"
@@ -40,22 +57,8 @@ response = requests.request("GET", url, headers=headers, data=payload)
 print(response.json())
 ```
 
-```javascript
-const axios = require('axios');
-
-const url = "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert";
-
-const headers = {
-  'Authorization': lixApiKey,
-}
-
-const response = axios.get(url, headers);
-
-console.log(response.data);
-```
-
-```
-package main
+    ```bash {{ title: 'Go' }}
+    package main
 
 import (
   "fmt"
@@ -69,13 +72,35 @@ func main() {
   req.SetHeaders
 
 }
+    ```
+
+   ```javascript
+const axios = require('axios');
+
+const url = "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert";
+
+const headers = {
+  'Authorization': lixApiKey,
+}
+
+const response = axios.get(url, headers);
+
+console.log(response.data);
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
+  
+
+     ```bash {{ title: 'shell' }}
+    With shell, you can just pass the correct header with each request
 curl "api_endpoint_here" \
   -H "Authorization: lixApiKey"
-```
+    ```
 
-> Make sure to replace `lixApiKey` with your API key.
+    </CodeGroup>
+
+    
+
+  </Col>
+</Row>
+
 
