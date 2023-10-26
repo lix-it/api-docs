@@ -1,46 +1,83 @@
 export const metadata = {
-  title: 'Using the API',
+  title: 'Attachments',
   description:
-    'This guide covers the essentials of interacting with Lix’s API, including how to pass URLs correctly, handle pagination with sequence IDs, and manage API rate limiting.',
+    'On this page, we’ll dive into the different attachment endpoints you can use to manage attachments programmatically.',
 }
 
 
-# Using the API
+# Authentication
 
-## Passing URLs
-When passing URLs to an endpoint ensure that the URL is 'URL Encoded'. You can see the description of what that is [here](https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding). Most programming languages have standard libraries that deal with encoding values for URLs.
+> Make sure to replace `lixApiKey` with your API key.
 
-```javascript
-const encoded = encodeURIComponent('https://linkedin.com/in/alfie-lambert');
-const url = "https://api.lix-it.com/v1/person?profile_link=" + encoded;
-```
+Lix uses API keys to allow access to the API. If you do not have an API Token yet, please [visit your API dashboard](https://lix-it.com/home/api) to generate one. You will need to verify your identity first, it's a simple process that takes less than a minute. You can see more information about our verification process [here](https://help.lix-it.com/en/articles/8074514-how-to-verify-your-identity).
+
+Lix expects for the API key to be included in all API requests to the server in a header that looks like the following:
+
+`Authorization: lixApiKey`
+
+or with a query variable:
+
+`https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert&api_key=lixApiKey`
+
+Please bear in mind to also specify the Content-Type as application/json format.
+
+
+<aside class="notice">
+You must replace <code>lixApiKey</code> with your personal API key.
+</aside>
+
+> To authorize, use this code:
 
 ```python
-import urllib.parse
+import requests
 
-linkedin_url = "https://linkedin.com/in/alfie-lambert"
+url = "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert"
 
-linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
 
-url = "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
 ```
 
-linkedin_url := "https://linkedin.com/in/alfie-lambert"
+```javascript
+const axios = require('axios');
 
-linkedin_url = url.QueryEscape(linkedin_url)
+const url = "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert";
 
-url := "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+const headers = {
+  'Authorization': lixApiKey,
+}
+
+const response = axios.get(url, headers);
+
+console.log(response.data);
 ```
 
-### Postman
-There is more information on how to URI encode values in Postman [here](https://learning.postman.com/docs/sending-requests/requests/#sending-parameters).
+```
+package main
 
-## Sequence IDs & Pagination
+import (
+  "fmt"
+  "io/ioutil"
+  "net/http"
+)
 
-Some endpoints require you to use a `sequence_id` query parameter, which is a unique identifier for a sequence of requests. This sequence parameter is returned from any endpoint where there are multiple pages, and allows you to use the same settings in the Lix's crawling systems from request to request. If you omit the sequence parameter you will be in danger of producing different duplicate search results.
+func main() {
+  req, _ := http.NewRequest("GET", "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert", nil)
 
-If you use the `viewer_id` field you do not need to use the `sequence_id` parameter.
+  req.SetHeaders
 
-## Rate Limiting
+}
+```
 
-We have a default rate limit of 1 request per 3 seconds. If you exceed this limit you will receive a 429 error. If you need to make more requests please contact our team or upgrade your plan.
+```shell
+# With shell, you can just pass the correct header with each request
+curl "api_endpoint_here" \
+  -H "Authorization: lixApiKey"
+```
+
+
