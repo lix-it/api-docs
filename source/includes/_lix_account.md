@@ -46,10 +46,12 @@ This endpoint is free to use.
 
 `GET https://api.lix-it.com/v1/account/allowances/daily`
 
-### URL Parameters
+### Response
 
-Parameter | Description
+Field     | Description
 --------- | -----------
+requestsRemaining | The number of requests remaining for the day.
+refreshesAt | The unix timestamp in seconds of when the daily allowance will refresh.
 
 ```shell
 curl "https://api.lix-it.com/v1/account/allowances/daily \
@@ -75,6 +77,6 @@ print(response.json())
 ```json
 {
   "requestsRemaining": 10000,
-  "refreshesAt": 1696512494 // represents the unix timestamp of when the daily allowance will refresh
+  "refreshesAt": 1696512494 // represents the unix timestamp in seconds of when the daily allowance will refresh
 }
 ```
