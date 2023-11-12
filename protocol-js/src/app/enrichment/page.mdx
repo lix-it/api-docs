@@ -15,6 +15,11 @@ This section describes the data you can expect from each returned profile. The s
 Please be aware if some data points of profiles do not exist, these will be returned as null.
 </aside>
 
+---
+
+<Row>
+  <Col>
+
 ## Job Posting
 
 <Note>
@@ -45,6 +50,13 @@ Parameter | Description
 --------- | -----------
 viewer_id | The LinkedIn ID of the account you would like to view this profile as
 
+
+</Col>
+
+  <Col sticky>
+
+<CodeGroup title="Job Posting" tag="GET" label="/v1/enrich/job">
+
 ```python
 import requests
 
@@ -64,6 +76,16 @@ print(response.json())
 curl "https://api.lix-it.com/v1/enrich/job?job_id=3556453411" \
   -H "Authorization: lixApiKey"
 ```
+
+ </CodeGroup>
+
+   </Col>
+</Row>
+
+---
+
+<Row>
+<Col>
 
 ## Post
 
@@ -95,6 +117,11 @@ Parameter | Description
 --------- | -----------
 viewer_id | The LinkedIn ID of the account you would like to view this post as.
 
+ </Col>
+  <Col sticky>
+
+<CodeGroup title="Post" tag="GET" label="/v1/enrich/post">
+
 ```python
 import requests
 
@@ -115,11 +142,39 @@ curl "https://api.lix-it.com/v1/enrich/post?post_urn=urn%3Ali%3Aactivity%3A70196
   -H "Authorization: lixApiKey"
 ```
 
+  </CodeGroup>
+
+  </Col>
+</Row>
+
+---
+
+<Row>
+<Col>
+
+
 ## Person
 
 <Note>
 Uses 1 Standard Credit.
 </Note>
+
+This endpoint retrieves a specific profile.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/person`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+profile_link | The link to the profile of the person.
+
+  </Col>
+  <Col sticky>
+
+  <CodeGroup title="Person" tag="GET" label="/v1/enrich/person">
 
 ```python
 import requests
@@ -136,14 +191,15 @@ response = requests.request("GET", url, headers=headers, data=payload)
 print(response.json())
 ```
 
-```shell
+```bash {{ title: 'shell' }}
 curl "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert" \
   -H "Authorization: lixApiKey"
 ```
 
+  ```bash {{ title: 'all' }}
+
 > The above command returns JSON structured like this:
 
-```json
 {
     "description": "Co-founder | Product & Growth Lead",
     "location": "London, England, United Kingdom",
@@ -593,23 +649,43 @@ curl "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfi
 }
 ```
 
+    </CodeGroup>
+
+    
+
+  </Col>
+</Row>
+
+---
+
+<Row>
+<Col>
+
+
+
+## Organisation
+<Note>
+Uses 1 Organisation credit.
+</Note>
+
 This endpoint retrieves a specific profile.
 
 ### HTTP Request
 
-`GET https://api.lix-it.com/v1/person`
+`GET https://api.lix-it.com/v1/organisations/by-linkedin`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-profile_link | The link to the profile of the person.
+linkedin_url | The link to the profile of the company
+sales_nav_url | The link to the Sales Navigator profile for the company
 
 
-## Organisation
-<aside class="notice">
-Uses 1 Organisation credit.
-</aside>
+</Col>
+<Col sticky>
+
+<CodeGroup title="Request" tag="GET" label="/v1/enrich/organisation">
 
 ```python
 import requests
@@ -626,10 +702,12 @@ response = requests.request("GET", url, headers=headers, data=payload)
 print(response.json())
 ```
 
-```shell
+ ```bash {{ title: 'shell' }}
 curl "https://api.lix-it.com/v1/organisations/by-linkedin?linkedin_url=https://linkedin.com/company/linkedin" \
   -H "Authorization: lixApiKey"
 ```
+
+ ```bash {{ title: 'all' }}
 
 > The above command returns JSON structured like this:
 
@@ -655,15 +733,8 @@ curl "https://api.lix-it.com/v1/organisations/by-linkedin?linkedin_url=https://l
 }
 ```
 
-This endpoint retrieves a specific profile.
+    </CodeGroup>
 
-### HTTP Request
+</Col>
 
-`GET https://api.lix-it.com/v1/organisations/by-linkedin`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-linkedin_url | The link to the profile of the company
-sales_nav_url | The link to the Sales Navigator profile for the company
+</Row>
