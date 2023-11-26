@@ -7,7 +7,7 @@ CODE | TITLE | DESCRIPTION
 200 |	Success |	The request was successful
 400 |	Bad Request |	The request data has not been provided correctly
 401 |	Unauthorized |	Your API key is not authorised to access this endpoint
-402 |	Over quota |	Over plan quota on this endpoint. Please top-up your account or [mailto:] speak to sales to increase your quota.
+402 |	Over quota |	Over plan quota on this endpoint. Please top-up your account or speak to sales to increase your quota.
 400 | Bad Request | The request data has not been provided correctly. Please see error message for more information.
 407 | Proxy Authentication Required | The 'viewer_id' parameter was not correctly set. Either it has not been connected to Lix, or the 'viewer_id' is incorrect.
 404 |	Not found |	The endpoint does not exist
