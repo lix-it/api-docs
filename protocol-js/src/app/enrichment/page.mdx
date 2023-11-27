@@ -11,9 +11,9 @@ This section describes the data you can expect from each returned profile. The s
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/5140183-9a686ca7-a917-415b-bba4-071ccff66158?action=collection%2Ffork&collection-url=entityId%3D5140183-9a686ca7-a917-415b-bba4-071ccff66158%26entityType%3Dcollection%26workspaceId%3Dcc78921f-4152-4fc0-9c2f-75ef5c7a5895)
 
-<aside class="notice">
+<Note>
 Please be aware if some data points of profiles do not exist, these will be returned as null.
-</aside>
+</Note>
 
 ---
 
@@ -28,9 +28,9 @@ Uses 1 Standard Credit.
 
 This endpoint retrieves a single publicly available LinkedIn Job Posting.
 
-<aside class="notice">
+<Note>
 Please be aware if some data points do not exist, these will be returned as null.
-</aside>
+</Note>
 
 ### HTTP Request
 
@@ -72,7 +72,7 @@ response = requests.request("GET", url, headers=headers, data=payload)
 print(response.json())
 ```
 
-```shell
+```bash {{ title: 'Shell' }}
 curl "https://api.lix-it.com/v1/enrich/job?job_id=3556453411" \
   -H "Authorization: lixApiKey"
 ```
@@ -95,9 +95,9 @@ Uses 1 Standard Credit.
 
 This endpoint retrieves a single publicly available LinkedIn Feed Update (Post).
 
-<aside class="notice">
+<Note>
 Please be aware if some data points do not exist, these will be returned as null.
-</aside>
+</Note>
 
 ### HTTP Request
 
@@ -137,7 +137,7 @@ response = requests.request("GET", url, headers=headers, data=payload)
 print(response.json())
 ```
 
-```shell
+```bash {{ title: 'Shell' }}
 curl "https://api.lix-it.com/v1/enrich/post?post_urn=urn%3Ali%3Aactivity%3A7019605025920286720" \
   -H "Authorization: lixApiKey"
 ```
@@ -196,7 +196,7 @@ curl "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfi
   -H "Authorization: lixApiKey"
 ```
 
-  ```bash {{ title: 'all' }}
+  ```bash {{ title: 'Returned JSON' }}
 
 > The above command returns JSON structured like this:
 
@@ -707,7 +707,7 @@ curl "https://api.lix-it.com/v1/organisations/by-linkedin?linkedin_url=https://l
   -H "Authorization: lixApiKey"
 ```
 
- ```bash {{ title: 'all' }}
+ ```bash {{ title: 'Returned JSON' }}
 
 > The above command returns JSON structured like this:
 
