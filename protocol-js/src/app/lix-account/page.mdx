@@ -22,17 +22,21 @@ Retrieve the current balance of your account. Returns the number of email credit
 
 `GET https://api.lix-it.com/v1/account/balances`
 
+
+
 </Col>
 
 
   <Col sticky>
 
-<CodeGroup title="Job Posting" tag="GET" label="/v1/account/balances">
+<CodeGroup title="Balances" tag="GET" label="/v1/account/balances">
 
 ```bash {{ title: 'Shell' }}
 curl "https://api.lix-it.com/v1/account/balances" \
   -H "Authorization: lixApiKey"
+
 ```
+
 
 ```python
 import requests
@@ -45,17 +49,17 @@ response = requests.request("GET", url, headers=headers, data=payload)
 print(response.json())
 ```
 
-```bash {{ title: 'all' }}
 
-> The above command returns JSON structured like this:
 
+</CodeGroup>
+
+ The above commands return JSON structured like this:
+```json
 {
   "emailBalance": 10000,
   "linkedInBalance": 50000
 }
 ```
-
-</CodeGroup>
 
 
 </Col>
@@ -73,9 +77,9 @@ print(response.json())
 
 This endpoint retrieves your remaining daily allowance for your account.
 
-<aside class="notice">
+<Note>
 This endpoint is free to use.
-</aside>
+</Note>
 
 ### HTTP Request
 
@@ -83,9 +87,10 @@ This endpoint is free to use.
 
 ### URL Parameters
 
-Parameter | Description
+Field | Description
 --------- | -----------
-
+requestsRemaining | The number of requests remaining for the day.
+refreshesAt	| The unix timestamp in seconds of when the daily allowance will refresh.
 </Col>
 
 
@@ -112,17 +117,15 @@ response = requests.request("GET", url, headers=headers)
 print(response.json())
 ```
 
-```bash {{ title: 'All' }}
+</CodeGroup>
 
-> The above command returns JSON structured like this:
-
+ The above commands return JSON structured like this:
 ```json
 {
   "requestsRemaining": 10000,
-  "refreshesAt": 1696512494 // represents the unix timestamp of when the daily allowance will refresh
+  "refreshesAt": 1696512494 // represents the unix timestamp in seconds of when the daily allowance will refresh
 }
 ```
-</CodeGroup>
 
 
 </Col>
