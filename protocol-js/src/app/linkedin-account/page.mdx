@@ -19,11 +19,11 @@ export const metadata = {
 
 This endpoint retrieves the connections for the viewerId.
 
-<aside class="notice">
+<Note>
 In order to retrieve connections for your account you need to have your LinkedIn account connected to your Lix account using the Lix extension. 
 
 [Instructions on how to do that here](https://help.lix-it.com/en/articles/6784916-how-to-install-the-lix-extension).
-</aside>
+</Note>
 
 
 ### HTTP Request
@@ -43,7 +43,7 @@ start     | The start offset for the search paging.
 
   <Col sticky>
 
-<CodeGroup title="Job Posting" tag="GET" label="/v1/connections">
+<CodeGroup title="Connections" tag="GET" label="/v1/connections">
 
 
 ```bash {{ title: 'Shell' }}
@@ -62,9 +62,11 @@ response = requests.request("GET", url, headers=headers, data=payload)
 print(response.json())
 ```
 
-```bash {{ title: 'All' }}
 
-> The above command returns JSON structured like this:
+
+</CodeGroup>
+
+The above commands return JSON structured like this:
 ```json
 {
   "connections_response": {
@@ -73,8 +75,6 @@ print(response.json())
   }
 }
 ```
-
-</CodeGroup>
 
 
 </Col>
