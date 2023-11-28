@@ -1,0 +1,132 @@
+export const metadata = {
+  title: 'Using the API',
+  description: 'This guide covers the essentials of interacting with Lix’s API, including how to pass URLs correctly, handle pagination with sequence IDs, and manage API rate limiting.',
+}
+
+# Using the API
+--- 
+
+<Row>
+
+<Col>
+
+## Passing URLs
+
+When passing URLs to an endpoint ensure that the URL is 'URL Encoded'. You can see the description of what that is [here](https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding). Most programming languages have standard libraries that deal with encoding values for URLs.
+
+
+### Postman
+There is more information on how to URI encode values in Postman [here](https://learning.postman.com/docs/sending-requests/requests/#sending-parameters).
+
+
+</Col>
+
+  <Col sticky>
+
+<CodeGroup title="Passing URLs">
+
+
+
+```bash {{ title: 'Shell' }}
+import (
+  "net/url"
+)
+linkedin_url := "https://linkedin.com/in/alfie-lambert"
+linkedin_url = url.QueryEscape(linkedin_url)
+url := "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+```
+
+
+```bash {{ title: 'Ruby' }}
+import (
+  "net/url"
+)
+linkedin_url := "https://linkedin.com/in/alfie-lambert"
+linkedin_url = url.QueryEscape(linkedin_url)
+url := "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+```
+
+
+
+
+```python
+import urllib.parse
+
+linkedin_url = "https://linkedin.com/in/alfie-lambert"
+
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+
+import (
+  "net/url"
+)
+linkedin_url := "https://linkedin.com/in/alfie-lambert"
+linkedin_url = url.QueryEscape(linkedin_url)
+url := "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+```
+
+
+```javascript
+const encoded = encodeURIComponent('https://linkedin.com/in/alfie-lambert');
+const url = "https://api.lix-it.com/v1/person?profile_link=" + encoded;
+
+import (
+  "net/url"
+)
+linkedin_url := "https://linkedin.com/in/alfie-lambert"
+linkedin_url = url.QueryEscape(linkedin_url)
+url := "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+```
+
+
+
+
+```bash {{ title: 'Go' }}
+import (
+  "net/url"
+)
+linkedin_url := "https://linkedin.com/in/alfie-lambert"
+linkedin_url = url.QueryEscape(linkedin_url)
+url := "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+```
+
+
+
+</CodeGroup>
+
+
+</Col>
+
+</Row>
+
+--- 
+
+<Row>
+
+<Col>
+
+
+## Sequence IDs & Pagination
+
+Some endpoints require you to use a `sequence_id` query parameter, which is a unique identifier for a sequence of requests. This sequence parameter is returned from any endpoint where there are multiple pages, and allows you to use the same settings in the Lix's crawling systems from request to request. If you omit the sequence parameter you will be in danger of producing different duplicate search results.
+
+If you use the `viewer_id` field you do not need to use the `sequence_id` parameter.
+
+</Col>
+
+</Row>
+
+--- 
+
+<Row>
+
+<Col>
+
+## Rate Limiting
+
+We have a default rate limit of 1 request per 3 seconds. If you exceed this limit you will receive a 429 error. If you need to make more requests please contact our team or upgrade your plan.
+
+</Col>
+
+</Row>
