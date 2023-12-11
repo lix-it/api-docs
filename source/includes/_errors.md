@@ -38,3 +38,4 @@ queued |  Lookup queued. Try this request again in a few minutes
 rate_limit |  The request has been rate limited
 api_error | Internal API error
 viewer_invalid | the 'Viewer' was not found or does not have the correct permissions
+daily_limit | The daily limit for this endpoint has been reached
