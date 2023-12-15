@@ -332,3 +332,73 @@ print(response.json())
     }
 }
 ```
+
+# LinkedIn Recruiter Candidate Search
+
+This endpoint retrieves a single search page for a LinkedIn Recruiter candidate search.
+
+<aside class="notice"> Uses 1 Standard Credit.</aside>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/li/recruiter/search/people`
+
+### URL Parameters
+
+#### Required JSON Body Parameters
+
+Parameter | Description
+--------- | -----------
+skills       | The skills of the candidates you would like to search for. This is an array of objects. Each object has the following attributes: `text` (the skill name); `entity` (the LinkedIn skill entity ID); `negated` (whether the skill should be negated); `required` (whether the skill is required); `selected` (whether the skill is selected).
+
+#### Optional URL Query Parameters
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this search as
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
+
+#### Optional JSON Body Parameters
+Parameter | Description
+--------- | -----------
+start | The index of the first candidate you would like to return. The default is 0.
+
+```shell
+curl "http://api.lix-it.com/v1/li/recruiter/search/people" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+import urllib.parse
+
+linkedin_url = "http://api.lix-it.com/v1/li/recruiter/search/people"
+
+payload={
+    "start": 0,
+    "skills": [{
+        "text": "Machine Learning",
+        "entity": "urn:li:ts_skill:3289",
+        "negated": false,
+        "required": false,
+        "selected": true
+    }]
+}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "people": [ Person ],
+  "paging": { "count": 25, "start": 0, "total": 2500 },
+  "meta": {
+    "sequenceId": "jAkFkdjfi19kFdf"
+  }
+}
+```
