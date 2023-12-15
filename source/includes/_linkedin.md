@@ -333,7 +333,7 @@ print(response.json())
 }
 ```
 
-# LinkedIn Recruiter Candidate Search
+## LinkedIn Recruiter Candidate Search
 
 This endpoint retrieves a single search page for a LinkedIn Recruiter candidate search.
 
