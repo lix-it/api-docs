@@ -183,6 +183,66 @@ print(response.json())
 }
 ```
 
+## LinkedIn Org Search
+
+This endpoint retrieves a single page for a LinkedIn Org search. 
+
+<aside class="notice"> Uses 1 Standard Credit.</aside>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/li/linkedin/search/orgs`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+url       | The url-encoded LinkedIn search URL
+
+#### Optional Parameters
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this search as
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
+
+```shell
+curl "https://api.lix-it.com/v1/li/linkedin/search/orgs?url=https%3A%2F%2Fwww.linkedin.com%2Fsearch%2Fresults%2Fcompanies%2F%3Fkeywords%3Dlondon%26origin%3DSWITCH_SEARCH_VERTICAL%26sid%3Do(E" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+import urllib.parse
+
+linkedin_url = "https://www.linkedin.com/search/results/companies/?keywords=london&origin=SWITCH_SEARCH_VERTICAL&sid=o(E"
+
+# encode the URL
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/li/linkedin/search/orgs?url=" + linkedin_url
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "searchResponse": {
+    "posts": [ Org ],
+    "paging": { "count": 10, "start": 0, "total": 1000 },
+  },
+}
+```
+
 ## Sales Navigator Leads Search
 
 This endpoint retrieves a single search page for a LinkedIn Sales Navigator lead search.
