@@ -2,7 +2,7 @@
 
 ## Asynchronous Requests
 
-Our LookC endpoints can take a long time to fetch data, so we have a concept of an 'asynchronous request'. This is a request that will complete in the background, you will receive a call to a webhook when this query is complete, or you can check on the progress of this request using the `request_id` query parameter.
+Our LookC endpoints may take some time to fetch data, so we have added concept of an 'asynchronous request' to this API. This is a request that will complete in the background and you will receive a call to a webhook when this query is complete, or you can check on the progress of this request using the `request_id` query parameter.
 
 If an endpoint is asynchronous it will be designated as `async enabled` in the documentation.
 
