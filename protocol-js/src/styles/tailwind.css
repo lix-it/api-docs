@@ -58,6 +58,10 @@ margin-bottom: 60px!important;
   margin-bottom: 4rem;
 }
 
+a.text-base.font-semibold.text-zinc-900.transition.hover\:text-zinc-600.dark\:text-white.dark\:hover\:text-zinc-300 {
+  display: none;
+}
+
 
 }
 
