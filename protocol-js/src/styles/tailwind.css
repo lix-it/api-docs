@@ -17,6 +17,14 @@
 
   /* Custom CSS for LIX */
 
+  .lix-logo {
+    max-width: 150px;
+  }
+
+  .lix-logo-mobile {
+    max-width: 50px;
+  }
+
   .relative.h-8 {
     display: none;
 }

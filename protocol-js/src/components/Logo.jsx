@@ -27,8 +27,8 @@ function Logo(props) {
     <Image
       src={darkMode ? darkLogo : lightLogo}
       alt="logo"
-      width={50}  // Replace with your logo's width
-      height={50}  // Replace with your logo's height
+      width={840}  // Replace with your logo's width 840 × 587
+      height={587}  // Replace with your logo's height
       {...props}
     />
   );
