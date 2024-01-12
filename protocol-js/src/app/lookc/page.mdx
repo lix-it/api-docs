@@ -6,17 +6,15 @@ export const metadata = {
 
 # LookC API
 
----
-
 <Row>
 
 <Col>
 
 ## Asynchronous Requests
 
-Our LookC endpoints can take a long time to fetch data, so we have a concept of an 'asynchronous request'. This is a request that will complete in the background, you will receive a call to a webhook when this query is complete, or you can check on the progress of this request using the `request_id` query parameter.
+Our LookC endpoints may take some time to fetch data, so we have added concept of an 'asynchronous request' to this API. This is a request that will complete in the background and you will receive a call to a webhook when this query is complete, or you can check on the progress of this request using the request_id query parameter.
 
-If an endpoint is asynchronous it will be designated as `async enabled` in the documentation.
+If an endpoint is asynchronous it will be designated as async enabled in the documentation.
 
 ### Checking the Status of an Asynchronous Request
 
@@ -29,6 +27,13 @@ You can check the status of an asynchronous request by passing the `request_id` 
 Parameter | Description
 --------- | -----------
 request_id     | The request ID of the asynchronous request you are checking.
+
+
+
+
+### Webhooks
+
+If you have set up a webhook in your dashboard the webhook will be notified when the request is complete. The `type` field will be the name of the endpoint and the `data` field will be the response.
 
 
 
@@ -65,37 +70,8 @@ curl "https://api.lookc.io/v1/request?request_id=1234-f197-1fsd8-fs987"
     }
   }
 }
-```
-
-</CodeGroup>
 
 
-</Col>
-
-</Row>
-
----
-
-<Row>
-
-<Col>
-
-
-
-### Webhooks
-
-If you have set up a webhook in your dashboard the webhook will be notified when the request is complete. The `type` field will be the name of the endpoint and the `data` field will be the response.
-
-
-</Col>
-
-  <Col sticky>
-
-<CodeGroup title="Webhooks">
-
-
-
-```bash {{ title: 'JSON' }}
 {
     "type": "search.person.by-email",
     "data": {
@@ -120,9 +96,11 @@ If you have set up a webhook in your dashboard the webhook will be notified when
 
 </CodeGroup>
 
+
 </Col>
 
 </Row>
+
 
 ---
 
