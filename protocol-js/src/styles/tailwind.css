@@ -15,36 +15,40 @@
     display: none;
   }
 
-  /* Custom CSS for LIX */
+  /* Custom CSS for LIX
+ */
+ .lix-logo {
+  max-width: 150px;
+}
 
-  .lix-logo {
-    max-width: 150px;
-  }
+.lix-logo-mobile {
+  max-width: 50px;
+}
 
-  .lix-logo-mobile {
-    max-width: 50px;
-  }
-
-  .relative.h-8 {
-    display: none;
+.relative.h-8 {
+  display: none;
 }
 
 footer.mx-auto.w-full.max-w-2xl.space-y-10.pb-16.lg\:max-w-5xl {
-  border: 1px solid;
-  border-top-color: rgb(255 255 255 / 0.05);
-  border-left: none;
-  border-right: none;
-  padding-top: 40px;
+border: 1px solid;
+border-top-color: rgb(255 255 255 / 0.05);
+border-left: none;
+border-right: none;
+padding-top: 40px;
 }
 
 h1, h2 {
-  border-bottom: 2px solid;
-  border-bottom-color: rgb(255 255 255 / 0.05);
-  padding-bottom: 10px;
+border-bottom: 2px solid;
+border-bottom-color: rgb(255 255 255 / 0.05);
+padding-bottom: 20px;
 }
 
-.scroll-mt-24 {
-  margin-top: 60px!important;
+h1 {
+margin-bottom: 60px!important;
+}
+
+.grid.grid-cols-1.items-start.gap-x-16.gap-y-10.xl\:max-w-none.xl\:grid-cols-2 {
+  margin-bottom: 4rem;
 }
 
 

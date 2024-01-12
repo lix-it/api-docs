@@ -234,9 +234,8 @@ export function Navigation(props) {
   return (
     <nav {...props}>
       <ul role="list">
-        <TopLevelNavItem href="/">API</TopLevelNavItem>
-        <TopLevelNavItem href="#">Documentation</TopLevelNavItem>
-        <TopLevelNavItem href="#">Support</TopLevelNavItem>
+        <TopLevelNavItem href="https://help.lix-it.com/">Knowledge Base</TopLevelNavItem>
+        <TopLevelNavItem href="https://lix-it.com/blog/">Blog</TopLevelNavItem>
         {navigation.map((group, groupIndex) => (
           <NavigationGroup
             key={group.title}
