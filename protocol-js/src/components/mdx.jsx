@@ -52,6 +52,9 @@ export function Note({ children, variant }) {
     warning: "border-yellow-500/20 bg-yellow-50/50 text-yellow-900 dark:border-yellow-500/30 dark:bg-yellow-500/5 dark:text-yellow-200",
     success: "border-green-500/20 bg-green-50/50 text-green-900 dark:border-green-500/30 dark:bg-green-500/5 dark:text-green-200",
     error: "border-red-500/20 bg-red-50/50 text-red-900 dark:border-red-500/30 dark:bg-red-500/5 dark:text-red-200",
+    credits: "border-gray-500/20 bg-gray-50/50 text-gray-900 dark:border-gray-500/30 dark:bg-gray-500/5 dark:text-gray-200", // New variant for credits
+    purple: "border-purple-500 bg-purple-50 text-purple-900 dark:border-purple-700 dark:bg-purple-900/10 dark:text-purple-200",
+
   };
 
   // Determine the icon color based on the variant
@@ -60,6 +63,9 @@ export function Note({ children, variant }) {
     warning: "fill-yellow-500 stroke-white dark:fill-yellow-200/20 dark:stroke-yellow-200",
     success: "fill-green-500 stroke-white dark:fill-green-200/20 dark:stroke-green-200",
     error: "fill-red-500 stroke-white dark:fill-red-200/20 dark:stroke-red-200",
+    credits: "fill-gray-500 stroke-white dark:fill-gray-200/20 dark:stroke-gray-200", // New icon color for credits
+    purple: "fill-purple-500 stroke-white dark:fill-purple-700 dark:stroke-purple-200",
+
   };
 
   // Combine base classes with variant-specific classes
@@ -75,6 +81,7 @@ export function Note({ children, variant }) {
     </div>
   );
 }
+
 
 
 export function Row({ children }) {
