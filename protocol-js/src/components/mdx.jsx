@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import clsx from 'clsx'
+import cn from "classnames"; // A utility for conditionally joining classNames together
+
 
 import { Feedback } from '@/components/Feedback'
 import { Heading } from '@/components/Heading'
@@ -40,16 +42,40 @@ function InfoIcon(props) {
   )
 }
 
-export function Note({ children }) {
+export function Note({ children, variant }) {
+  // Define base classes that do not change
+  const baseClasses = "my-6 flex gap-2.5 rounded-2xl border p-4 leading-6";
+
+  // Define variant classes for different types of notes
+  const variantClasses = {
+    info: "border-blue-500/20 bg-blue-50/50 text-blue-900 dark:border-blue-500/30 dark:bg-blue-500/5 dark:text-blue-200",
+    warning: "border-yellow-500/20 bg-yellow-50/50 text-yellow-900 dark:border-yellow-500/30 dark:bg-yellow-500/5 dark:text-yellow-200",
+    success: "border-green-500/20 bg-green-50/50 text-green-900 dark:border-green-500/30 dark:bg-green-500/5 dark:text-green-200",
+    error: "border-red-500/20 bg-red-50/50 text-red-900 dark:border-red-500/30 dark:bg-red-500/5 dark:text-red-200",
+  };
+
+  // Determine the icon color based on the variant
+  const iconColorClasses = {
+    info: "fill-blue-500 stroke-white dark:fill-blue-200/20 dark:stroke-blue-200",
+    warning: "fill-yellow-500 stroke-white dark:fill-yellow-200/20 dark:stroke-yellow-200",
+    success: "fill-green-500 stroke-white dark:fill-green-200/20 dark:stroke-green-200",
+    error: "fill-red-500 stroke-white dark:fill-red-200/20 dark:stroke-red-200",
+  };
+
+  // Combine base classes with variant-specific classes
+  const noteClasses = `${baseClasses} ${variantClasses[variant || "info"]}`;
+  const iconClasses = `${iconColorClasses[variant || "info"]}`;
+
   return (
-    <div className="my-6 flex gap-2.5 rounded-2xl border border-blue-500/20 bg-blue-50/50 p-4 leading-6 text-blue-900 dark:border-blue-500/30 dark:bg-blue-500/5 dark:text-blue-200 dark:[--tw-prose-links-hover:theme(colors.blue.300)] dark:[--tw-prose-links:theme(colors.white)]">
-      <InfoIcon className="mt-1 h-4 w-4 flex-none fill-blue-500 stroke-white dark:fill-blue-200/20 dark:stroke-blue-200" />
+    <div className={noteClasses}>
+      <InfoIcon className={`mt-1 h-4 w-4 flex-none ${iconClasses}`} />
       <div className="[&>:first-child]:mt-0 [&>:last-child]:mb-0">
         {children}
       </div>
     </div>
-  )
+  );
 }
+
 
 export function Row({ children }) {
   return (
