@@ -14,6 +14,32 @@
   [inert] ::-webkit-scrollbar {
     display: none;
   }
+
+  /* Custom CSS for LIX */
+
+  .relative.h-8 {
+    display: none;
+}
+
+footer.mx-auto.w-full.max-w-2xl.space-y-10.pb-16.lg\:max-w-5xl {
+  border: 1px solid;
+  border-top-color: rgb(255 255 255 / 0.05);
+  border-left: none;
+  border-right: none;
+  padding-top: 40px;
+}
+
+h1, h2 {
+  border-bottom: 2px solid;
+  border-bottom-color: rgb(255 255 255 / 0.05);
+  padding-bottom: 10px;
+}
+
+.scroll-mt-24 {
+  margin-top: 60px!important;
+}
+
+
 }
 
 @tailwind base;

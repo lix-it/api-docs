@@ -1,11 +1,16 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
 export const metadata = {
   title: 'Response Codes',
   description:
     'In this guide, we will talk about what happens when something goes wrong while you work with the API.',
 }
 
+<HeroPattern />
 
 # Response Codes
+
+
 
 ## HTTP Status Codes
 
@@ -24,19 +29,22 @@ CODE | TITLE | DESCRIPTION
 500 |	Internal Server Error |	An error occurred on the server. Should this error persist, please contact our technical team.
 503 | Service Unavailable |	The API is temporarily unavailable
 
+
+
 ## Error types
 All errors are returned in the form of JSON with a type and optional message.
 
-> Example error response:
 
-```
-   {
-     "error": {
+```json {{ title: 'Example error response' }}
+{
+  "error": {
        "type": "params_invalid",
        "message": "profile_id is required"
      }
-   }
+  }
+
 ```
+
 
 Type |  Description
 ---- | ------------
