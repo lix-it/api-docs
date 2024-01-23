@@ -61,7 +61,7 @@ export const Header = forwardRef(function Header({ className }, ref) {
       <Search />
       <div className="flex items-center gap-5 lg:hidden">
         <MobileNavigation />
-        <Link href="https://lix-it.com/" aria-label="Home">
+        <Link href="/" aria-label="Home">
           <Logo className="lix-logo-mobile" />
         </Link>
       </div>
