@@ -9,6 +9,18 @@ import { Header } from '@/components/Header'
 import { Logo } from '@/components/Logo'
 import { Navigation } from '@/components/Navigation'
 import { SectionProvider } from '@/components/SectionProvider'
+import TagManager from 'react-gtm-module';
+
+//GOOGLE TAG MANAGER
+const tagManagerArgs = {
+  gtmId: 'GTM-W853SRP', 
+  // Optionally, you can also add dataLayer object here
+};
+
+TagManager.initialize(tagManagerArgs);
+
+console.log(window.dataLayer); 
+
 
 export function Layout({ children, allSections }) {
   let pathname = usePathname()
