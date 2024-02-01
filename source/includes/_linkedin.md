@@ -462,3 +462,110 @@ print(response.json())
   }
 }
 ```
+
+## Recruiter Search Facet Typeahead
+
+This endpoint retrieves typeaheads for a LinkedIn Recruiter search facet.
+
+If you are trying to build a search URL, you can use this endpoint to get the typeahead for a search facet. For example, if you want to search for people who have skills in Javascript, you can use this endpoint to get the typeahead for the skills. Then you can use the typeahead to build your search URL.
+
+<aside class="notice">This endpoint is free of charge to customers who have available credits in their account.</aside>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/search/recruiter/facet`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+query     | The search query. For instance 'Javascr' with a type of 'skill' will return 'Javasript' as a typeahead.
+q      | The type of search you would like to perform. Available options are: `skill` (Skills)
+start | The index of the first typeahead you would like to return. The default is 0.
+count | The number of typeaheads you would like to return. The default is 100.
+
+
+#### Optional Parameters
+Parameter | Description
+--------- | -----------
+count     | The number of typeaheads you would like to return. The default is 100.
+start     | The index of the first typeahead you would like to return. The default is 0.
+viewer_id | The LinkedIn ID of the account you would like to view this search as
+
+```shell
+curl "https://api.lix-it.com/v1/search/recruiter/facet?query=Javascrip&type=skill&count=100&start=0" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/search/recruiter/facet?query=Javascrip&type=skill&count=100&start=0"
+
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "meta": {
+        "sequenceId": "01HNJHSE0E4RBSV5KBV50V523X"
+    },
+    "paging": {
+        "count": 10,
+        "start": 10,
+        "total": 10
+    },
+    "results": [
+        {
+            "entity": "urn:li:ts_skill:218",
+            "text": "JavaScript"
+        },
+        {
+            "entity": "urn:li:ts_skill:280",
+            "text": "HTML"
+        },
+        {
+            "entity": "urn:li:ts_skill:12383",
+            "text": "JavaScript Libraries"
+        },
+        {
+            "entity": "urn:li:ts_skill:26965",
+            "text": "Mocha (JavaScript Framework)"
+        },
+        {
+            "entity": "urn:li:ts_skill:687",
+            "text": "AJAX"
+        },
+        {
+            "entity": "urn:li:ts_skill:4956",
+            "text": "JSON"
+        },
+        {
+            "entity": "urn:li:ts_skill:37357",
+            "text": "JavaScriptMVC"
+        },
+        {
+            "entity": "urn:li:ts_skill:55736",
+            "text": "JavaScript eXtension (JSX)"
+        },
+        {
+            "entity": "urn:li:ts_skill:55595",
+            "text": "Embedded JavaScript (EJS)"
+        },
+        {
+            "entity": "urn:li:ts_skill:13655",
+            "text": "Unobtrusive Javascript"
+        }
+    ]
+}```
