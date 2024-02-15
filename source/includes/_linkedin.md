@@ -127,6 +127,8 @@ print(response.json())
 
 This endpoint retrieves a single page for a LinkedIn Posts search. 
 
+This endpoint uses a `start` parameter.
+
 <aside class="notice"> Uses 1 Standard Credit.</aside>
 
 ### HTTP Request
@@ -139,6 +141,7 @@ This endpoint retrieves a single page for a LinkedIn Posts search.
 Parameter | Description
 --------- | -----------
 url       | The url-encoded LinkedIn search URL
+start     | The start offset of the page.
 
 #### Optional Parameters
 Parameter | Description
