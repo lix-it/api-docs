@@ -123,6 +123,73 @@ print(response.json())
 }
 ```
 
+## Job Posting Hirers
+
+<aside class="notice">
+Uses 1 Standard Credit.
+</aside>
+
+This endpoint retrieves the hirers for a job posting.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/li/linkedin/jobs/hirers`
+
+### URL Parameters
+
+#### Required parameters
+
+Parameter | Description
+--------- | -----------
+job_id | The LinkedIn ID of the job posting.
+
+#### Optional parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this post as.
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/li/linkedin/jobs/hirers?job_id=3556453411"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```shell
+curl "https://api.lix-it.com/v1/enrich/job?job_id=3556453411" \
+  -H "Authorization: lixApiKey"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "people": [
+        {
+            "name": "Emma Cardona",
+            "img": "https://media.licdn.com/dms/image/D4E03AQG2XnuMe5Vyuw/profile-displayphoto-shrink_800_800/0/1702565423871?e=1713398400&v=beta&t=nwVI6lqyqVfplASGUbzgAmMJTiVW09ptn3zWQggMqNc",
+            "headline": "Associate Director, People & Operations",
+            "link": "https://www.linkedin.com/in/emmalowery"
+        },
+        {
+            "name": "Philister Lukacevic",
+            "img": "https://media.licdn.com/dms/image/C5603AQH-SpqGVLr9CQ/profile-displayphoto-shrink_800_800/0/1516870841685?e=1713398400&v=beta&t=v62FdwHH9VuAnxMLDlDa0H7lpt3tWMYrZBbK1umWios",
+            "headline": "Nonprofit Marketing and Communications | Social Justice & Mental Health Advocate",
+            "link": "https://www.linkedin.com/in/philistersidigu"
+        }
+    ]
+}```
+
+
 ## LinkedIn Posts Search
 
 This endpoint retrieves a single page for a LinkedIn Posts search. 
