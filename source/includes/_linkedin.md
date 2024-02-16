@@ -187,8 +187,8 @@ curl "https://api.lix-it.com/v1/enrich/job?job_id=3556453411" \
             "link": "https://www.linkedin.com/in/philistersidigu"
         }
     ]
-}```
-
+}
+```
 
 ## LinkedIn Posts Search
 
