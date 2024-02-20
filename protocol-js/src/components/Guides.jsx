@@ -5,24 +5,24 @@ const guides = [
   {
     href: '/response-codes',
     name: 'Response Codes',
-    description: 'Learn how to authenticate your API requests.',
+    description: 'Read about our HTTP success or error status codes',
   },
   {
-    href: '/pagination',
-    name: 'Pagination',
-    description: 'Understand how to work with paginated responses.',
+    href: '/API-productivity',
+    name: 'API Productivity',
+    description: 'Find out APIs are structured and get tips for testing',
   },
   {
-    href: '/errors',
-    name: 'Errors',
+    href: '/authentication',
+    name: 'Authentication',
     description:
-      'Read about the different types of errors returned by the API.',
+      'Learn how to authenticate your API requests.',
   },
   {
-    href: '/webhooks',
-    name: 'Webhooks',
+    href: '/using-the-api',
+    name: 'Using the API',
     description:
-      'Learn how to programmatically configure webhooks for your app.',
+      'Find out general information about using the API.',
   },
 ]
 

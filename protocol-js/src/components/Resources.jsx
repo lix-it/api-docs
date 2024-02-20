@@ -12,10 +12,10 @@ import { UsersIcon } from '@/components/icons/UsersIcon'
 
 const resources = [
   {
-    href: '/contacts',
-    name: 'Contacts',
+    href: '/lix-account',
+    name: 'Lix Account API',
     description:
-      'Learn about the contact model and how to create, retrieve, update, delete, and list contacts.',
+      'Learn how to retrieve the current balance of your Lix account.',
     icon: UserIcon,
     pattern: {
       y: 16,
@@ -26,10 +26,10 @@ const resources = [
     },
   },
   {
-    href: '/conversations',
-    name: 'Conversations',
+    href: '/linkedin-account',
+    name: 'LinkedIn Account API',
     description:
-      'Learn about the conversation model and how to create, retrieve, update, delete, and list conversations.',
+      'Find out how to retrieve connections from your LinkedIn account',
     icon: ChatBubbleIcon,
     pattern: {
       y: -6,
@@ -40,10 +40,10 @@ const resources = [
     },
   },
   {
-    href: '/messages',
-    name: 'Messages',
+    href: '/search-api',
+    name: 'Search API',
     description:
-      'Learn about the message model and how to create, retrieve, update, delete, and list messages.',
+      'Find out how to retrieve ids for various B2B data products',
     icon: EnvelopeIcon,
     pattern: {
       y: 32,
@@ -54,10 +54,10 @@ const resources = [
     },
   },
   {
-    href: '/groups',
-    name: 'Groups',
+    href: '/enrichment',
+    name: 'Enrichment API',
     description:
-      'Learn about the group model and how to create, retrieve, update, delete, and list groups.',
+      'This section describes the data you can expect from each returned profile.',
     icon: UsersIcon,
     pattern: {
       y: 22,
@@ -147,7 +147,7 @@ export function Resources() {
   return (
     <div className="my-16 xl:max-w-none">
       <Heading level={2} id="resources">
-        Resources
+        APIs
       </Heading>
       <div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
         {resources.map((resource) => (

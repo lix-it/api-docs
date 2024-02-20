@@ -72,6 +72,18 @@ svg.mt-1.h-4.w-4.flex-none.fill-purple-500.stroke-white.dark\:fill-purple-700.da
   text-decoration: underline;
 }
 
+/* font size to match template */
+
+article p {
+  font-size: 1rem;
+}
+
+/* hiding border top on guides to stop double border */
+
+.not-prose.mt-4.grid.grid-cols-1.gap-8.border-t.border-zinc-900\/5.pt-10.dark\:border-white\/5.sm\:grid-cols-2.xl\:grid-cols-4 {
+  border: none;
+}
+
 }
 
 @tailwind base;
