@@ -97,6 +97,6 @@ print(response.json())
 > The above command returns JSON structured like this:
 ```json
 {
-  "liId": "alfie-lambert"
+  "viewer_id": "alfie-lambert"
 }
 ```
