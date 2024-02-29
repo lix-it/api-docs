@@ -497,12 +497,13 @@ curl "https://api.lix-it.com/v1/li/recruiter/search/people" \
 ```
 
 ```python
+import json
 import requests
 import urllib.parse
 
 linkedin_url = "https://api.lix-it.com/v1/li/recruiter/search/people"
 
-payload={
+payload=json.dumps({
     "start": 0,
     "skills": [{
         "text": "Machine Learning",
@@ -511,7 +512,7 @@ payload={
         "required": false,
         "selected": true
     }]
-}
+})
 headers = {
   'Content-type': 'application/json',
   'Authorization': lix_api_key
