@@ -513,6 +513,7 @@ payload={
     }]
 }
 headers = {
+  'Content-type': 'application/json',
   'Authorization': lix_api_key
 }
 
