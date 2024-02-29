@@ -492,7 +492,7 @@ Parameter | Description
 start | The index of the first candidate you would like to return. The default is 0.
 
 ```shell
-curl "http://api.lix-it.com/v1/li/recruiter/search/people" \
+curl "https://api.lix-it.com/v1/li/recruiter/search/people" \
   -H "Authorization: lixApiKey"
 ```
 
@@ -500,7 +500,7 @@ curl "http://api.lix-it.com/v1/li/recruiter/search/people" \
 import requests
 import urllib.parse
 
-linkedin_url = "http://api.lix-it.com/v1/li/recruiter/search/people"
+linkedin_url = "https://api.lix-it.com/v1/li/recruiter/search/people"
 
 payload={
     "start": 0,
@@ -542,7 +542,7 @@ If you are trying to build a search URL, you can use this endpoint to get the ty
 <aside class="notice">This endpoint is free of charge to customers who have available credits in their account.</aside>
 
 ### HTTP Request
-`GET https://api.lix-it.com/v1/search/recruiter/facet`
+`GET http://api.lix-it.com/v1/li/recruiter/search/facet`
 
 ### URL Parameters
 
@@ -564,14 +564,14 @@ start     | The index of the first typeahead you would like to return. The defau
 viewer_id | The LinkedIn ID of the account you would like to view this search as
 
 ```shell
-curl "https://api.lix-it.com/v1/search/recruiter/facet?query=Javascrip&type=skill&count=100&start=0" \
+curl "http://api.lix-it.com/v1/li/recruiter/search/facet?query=Javascrip&type=skill&count=100&start=0" \
   -H "Authorization: lixApiKey"
 ```
 
 ```python
 import requests
 
-url = "https://api.lix-it.com/v1/search/recruiter/facet?query=Javascrip&type=skill&count=100&start=0"
+url = "http://api.lix-it.com/v1/li/recruiter/search/facet?query=Javascrip&type=skill&count=100&start=0"
 
 
 payload={}
