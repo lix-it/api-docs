@@ -320,15 +320,18 @@ This endpoint retrieves a single search page for a LinkedIn Sales Navigator lead
 <aside class="notice"> Uses 1 Standard Credit.</aside>
 
 ### HTTP Request
-`GET https://api.lix-it.com/v1/li/sales/search/people`
+`GET https://api.lix-it.com/v1/people/search`
 
 ### URL Parameters
 
-#### Required Parameters
+#### Filters
+
+Filters require filter IDs, which can be retrieved using the [Search Facet Typeahead](#search-facet-typeahead) endpoint.
 
 Parameter | Description
 --------- | -----------
-url       | The url-encoded LinkedIn search URL
+person_titles       | The job titles for the people you would like to search for, encoded as a JSON array of an id, text pair. For example, `person_titles=[39,Senior Software Engineer]`.
+location            | The location for the people you would like to search for, encoded as a JSON array of an id, text pair. For example, `location=[105763813,Colorado\\, United States]`.
 
 #### Optional Parameters
 Parameter | Description
@@ -337,39 +340,31 @@ viewer_id | The LinkedIn ID of the account you would like to view this search as
 sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 ```shell
-curl "https://api.lix-it.com/v1/li/sales/search/people?url=https://www.linkedin.com/sales/search/people?query=(spellCorrectionEnabled%3Atrue%2CrecentSearchParam%3A(id%3A2154062338%2CdoLogHistory%3Atrue)%2Ckeywords%3Alix)&sessionId=GumqcP8vR0aPVWr3cNR74A%3D%3D" \
-  -H "Authorization: lixApiKey"
+curl --location --globoff 'https://api.lix-it.com/v1/people/search?person_titles=[39%2CSenior%20Software%20Engineer]&location=[105763813%2CColorado%5C%2C%20United%20States]' \
+--header 'Authorization: $API_KEY'
 ```
 
 ```python
 import requests
-import urllib.parse
 
-linkedin_url = "https://www.linkedin.com/sales/search/people?query=(spellCorrectionEnabled%3Atrue%2CrecentSearchParam%3A(id%3A2154062338%2CdoLogHistory%3Atrue)%2Ckeywords%3Alix)&sessionId=GumqcP8vR0aPVWr3cNR74A%3D%3D"
+url = "https://api.lix-it.com/v1/people/search?person_titles=[39,Senior Software Engineer]&location=[105763813,Colorado\\, United States]"
 
-# encode the URL
-linkedin_url = urllib.parse.quote(linkedin_url, safe='')
-
-url = "https://api.lix-it.com/v1/li/sales/search/people?url=" + linkedin_url
-
-payload={}
+payload = {}
 headers = {
   'Authorization': lix_api_key
 }
 
 response = requests.request("GET", url, headers=headers, data=payload)
 
-print(response.json())
+print(response.text)
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "searchResponse": {
-    "people": [ Person ],
-    "paging": { "count": 25, "start": 0, "total": 2500 },
-  },
+  "people": [ Person ],
+  "paging": { "count": 25, "start": 0, "total": 2500 },
   "meta": {
     "sequenceId": "jAkFkdjfi19kFdf"
   }
