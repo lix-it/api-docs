@@ -395,6 +395,7 @@ Parameter | Description
 --------- | -----------
 person_titles       | The job titles for the people you would like to search for, encoded as a JSON array of an id, text pair. For example, `person_titles=[39,Senior Software Engineer]`.
 location            | The location for the people you would like to search for, encoded as a JSON array of an id, text pair. For example, `location=[105763813,Colorado\\, United States]`.
+organisations | The current organistaion of the person, encoded as a JSON array of an id, text pair. For example, [133,LinkedIn].
 
 #### Optional Parameters
 Parameter | Description
