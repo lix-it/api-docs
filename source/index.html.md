@@ -17,6 +17,7 @@ includes:
   - account
   - search
   - enrichment
+  - activity
   - linkedin
   - lookc
   - ai
