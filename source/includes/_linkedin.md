@@ -123,9 +123,78 @@ print(response.json())
 }
 ```
 
+## Job Posting Hirers
+
+<aside class="notice">
+Uses 1 Standard Credit.
+</aside>
+
+This endpoint retrieves the hirers for a job posting.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/li/linkedin/jobs/hirers`
+
+### URL Parameters
+
+#### Required parameters
+
+Parameter | Description
+--------- | -----------
+job_id | The LinkedIn ID of the job posting.
+
+#### Optional parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this post as.
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/li/linkedin/jobs/hirers?job_id=3556453411"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```shell
+curl "https://api.lix-it.com/v1/enrich/job?job_id=3556453411" \
+  -H "Authorization: lixApiKey"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "people": [
+        {
+            "name": "Emma Cardona",
+            "img": "https://media.licdn.com/dms/image/D4E03AQG2XnuMe5Vyuw/profile-displayphoto-shrink_800_800/0/1702565423871?e=1713398400&v=beta&t=nwVI6lqyqVfplASGUbzgAmMJTiVW09ptn3zWQggMqNc",
+            "headline": "Associate Director, People & Operations",
+            "link": "https://www.linkedin.com/in/emmalowery"
+        },
+        {
+            "name": "Philister Lukacevic",
+            "img": "https://media.licdn.com/dms/image/C5603AQH-SpqGVLr9CQ/profile-displayphoto-shrink_800_800/0/1516870841685?e=1713398400&v=beta&t=v62FdwHH9VuAnxMLDlDa0H7lpt3tWMYrZBbK1umWios",
+            "headline": "Nonprofit Marketing and Communications | Social Justice & Mental Health Advocate",
+            "link": "https://www.linkedin.com/in/philistersidigu"
+        }
+    ]
+}
+```
+
 ## LinkedIn Posts Search
 
 This endpoint retrieves a single page for a LinkedIn Posts search. 
+
+This endpoint uses a `start` parameter.
 
 <aside class="notice"> Uses 1 Standard Credit.</aside>
 
@@ -139,6 +208,7 @@ This endpoint retrieves a single page for a LinkedIn Posts search.
 Parameter | Description
 --------- | -----------
 url       | The url-encoded LinkedIn search URL
+start     | The start offset of the page.
 
 #### Optional Parameters
 Parameter | Description
@@ -306,6 +376,65 @@ print(response.json())
 }
 ```
 
+## Sales Navigator Leads Search (Parameterized)
+
+This endpoint retrieves a single search page for a LinkedIn Sales Navigator lead search.
+
+<aside class="notice"> Uses 1 Standard Credit.</aside>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/people/search`
+
+### URL Parameters
+
+#### Filters
+
+Filters require filter IDs, which can be retrieved using the [Search Facet Typeahead](#search-facet-typeahead) endpoint.
+
+Parameter | Description
+--------- | -----------
+person_titles       | The job titles for the people you would like to search for, encoded as a JSON array of an id, text pair. For example, `person_titles=[39,Senior Software Engineer]`.
+locations            | The locations for the people you would like to search for, encoded as a JSON array of an id, text pair. For example, `locations=[105763813,Colorado\\, United States]`.
+organisations | The current organistaion of the person, encoded as a JSON array of an id, text pair. For example, `organisations=[1337,LinkedIn]`.
+
+#### Optional Parameters
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this search as
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
+
+```shell
+curl --location --globoff 'https://api.lix-it.com/v1/people/search?person_titles=[39%2CSenior%20Software%20Engineer]&location=[105763813%2CColorado%5C%2C%20United%20States]' \
+--header 'Authorization: $API_KEY'
+```
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/people/search?person_titles=[39,Senior Software Engineer]&location=[105763813,Colorado\\, United States]"
+
+payload = {}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "people": [ Person ],
+  "paging": { "count": 25, "start": 0, "total": 2500 },
+  "meta": {
+    "sequenceId": "jAkFkdjfi19kFdf"
+  }
+}
+```
+
 ## Search Facet Typeahead
 
 This endpoint retrieves typeaheads for a LinkedIn search facet.
@@ -422,17 +551,18 @@ Parameter | Description
 start | The index of the first candidate you would like to return. The default is 0.
 
 ```shell
-curl "http://api.lix-it.com/v1/li/recruiter/search/people" \
+curl "https://api.lix-it.com/v1/li/recruiter/search/people" \
   -H "Authorization: lixApiKey"
 ```
 
 ```python
+import json
 import requests
 import urllib.parse
 
-linkedin_url = "http://api.lix-it.com/v1/li/recruiter/search/people"
+linkedin_url = "https://api.lix-it.com/v1/li/recruiter/search/people"
 
-payload={
+payload=json.dumps({
     "start": 0,
     "skills": [{
         "text": "Machine Learning",
@@ -441,8 +571,9 @@ payload={
         "required": false,
         "selected": true
     }]
-}
+})
 headers = {
+  'Content-type': 'application/json',
   'Authorization': lix_api_key
 }
 
@@ -472,7 +603,7 @@ If you are trying to build a search URL, you can use this endpoint to get the ty
 <aside class="notice">This endpoint is free of charge to customers who have available credits in their account.</aside>
 
 ### HTTP Request
-`GET https://api.lix-it.com/v1/search/recruiter/facet`
+`GET http://api.lix-it.com/v1/li/recruiter/search/facet`
 
 ### URL Parameters
 
@@ -494,14 +625,14 @@ start     | The index of the first typeahead you would like to return. The defau
 viewer_id | The LinkedIn ID of the account you would like to view this search as
 
 ```shell
-curl "https://api.lix-it.com/v1/search/recruiter/facet?query=Javascrip&type=skill&count=100&start=0" \
+curl "http://api.lix-it.com/v1/li/recruiter/search/facet?query=Javascrip&type=skill&count=100&start=0" \
   -H "Authorization: lixApiKey"
 ```
 
 ```python
 import requests
 
-url = "https://api.lix-it.com/v1/search/recruiter/facet?query=Javascrip&type=skill&count=100&start=0"
+url = "http://api.lix-it.com/v1/li/recruiter/search/facet?query=Javascrip&type=skill&count=100&start=0"
 
 
 payload={}
