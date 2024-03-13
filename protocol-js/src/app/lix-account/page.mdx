@@ -1,0 +1,136 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+
+export const metadata = {
+  title: 'Lix Account API',
+  description: 'Explore the functionalities of Lix Account API including balance inquiries, checking daily allowances, and understanding how to handle API errors efficiently.',
+}
+
+<HeroPattern />
+
+
+# Lix Account API
+
+
+<Row>
+
+<Col>
+
+
+## Balances
+
+Retrieve the current balance of your account. Returns the number of email credits and Standard Credits available.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/account/balances`
+
+
+
+</Col>
+
+
+  <Col sticky>
+
+<CodeGroup title="Balances" tag="GET" label="/v1/account/balances">
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/account/balances" \
+  -H "Authorization: lixApiKey"
+
+```
+
+
+```python
+import requests
+url = "https://api.lix-it.com/v1/account/balances"
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+response = requests.request("GET", url, headers=headers, data=payload)
+print(response.json())
+```
+
+
+
+</CodeGroup>
+
+ The above commands return JSON structured like this:
+```json
+{
+  "emailBalance": 10000,
+  "linkedInBalance": 50000
+}
+```
+
+
+</Col>
+
+</Row>
+
+--- 
+
+<Row>
+
+<Col>
+
+
+## Daily Allowance
+
+This endpoint retrieves your remaining daily allowance for your account.
+
+<Note variant="success">
+This endpoint is free to use.
+</Note>
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/account/allowances/daily`
+
+### URL Parameters
+
+Field | Description
+--------- | -----------
+requestsRemaining | The number of requests remaining for the day.
+refreshesAt	| The unix timestamp in seconds of when the daily allowance will refresh.
+</Col>
+
+
+  <Col sticky>
+
+<CodeGroup title="Allowances" tag="GET" label="/v1/account/daily">
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/account/allowances/daily \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/account/allowances/daily"
+
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.json())
+```
+
+</CodeGroup>
+
+ The above commands return JSON structured like this:
+```json
+{
+  "requestsRemaining": 10000,
+  "refreshesAt": 1696512494 // represents the unix timestamp in seconds of when the daily allowance will refresh
+}
+```
+
+
+</Col>
+
+</Row>

@@ -1,0 +1,644 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+
+export const metadata = {
+  title: 'LinkedIn Search APII',
+  description:
+    'Discover how to utilise the LinkedIn Search API to fetch connections from a LinkedIn account, understand the necessary prerequisites, and explore examples in different programming languages.',
+}
+
+<HeroPattern />
+
+
+# LinkedIn Search API
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/5140183-36bf942b-6945-4816-a954-46f83c53ec21?action=collection%2Ffork&collection-url=entityId%3D5140183-36bf942b-6945-4816-a954-46f83c53ec21%26entityType%3Dcollection%26workspaceId%3Dcc78921f-4152-4fc0-9c2f-75ef5c7a5895)
+
+--- 
+<Row>
+
+<Col>
+
+## LinkedIn People Search
+
+This endpoint retrieves a single page for a LinkedIn People search. 
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/li/linkedin/search/people`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+url       | The url-encoded LinkedIn search URL
+
+### Optional Parameters
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this search as
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
+
+
+</Col>
+
+  <Col sticky>
+
+<CodeGroup title="LinkedIn People Search" tag="GET" label="/v1/li/linkedin/search/people">
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/li/linkedin/search/people?url=https://www.linkedin.com/search/results/people/?keywords=lix&origin=SWITCH_SEARCH_VERTICAL&sid=%40%2Co" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+import urllib.parse
+
+linkedin_url = "https://www.linkedin.com/search/results/people/?keywords=lix&origin=SWITCH_SEARCH_VERTICAL&sid=%40%2Co"
+
+# encode the URL
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/li/linkedin/search/people?url=" + linkedin_url
+
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```bash {{ title: 'Returned JSON' }}
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "searchResponse": {
+    "people": [ Person ],
+    "paging": { "count": 25, "start": 0, "total": 1000 },
+  },
+}
+```
+
+</CodeGroup>
+
+
+</Col>
+
+</Row>
+
+--- 
+
+<Row>
+
+<Col>
+
+
+
+
+## LinkedIn Job Search
+
+This endpoint retrieves a single page for a LinkedIn Job search. 
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/li/linkedin/search/jobs`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+url       | The url-encoded LinkedIn search URL
+
+### Optional Parameters
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this search as
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
+
+
+</Col>
+
+  <Col sticky>
+
+<CodeGroup title="LinkedIn Job Search" tag="GET" label="/v1/li/linkedin/search/jobs">
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/li/linkedin/search/jobs?url=https://www.linkedin.com/jobs/search/?currentJobId=3436671233&keywords=lix" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+import urllib.parse
+
+linkedin_url = "https://www.linkedin.com/jobs/search/?currentJobId=3436671233&keywords=lix"
+
+# encode the URL
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/li/linkedin/search/jobs?url=" + linkedin_url
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```bash {{ title: 'Returned JSON' }}
+
+
+> The above command returns JSON structured like this:
+
+
+{
+  "searchResponse": {
+    "people": [ JobPosting ],
+    "paging": { "count": 10, "start": 0, "total": 1000 },
+  },
+}
+```
+
+</CodeGroup>
+
+</Col>
+
+</Row>
+
+---
+
+<Row>
+
+<Col>
+
+## LinkedIn Posts Search
+
+This endpoint retrieves a single page for a LinkedIn Posts search. 
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/li/linkedin/search/posts`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+url       | The url-encoded LinkedIn search URL
+
+### Optional Parameters
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this search as
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
+
+
+</Col>
+
+  <Col sticky>
+
+<CodeGroup title="LinkedIn Posts Search" tag="GET" label="/v1/li/linkedin/search/posts">
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/li/linkedin/search/posts?url=https%3A%2F%2Fwww.linkedin.com%2Fsearch%2Fresults%2Fcontent%2F%3Fkeywords%3Dlix%26origin%3DSWITCH_SEARCH_VERTICAL%26sid%3DV2J" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+import urllib.parse
+
+linkedin_url = "https://www.linkedin.com/search/results/content/?keywords=lix&origin=SWITCH_SEARCH_VERTICAL&sid=V2J"
+
+# encode the URL
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/li/linkedin/search/posts?url=" + linkedin_url
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```bash {{ title: 'Returned JSON' }}
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "searchResponse": {
+    "posts": [ Post ],
+    "paging": { "count": 10, "start": 0, "total": 1000 },
+  },
+}
+```
+
+</CodeGroup>
+
+</Col>
+
+</Row>
+
+--- 
+
+
+<Row>
+
+<Col>
+
+## LinkedIn Org Search
+
+This endpoint retrieves a single page for a LinkedIn Org search. 
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/li/linkedin/search/orgs`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+url       | The url-encoded LinkedIn search URL
+
+#### Optional Parameters
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this search as
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
+
+</Col>
+
+  <Col sticky>
+
+<CodeGroup title="LinkedIn Org Search" tag="GET" label="/v1/li/linkedin/search/orgs">
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/li/linkedin/search/orgs?url=https%3A%2F%2Fwww.linkedin.com%2Fsearch%2Fresults%2Fcompanies%2F%3Fkeywords%3Dlondon%26origin%3DSWITCH_SEARCH_VERTICAL%26sid%3Do(E" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+import urllib.parse
+
+linkedin_url = "https://www.linkedin.com/search/results/companies/?keywords=london&origin=SWITCH_SEARCH_VERTICAL&sid=o(E"
+
+# encode the URL
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/li/linkedin/search/orgs?url=" + linkedin_url
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```bash {{ title: 'Returned JSON' }}
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "searchResponse": {
+    "posts": [ Org ],
+    "paging": { "count": 10, "start": 0, "total": 1000 },
+  },
+}
+```
+
+</CodeGroup>
+
+</Col>
+
+</Row>
+
+--- 
+
+
+<Row>
+
+<Col>
+
+
+
+## Sales Navigator Leads Search
+
+This endpoint retrieves a single search page for a LinkedIn Sales Navigator lead search.
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/li/sales/search/people`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+url       | The url-encoded LinkedIn search URL
+
+### Optional Parameters
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this search as
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
+
+
+</Col>
+
+  <Col sticky>
+
+<CodeGroup title="Sales Navigator Leads Search" tag="GET" label="/v1/li/linkedin/search/people">
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/li/sales/search/people?url=https://www.linkedin.com/sales/search/people?query=(spellCorrectionEnabled%3Atrue%2CrecentSearchParam%3A(id%3A2154062338%2CdoLogHistory%3Atrue)%2Ckeywords%3Alix)&sessionId=GumqcP8vR0aPVWr3cNR74A%3D%3D" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+import urllib.parse
+
+linkedin_url = "https://www.linkedin.com/sales/search/people?query=(spellCorrectionEnabled%3Atrue%2CrecentSearchParam%3A(id%3A2154062338%2CdoLogHistory%3Atrue)%2Ckeywords%3Alix)&sessionId=GumqcP8vR0aPVWr3cNR74A%3D%3D"
+
+# encode the URL
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/li/sales/search/people?url=" + linkedin_url
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```bash {{ title: 'Returned JSON' }}
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "searchResponse": {
+    "people": [ Person ],
+    "paging": { "count": 25, "start": 0, "total": 2500 },
+  },
+  "meta": {
+    "sequenceId": "jAkFkdjfi19kFdf"
+  }
+}
+```
+
+</CodeGroup>
+
+</Col>
+
+</Row>
+
+--- 
+
+<Row>
+
+<Col>
+
+
+
+## Search Facet Typeahead
+
+This endpoint retrieves typeaheads for a LinkedIn search facet.
+
+If you are trying to build a search URL, you can use this endpoint to get the typeahead for a search facet. For example, if you want to search for people who work at Google, you can use this endpoint to get the typeahead for the company facet. Then you can use the typeahead to build your search URL.
+
+<Note variant="purple">This endpoint is free of charge to customers who have available credits in their account.</Note>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/search/sales/facet`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+query     | The search query. For instance 'Goog' with a type of 'COMPANY_TITLE' will return 'Google' as a typeahead.
+type      | The type of search you would like to perform. Available options are `BING_GEO` (geography);`COMPANY_WITH_LIST` (company name); `SENIORITY_V2` (seniority); `TITLE` (Job Title); `INDUSTRY` (industry); `GROUP` (LinkedIn groups); `SCHOOL` (Education); `COMPANY_TYPE` (company type); `FUNCTION` (job function); `COMPANY_SIZE` (company size); `TENURE` (years of experience); `PROFILE_LANGUAGE` (profile language)
+
+
+### Optional Parameters
+Parameter | Description
+--------- | -----------
+count     | The number of typeaheads you would like to return. The default is 100.
+start     | The index of the first typeahead you would like to return. The default is 0.
+viewer_id | The LinkedIn ID of the account you would like to view this search as
+
+</Col>
+
+  <Col sticky>
+
+<CodeGroup title="Search Facet Typeahead" tag="GET" label="/v1/li/linkedin/search/sales/facet">
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/search/sales/facet?query=E&type=SENIORITY&count=100&start=0" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/search/sales/facet?query=E&type=SENIORITY&count=100&start=0"
+
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```bash {{ title: 'Returned JSON' }}
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "elements": [
+            {
+                "displayValue": "Entry",
+                "id": "3"
+            },
+            {
+                "displayValue": "Owner",
+                "id": "10"
+            },
+            {
+                "displayValue": "Partner",
+                "id": "9"
+            },
+            {
+                "displayValue": "Director",
+                "id": "6"
+            },
+            {
+                "displayValue": "Manager",
+                "id": "5"
+            },
+            {
+                "displayValue": "Senior",
+                "id": "4"
+            }
+        ],
+        "paging": {
+            "count": 100
+        }
+    }
+}
+```
+
+</CodeGroup>
+
+</Col>
+
+</Row>
+
+---
+
+<Row>
+
+<Col>
+
+
+
+## LinkedIn Recruiter Candidate Search
+
+This endpoint retrieves a single search page for a LinkedIn Recruiter candidate search.
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/li/recruiter/search/people`
+
+### URL Parameters
+
+#### Required JSON Body Parameters
+
+Parameter | Description
+--------- | -----------
+skills       | The skills of the candidates you would like to search for. This is an array of objects. Each object has the following attributes: `text` (the skill name); `entity` (the LinkedIn skill entity ID); `negated` (whether the skill should be negated); `required` (whether the skill is required); `selected` (whether the skill is selected).
+
+#### Optional URL Query Parameters
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this search as
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
+
+#### Optional JSON Body Parameters
+Parameter | Description
+--------- | -----------
+start | The index of the first candidate you would like to return. The default is 0.
+
+</Col>
+
+
+  <Col sticky>
+
+<CodeGroup title="Recruiter Search People" tag="GET" label="/v1/li/recruiter/search/people">
+
+```bash {{ title: 'Shell' }}
+curl "http://api.lix-it.com/v1/li/recruiter/search/people" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+import urllib.parse
+
+linkedin_url = "http://api.lix-it.com/v1/li/recruiter/search/people"
+
+payload={
+    "start": 0,
+    "skills": [{
+        "text": "Machine Learning",
+        "entity": "urn:li:ts_skill:3289",
+        "negated": false,
+        "required": false,
+        "selected": true
+    }]
+}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```bash {{ title: 'Returned JSON' }}
+
+> The above command returns JSON structured like this:
+
+{
+  "people": [ Person ],
+  "paging": { "count": 25, "start": 0, "total": 2500 },
+  "meta": {
+    "sequenceId": "jAkFkdjfi19kFdf"
+  }
+}
+```
+
+</CodeGroup>
+
+</Col>
+
+</Row>

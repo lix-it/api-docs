@@ -1,0 +1,91 @@
+@layer base {
+  :root {
+    --shiki-color-text: theme('colors.white');
+    --shiki-token-constant: theme('colors.blue.300');
+    --shiki-token-string: theme('colors.blue.300');
+    --shiki-token-comment: theme('colors.zinc.500');
+    --shiki-token-keyword: theme('colors.sky.300');
+    --shiki-token-parameter: theme('colors.pink.300');
+    --shiki-token-function: theme('colors.violet.300');
+    --shiki-token-string-expression: theme('colors.blue.300');
+    --shiki-token-punctuation: theme('colors.zinc.200');
+  }
+
+  [inert] ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Custom CSS for LIX
+ */
+ .lix-logo {
+  max-width: 150px;
+}
+
+.lix-logo-mobile {
+  max-width: 50px;
+}
+
+.relative.h-8 {
+  display: none;
+}
+
+footer.mx-auto.w-full.max-w-2xl.space-y-10.pb-16.lg\:max-w-5xl {
+border: 1px solid;
+border-top-color: rgb(255 255 255 / 0.05);
+border-left: none;
+border-right: none;
+padding-top: 40px;
+}
+
+h1, h2 {
+border-bottom: 2px solid;
+border-bottom-color: rgb(255 255 255 / 0.05);
+padding-bottom: 20px;
+}
+
+ h3 {
+  /* border-bottom: 2px solid;
+  border-bottom-color: rgb(255 255 255 / 0.05); */
+  padding-bottom: 10px;
+  }
+  
+
+h1 {
+margin-bottom: 60px!important;
+}
+
+.grid.grid-cols-1.items-start.gap-x-16.gap-y-10.xl\:max-w-none.xl\:grid-cols-2 {
+  margin-bottom: 4rem;
+}
+
+/* hide the page titles on next and prev page btns */
+a.text-base.font-semibold.text-zinc-900.transition.hover\:text-zinc-600.dark\:text-white.dark\:hover\:text-zinc-300 {
+  display: none;
+}
+/* inside icon purple */
+svg.mt-1.h-4.w-4.flex-none.fill-purple-500.stroke-white.dark\:fill-purple-700.dark\:stroke-purple-200 {
+  stroke: black;
+}
+
+.my-6.flex.gap-2\.5.rounded-2xl.border.p-4.leading-6.border-yellow-500\/20.bg-yellow-50\/50.text-yellow-900.dark\:border-yellow-500\/30.dark\:bg-yellow-500\/5.dark\:text-yellow-200 a {
+  color: #f1a33c;
+  text-decoration: underline;
+}
+
+/* font size to match template */
+
+article p {
+  font-size: 1rem;
+}
+
+/* hiding border top on guides to stop double border */
+
+.not-prose.mt-4.grid.grid-cols-1.gap-8.border-t.border-zinc-900\/5.pt-10.dark\:border-white\/5.sm\:grid-cols-2.xl\:grid-cols-4 {
+  border: none;
+}
+
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
