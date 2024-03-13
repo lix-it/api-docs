@@ -19,6 +19,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  basePath: '/docs',
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
 }
 
