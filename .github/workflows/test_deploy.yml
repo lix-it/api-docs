@@ -56,8 +56,8 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.CDN_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.CDN_SECRET_ACCESS_KEY }}
       run: |
-        s3cmd -c ./do/.s3cfg sync --acl-public ./build/ --delete-removed s3://api-docs.test --no-preserve --no-mime-magic --guess-mime-type -v 
+        s3cmd -c ./do/.s3cfg sync --acl-public ./build/ --delete-removed s3://api-docs-test --no-preserve --no-mime-magic --guess-mime-type -v 
     - name: purge cdn cache
       run: |
-        doctl compute cdn flush b8764f84-960c-4e2c-bd77-fc7b79947a9d
+        doctl compute cdn flush ad8cf717-75a6-4994-870c-03148b36af2f
 

@@ -2,7 +2,7 @@
 
 ## Connections
 
-This endpoint retrieves the connections for the viewerId.
+This endpoint retrieves the connections for the viewer_id.
 
 <aside class="notice">
 In order to retrieve connections for your account you need to have your LinkedIn account connected to your Lix account using the Lix extension. 
