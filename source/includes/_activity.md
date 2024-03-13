@@ -1,8 +1,10 @@
 # Activity API
-Get the latest activity of a LinkedIn user.
+Get the full activity of a LinkedIn user.
 
 # Get Posts
-Get the latest posts of a LinkedIn user.
+Get the posts history of a LinkedIn user. 
+
+Retrieves up to 50 results per page. 
 
 <aside class="notice"> Uses 1 Standard Credit.</aside>
 
@@ -55,7 +57,9 @@ print(response.json())
 
 # Get Comments
 
-Get the latest comments of a LinkedIn user.
+Get the comment history of a LinkedIn user.
+
+Retrieves up to 50 comments per page.
 
 <aside class="notice"> Uses 1 Standard Credit.</aside>
 
