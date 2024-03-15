@@ -1,7 +1,7 @@
 # Activity API
 Get the full activity of a LinkedIn user.
 
-# Get Posts
+## Get Posts
 Get the posts history of a LinkedIn user. 
 
 Retrieves up to 50 results per page. 
@@ -55,7 +55,7 @@ print(response.json())
 }
 ```
 
-# Get Comments
+## Get Comments
 
 Get the comment history of a LinkedIn user.
 
