@@ -9,7 +9,7 @@ Retrieves up to 50 results per page.
 <aside class="notice"> Uses 1 Standard Credit.</aside>
 
 ### HTTP Request
-`GET https://api.lix-it.com/v1/li/activity/posts`
+`GET https://api.lix-it.com/v1/person/li/activity/posts`
 
 ### URL Parameters
 
@@ -26,7 +26,7 @@ start            | The start index of the posts to return. The default value is 
 viewer_id | The LinkedIn ID of the account you would like to view this search as
 
 ```shell
-curl "https://api.lix-it.com/v1/li/activity/posts?profile_id=alfie-lambert&start=0" \
+curl "https://api.lix-it.com/v1/person/li/activity/posts?profile_id=alfie-lambert&start=0" \
   -H "Authorization: lixApiKey"
 ```
 
@@ -34,7 +34,7 @@ curl "https://api.lix-it.com/v1/li/activity/posts?profile_id=alfie-lambert&start
 import requests
 
 
-url = "https://api.lix-it.com/v1/li/activity/posts?profile_id=alfie-lambert&start=0"
+url = "https://api.lix-it.com/v1/person/li/activity/posts?profile_id=alfie-lambert&start=0"
 
 payload={}
 headers = {
@@ -64,7 +64,7 @@ Retrieves up to 50 comments per page.
 <aside class="notice"> Uses 1 Standard Credit.</aside>
 
 ### HTTP Request
-`GET https://api.lix-it.com/v1/li/activity/comments`
+`GET https://api.lix-it.com/v1/person/li/activity/comments`
 
 ### URL Parameters
 
