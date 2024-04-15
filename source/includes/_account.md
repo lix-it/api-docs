@@ -81,12 +81,13 @@ curl -X PUT "https://api.lix-it.com/v1/account/linkedin/account" \
 
 ```python
 import requests
+import json
 url = "https://api.lix-it.com/v1/account/linkedin/account"
-payload = {
+payload = json.dumps({
   "cookies": {
     { "key": "li_at", "value": "AQEDAT8AAQD" },
   }
-}
+})
 headers = {
   'Authorization': lix_api_key
 }
