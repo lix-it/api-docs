@@ -74,9 +74,9 @@ cookies   | The cookies for the LinkedIn account as a JSON array with the key as
 curl -X PUT "https://api.lix-it.com/v1/account/linkedin/account" \
   -H "Authorization: lixApiKey
   -d '{
-  "cookies": {
+  "cookies": [
     {"key": "li_at", "value": "AQEDAT8AAQD"},
-  }'
+  ]}'
 ```
 
 ```python
