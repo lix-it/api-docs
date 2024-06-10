@@ -1,4 +1,4 @@
-# Search API
+# Disambiguation API
 
 ## Person IDs
 

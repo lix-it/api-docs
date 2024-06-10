@@ -15,7 +15,7 @@ toc_footers:
 includes:
   - lix_account
   - account
-  - search
+  - disambiguation
   - enrichment
   - activity
   - linkedin
