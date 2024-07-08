@@ -435,6 +435,69 @@ print(response.text)
 }
 ```
 
+## Sales Navigator Accounts Search
+
+This endpoint retrieves a single search page for a LinkedIn Sales Navigator account search.
+
+<aside class="notice"> Uses 1 Standard Credit.</aside>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/li/sales/search/orgs`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+url       | The url-encoded LinkedIn search URL
+
+#### Optional Parameters
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this search as
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
+
+```shell
+curl "https://api.lix-it.com/v1/li/sales/search/orgs?url=https%3A%2F%2Fwww.linkedin.com%2Fsales%2Fsearch%2Fcompany%3Fquery%3D(filters%253AList((type%253AREGION%252Cvalues%253AList((id%253A91000007%252Ctext%253AEMEA%252CselectionType%253AINCLUDED)))))%26sessionId%3DLmh342BVQAexs4xvMPn29g%253D%253D" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+import urllib.parse
+
+linkedin_url = "https://www.linkedin.com/sales/search/company?query=(filters%3AList((type%3AREGION%2Cvalues%3AList((id%3A91000007%2Ctext%3AEMEA%2CselectionType%3AINCLUDED)))))&sessionId=Lmh342BVQAexs4xvMPn29g%3D%3D"
+
+# encode the URL
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/li/sales/search/orgs?url=" + linkedin_url
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "searchResponse": {
+    "people": [ Organisation ],
+    "paging": { "count": 25, "start": 0, "total": 2500 },
+  },
+  "meta": {
+    "sequenceId": "jAkFkdjfi19kFdf"
+  }
+}
+```
+
 ## Search Facet Typeahead
 
 This endpoint retrieves typeaheads for a LinkedIn search facet.
