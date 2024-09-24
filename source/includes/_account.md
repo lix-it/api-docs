@@ -101,3 +101,41 @@ print(response.json())
   "viewer_id": "alfie-lambert"
 }
 ```
+
+## Get LinkedIn Account
+
+This endpoint retrieves LinkedIn accounts attached to your team.
+
+### HTTP Request
+
+`PUT https://api.lix-it.com/v1/account/linkedin/account`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id   | The LinkedIn account ID to retrieve.
+
+```shell
+curl -X GET "https://api.lix-it.com/v1/account/linkedin/account?viewer_id=alfie-lambert" \
+  -H "Authorization: lixApiKey
+```
+
+```python
+import requests
+import json
+url = "https://api.lix-it.com/v1/account/linkedin/account"
+headers = {
+  'Authorization': lix_api_key
+}
+response = requests.request("GET", url, headers=headers)
+print(response.json())
+```
+
+> The above command returns JSON structured like this:
+```json
+{
+  "viewer_id": "alfie-lambert",
+  "numAvailableTokens": 10
+}
+```
