@@ -11,6 +11,182 @@ export const metadata = {
 
 # Lix Account API
 
+The Lix Account API provides endpoints for managing and monitoring your Lix account, including checking credit balances and daily usage allowances.
+
+## Balances
+
+Retrieve the current balance of your account. Returns the number of email credits and Standard Credits available.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/account/balances`
+
+<CodeGroup title="Get Account Balances" tag="GET" label="/v1/account/balances">
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/account/balances" \
+  -H "Authorization: lixApiKey"
+```
+
+```python {{ title: 'Python' }}
+import requests
+
+url = "https://api.lix-it.com/v1/account/balances"
+headers = {
+    'Authorization': 'lixApiKey'
+}
+
+response = requests.get(url, headers=headers)
+print(response.json())
+```
+
+```go {{ title: 'Go' }}
+package main
+
+import (
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "log"
+)
+
+func main() {
+    req, err := http.NewRequest("GET", "https://api.lix-it.com/v1/account/balances", nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    
+    req.Header.Set("Authorization", "lixApiKey")
+    
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer resp.Body.Close()
+    
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        log.Fatal(err)
+    }
+    
+    fmt.Println(string(body))
+}
+```
+
+```javascript {{ title: 'Node.js' }}
+const axios = require('axios');
+
+const url = "https://api.lix-it.com/v1/account/balances";
+const headers = {
+    'Authorization': 'lixApiKey'
+};
+
+axios.get(url, { headers })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
+```
+</CodeGroup>
+
+The response will include your current credit balances:
+
+```json
+{
+  "emailBalance": 10000,
+  "linkedInBalance": 50000
+}
+```
+
+## Daily Allowance
+
+This endpoint retrieves your remaining daily allowance for your account.
+
+<Note variant="success">
+This endpoint is FREE to use.
+</Note>
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/account/allowances/daily`
+
+<CodeGroup title="Get Daily Allowance" tag="GET" label="/v1/account/allowances/daily">
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/account/allowances/daily" \
+  -H "Authorization: lixApiKey"
+```
+
+```python {{ title: 'Python' }}
+import requests
+
+url = "https://api.lix-it.com/v1/account/allowances/daily"
+headers = {
+    'Authorization': 'lixApiKey'
+}
+
+response = requests.get(url, headers=headers)
+print(response.json())
+```
+
+```go {{ title: 'Go' }}
+package main
+
+import (
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "log"
+)
+
+func main() {
+    req, err := http.NewRequest("GET", "https://api.lix-it.com/v1/account/allowances/daily", nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    
+    req.Header.Set("Authorization", "lixApiKey")
+    
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer resp.Body.Close()
+    
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        log.Fatal(err)
+    }
+    
+    fmt.Println(string(body))
+}
+```
+
+```javascript {{ title: 'Node.js' }}
+const axios = require('axios');
+
+const url = "https://api.lix-it.com/v1/account/allowances/daily";
+const headers = {
+    'Authorization': 'lixApiKey'
+};
+
+axios.get(url, { headers })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
+```
+</CodeGroup>
+
+The response includes your remaining requests and when the allowance refreshes:
+
+```json
+{
+  "requestsRemaining": 10000,
+  "refreshesAt": 1696512494
+}
+```
+
+<Note>
+The `refreshesAt` field represents the Unix timestamp (in seconds) when the daily allowance will refresh.
+</Note>
+
 
 <Row>
 

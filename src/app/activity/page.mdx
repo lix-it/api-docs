@@ -1,0 +1,239 @@
+export const metadata = {
+  title: 'Activity API',
+  description:
+    'Learn how to retrieve LinkedIn user activity including posts and comments history using the Activity API, with examples in multiple programming languages.',
+}
+
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# Activity API
+
+Get the full activity history of a LinkedIn user, including posts and comments.
+
+## Get Posts
+
+Get the posts history of a LinkedIn user. Retrieves up to 50 results per page.
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/person/li/activity/posts`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+profile_link | The LinkedIn profile URL of the user whose posts you want to retrieve
+page | The page number to retrieve (optional, default: 1)
+per_page | Number of results per page (optional, default: 25, max: 50)
+
+<CodeGroup title="Get Posts" tag="GET" label="/v1/person/li/activity/posts">
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/person/li/activity/posts?profile_link=https://linkedin.com/in/alfie-lambert" \
+  -H "Authorization: lixApiKey"
+```
+
+```python {{ title: 'Python' }}
+import requests
+
+url = "https://api.lix-it.com/v1/person/li/activity/posts"
+params = {
+    'profile_link': 'https://linkedin.com/in/alfie-lambert'
+}
+headers = {
+    'Authorization': 'lixApiKey'
+}
+
+response = requests.get(url, headers=headers, params=params)
+print(response.json())
+```
+
+```go {{ title: 'Go' }}
+package main
+
+import (
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "log"
+)
+
+func main() {
+    req, err := http.NewRequest("GET", "https://api.lix-it.com/v1/person/li/activity/posts?profile_link=https://linkedin.com/in/alfie-lambert", nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    
+    req.Header.Set("Authorization", "lixApiKey")
+    
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer resp.Body.Close()
+    
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        log.Fatal(err)
+    }
+    
+    fmt.Println(string(body))
+}
+```
+
+```javascript {{ title: 'Node.js' }}
+const axios = require('axios');
+
+const url = "https://api.lix-it.com/v1/person/li/activity/posts";
+const params = {
+    profile_link: 'https://linkedin.com/in/alfie-lambert'
+};
+const headers = {
+    'Authorization': 'lixApiKey'
+};
+
+axios.get(url, { headers, params })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
+```
+</CodeGroup>
+
+The response includes a list of posts and pagination information:
+
+```json
+{
+  "posts": [
+    {
+      "id": "post_id",
+      "content": "Post content here",
+      "timestamp": 1696512494,
+      "likes": 42,
+      "comments": 7
+    }
+  ],
+  "paging": {
+    "count": 25,
+    "start": 0,
+    "total": 2500
+  }
+}
+```
+
+## Get Comments
+
+Get the comment history of a LinkedIn user. Retrieves up to 50 comments per page.
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/person/li/activity/comments`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+profile_link | The LinkedIn profile URL of the user whose comments you want to retrieve
+page | The page number to retrieve (optional, default: 1)
+per_page | Number of results per page (optional, default: 25, max: 50)
+
+<CodeGroup title="Get Comments" tag="GET" label="/v1/person/li/activity/comments">
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/person/li/activity/comments?profile_link=https://linkedin.com/in/alfie-lambert" \
+  -H "Authorization: lixApiKey"
+```
+
+```python {{ title: 'Python' }}
+import requests
+
+url = "https://api.lix-it.com/v1/person/li/activity/comments"
+params = {
+    'profile_link': 'https://linkedin.com/in/alfie-lambert'
+}
+headers = {
+    'Authorization': 'lixApiKey'
+}
+
+response = requests.get(url, headers=headers, params=params)
+print(response.json())
+```
+
+```go {{ title: 'Go' }}
+package main
+
+import (
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "log"
+)
+
+func main() {
+    req, err := http.NewRequest("GET", "https://api.lix-it.com/v1/person/li/activity/comments?profile_link=https://linkedin.com/in/alfie-lambert", nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    
+    req.Header.Set("Authorization", "lixApiKey")
+    
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer resp.Body.Close()
+    
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        log.Fatal(err)
+    }
+    
+    fmt.Println(string(body))
+}
+```
+
+```javascript {{ title: 'Node.js' }}
+const axios = require('axios');
+
+const url = "https://api.lix-it.com/v1/person/li/activity/comments";
+const params = {
+    profile_link: 'https://linkedin.com/in/alfie-lambert'
+};
+const headers = {
+    'Authorization': 'lixApiKey'
+};
+
+axios.get(url, { headers, params })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
+```
+</CodeGroup>
+
+The response includes a list of comments and pagination information:
+
+```json
+{
+  "comments": [
+    {
+      "id": "comment_id",
+      "content": "Comment content here",
+      "timestamp": 1696512494,
+      "likes": 5,
+      "post_id": "original_post_id"
+    }
+  ],
+  "paging": {
+    "count": 25,
+    "start": 0,
+    "total": 100
+  }
+}
+```

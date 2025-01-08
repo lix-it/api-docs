@@ -29,7 +29,13 @@ CODE | TITLE | DESCRIPTION
 500 |	Internal Server Error |	An error occurred on the server. Should this error persist, please contact our technical team.
 503 | Service Unavailable |	The API is temporarily unavailable
 
+## Rate Limiting
 
+Lix imposes a default rate limit of 1 request per 3 seconds. If you exceed this limit, you will receive a 429 "Too Many Requests" error response. When this happens, you should wait at least 3 seconds before retrying your request.
+
+<Note>
+To ensure smooth API operation, please implement appropriate request throttling in your application to stay within this rate limit.
+</Note>
 
 ## Error types
 All errors are returned in the form of JSON with a type and optional message.
