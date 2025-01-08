@@ -9,8 +9,19 @@ export const metadata = {
 <HeroPattern />
 
 
-# Search API
+# Disambiguation API
 
+The Disambiguation API provides endpoints for converting and cross-referencing different types of IDs across LinkedIn's ecosystem. This includes converting between LinkedIn profile URLs, Sales Navigator URLs, and Lix's internal IDs for both people and organizations.
+
+<Note>
+These endpoints help you maintain consistency across different LinkedIn interfaces and ensure you're working with the correct entity regardless of the source.
+</Note>
+
+## Available Endpoints
+
+The API provides two main endpoints:
+- Person IDs: Convert between LinkedIn profile, Sales Navigator, and Lix IDs for individuals
+- Organisation IDs: Convert between company profile URLs and IDs across different LinkedIn interfaces
 
 <Row>
 
@@ -19,9 +30,16 @@ export const metadata = {
 
 ## Person IDs
 
-This endpoint retrieves ids for various B2B data products. You query it using an ID and it will fetch the ids.
+This endpoint is part of the Disambiguation API and retrieves IDs for various B2B data products. It allows you to convert between different types of LinkedIn identifiers:
 
-You can use this endpoint to convert LinkedIn Sales Navigator profile URLs to LinkedIn profile URLs and vice versa.
+- Convert LinkedIn Sales Navigator profile URLs to LinkedIn profile URLs
+- Convert LinkedIn profile URLs to Sales Navigator URLs
+- Retrieve Lix internal IDs for consistent tracking
+- Cross-reference IDs across different LinkedIn interfaces
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
 
 
 </Col>
@@ -129,9 +147,16 @@ lix_id | The Lix unique ID.
 
 ## Organisation IDs
 
-This endpoint retrieves ids for various B2B data products. You query it using an ID and it will fetch the ids.
+This endpoint is part of the Disambiguation API and handles organization/company identifier conversion. It provides similar functionality to the Person IDs endpoint but for company entities:
 
-You can use this endpoint to convert LinkedIn Sales Navigator profile URLs to LinkedIn profile URLs and vice versa.
+- Convert between LinkedIn company page URLs and Sales Navigator company URLs
+- Retrieve organization details across different LinkedIn interfaces
+- Get Lix internal IDs for consistent company tracking
+- Cross-reference company identifiers across platforms
+
+<Note variant="purple">
+Uses 1 Org Credit.
+</Note>
 
 ### The OrganisationIDs Object
 
@@ -181,7 +206,7 @@ lix_id     | The unique Lix ID for this organisation.
 
 Retrieve the Organisation IDs. Pass in any ID you would like to cross-reference, but only pass one in. 
 
-<Note variant="success">This endpoint is FREE</Note>
+<Note variant="purple">Uses 1 Org Credit.</Note>
 
 `GET https://api.lix-it.com/v1/organisation/ids`
 
