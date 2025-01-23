@@ -36,7 +36,7 @@ links.recruiterURL | The Recruiter profile URL.
 
 Retrieve the Person IDs. Pass in any ID you would like to cross-reference, but only pass one in. 
 
-<aside class="notice"> Uses 1 Standard Credit.</aside>
+<aside class="notice"> Uses 1 Org Credit.</aside>
 
 `GET https://api.lix-it.com/v1/person/ids`
 
@@ -91,7 +91,7 @@ lix_id     | The unique Lix ID for this organisation.
 
 Retrieve the Organisation IDs. Pass in any ID you would like to cross-reference, but only pass one in. 
 
-<aside class="notice">This endpoint is FREE</aside>
+<aside class="notice">This endpoint uses 1 Org credit</aside>
 
 `GET https://api.lix-it.com/v1/organisation/ids`
 
