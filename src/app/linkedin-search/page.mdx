@@ -191,6 +191,79 @@ print(response.json())
 
 <Col>
 
+## LinkedIn Job Poster
+
+This endpoint allows you to get the poster of a job on LinkedIn.
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/li/linkedin/jobs/hirers`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+job_id    | The LinkedIn job ID
+
+</Col>
+
+<Col sticky>
+
+<CodeGroup title="LinkedIn Job Poster" tag="GET" label="/v1/li/linkedin/jobs/hirers">
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/li/linkedin/jobs/hirers?job_id=3825920814" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/li/linkedin/jobs/hirers?job_id=3825920814"
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```bash {{ title: 'Returned JSON' }}
+
+> The above command returns JSON structured like this:
+
+{
+    "people": [
+        {
+            "name": "Emma Cardona  ",
+            "img": "https://media.licdn.com/dms/image/v2/D4E03AQGJauhWsWRVKQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729737175308?e=1743033600&v=beta&t=9s79XOjMMvj5Jy-dGBqgGFNh_TXc_-abdKyiZOHCkvk",
+            "headline": "Director of People & Operations",
+            "link": "https://www.linkedin.com/in/emmalowery"
+        }
+    ]
+}
+```
+
+</CodeGroup>
+
+</Col>
+
+</Row>
+
+---
+
+<Row>
+
+<Col>
+
 ## LinkedIn Posts Search
 
 This endpoint retrieves a single page for a LinkedIn Posts search. 
