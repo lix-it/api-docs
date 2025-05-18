@@ -598,6 +598,12 @@ Parameter | Description
 --------- | -----------
 profile_link | The link to the profile of the person.
 
+#### Optional parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this profile as
+
 
 ## Organisation
 <aside class="notice">
@@ -660,3 +666,9 @@ Parameter | Description
 --------- | -----------
 linkedin_url | The link to the profile of the company
 sales_nav_url | The link to the Sales Navigator profile for the company
+
+#### Optional parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this organisation as
