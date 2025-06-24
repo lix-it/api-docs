@@ -17,7 +17,7 @@ Retrieves up to 50 results per page.
 
 Parameter | Description
 --------- | -----------
-profile_id       | The profile ID of a user. You can get the profile ID from the URL of the user's LinkedIn profile. For example, the profile ID of the user with the URL `https://www.linkedin.com/in/username` is `username`.
+sales_nav_id | The Sales Navigator ID of the user whose activity you want to retrieve. You can obtain this from the Person IDs disambiguation endpoint at `/v1/person/ids`
 
 #### Optional Parameters
 Parameter | Description
@@ -26,7 +26,7 @@ start            | The start index of the posts to return. The default value is 
 viewer_id | The LinkedIn ID of the account you would like to view this search as
 
 ```shell
-curl "https://api.lix-it.com/v1/person/li/activity/posts?profile_id=alfie-lambert&start=0" \
+curl "https://api.lix-it.com/v1/person/li/activity/posts?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg&start=0" \
   -H "Authorization: lixApiKey"
 ```
 
@@ -34,7 +34,7 @@ curl "https://api.lix-it.com/v1/person/li/activity/posts?profile_id=alfie-lamber
 import requests
 
 
-url = "https://api.lix-it.com/v1/person/li/activity/posts?profile_id=alfie-lambert&start=0"
+url = "https://api.lix-it.com/v1/person/li/activity/posts?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg&start=0"
 
 payload={}
 headers = {
@@ -72,7 +72,7 @@ Retrieves up to 50 comments per page.
 
 Parameter | Description
 --------- | -----------
-profile_id       | The profile ID of a user. You can get the profile ID from the URL of the user's LinkedIn profile. For example, the profile ID of the user with the URL `https://www.linkedin.com/in/username` is `username`.
+sales_nav_id | The Sales Navigator ID of the user whose activity you want to retrieve. You can obtain this from the Person IDs disambiguation endpoint at `/v1/person/ids`
 
 #### Optional Parameters
 
@@ -82,7 +82,7 @@ start            | The start index of the comments to return. The default value 
 viewer_id | The LinkedIn ID of the account you would like to view this search as
 
 ```shell
-curl "https://api.lix-it.com/v1/person/li/activity/comments?profile_id=alfie-lambert&start=0" \
+curl "https://api.lix-it.com/v1/person/li/activity/comments?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg&start=0" \
   -H "Authorization: lixApiKey"
 ```
 
@@ -90,7 +90,7 @@ curl "https://api.lix-it.com/v1/person/li/activity/comments?profile_id=alfie-lam
 import requests
 
 
-url = "https://api.lix-it.com/v1/person/li/activity/comments?profile_id=alfie-lambert&start=0"
+url = "https://api.lix-it.com/v1/person/li/activity/comments?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg&start=0"
 
 payload={}
 headers = {

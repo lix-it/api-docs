@@ -117,7 +117,7 @@ Uses 1 Standard Credit.
 ```python
 import requests
 
-url = "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert"
+url = "https://api.lix-it.com/v1/person?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg"
 
 payload={}
 headers = {
@@ -130,7 +130,7 @@ print(response.json())
 ```
 
 ```shell
-curl "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert" \
+curl "https://api.lix-it.com/v1/person?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg" \
   -H "Authorization: lixApiKey"
 ```
 
@@ -596,7 +596,7 @@ This endpoint retrieves a specific profile.
 
 Parameter | Description
 --------- | -----------
-profile_link | The link to the profile of the person.
+sales_nav_id | The Sales Navigator ID of the person. You can obtain this from the Person IDs disambiguation endpoint at `/v1/person/ids`
 
 #### Optional parameters
 

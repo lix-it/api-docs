@@ -68,7 +68,7 @@ If you would like our OpenAPI v3.1 specification we can also send that across, l
 ```python
 import requests
 
-url = "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert"
+url = "https://api.lix-it.com/v1/person?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg"
 
 payload={}
 headers = {
@@ -83,7 +83,7 @@ print(response.json())
 ```javascript
 const axios = require('axios');
 
-const url = "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert";
+const url = "https://api.lix-it.com/v1/person?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg";
 
 const headers = {
   'Authorization': lixApiKey,
@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-  req, _ := http.NewRequest("GET", "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert", nil)
+  req, _ := http.NewRequest("GET", "https://api.lix-it.com/v1/person?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg", nil)
 
   req.SetHeaders
 
@@ -127,7 +127,7 @@ Lix expects for the API key to be included in all API requests to the server in 
 
 or with a query variable:
 
-`https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert&api_key=lixApiKey`
+`https://api.lix-it.com/v1/person?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg&api_key=lixApiKey`
 
 Please bear in mind to also specify the Content-Type as application/json format.
 
@@ -142,18 +142,16 @@ You must replace <code>lixApiKey</code> with your personal API key.
 When passing URLs to an endpoint ensure that the URL is 'URL Encoded'. You can see the description of what that is [here](https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding). Most programming languages have standard libraries that deal with encoding values for URLs.
 
 ```javascript
-const encoded = encodeURIComponent('https://linkedin.com/in/alfie-lambert');
-const url = "https://api.lix-it.com/v1/person?profile_link=" + encoded;
+const sales_nav_id = 'ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg';
+const url = "https://api.lix-it.com/v1/person?sales_nav_id=" + sales_nav_id;
 ```
 
 ```python
 import urllib.parse
 
-linkedin_url = "https://linkedin.com/in/alfie-lambert"
+sales_nav_id = "ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg"
 
-linkedin_url = urllib.parse.quote(linkedin_url, safe='')
-
-url = "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+url = "https://api.lix-it.com/v1/person?sales_nav_id=" + sales_nav_id
 ```
 
 ```Go
@@ -161,11 +159,9 @@ import (
   "net/url"
 )
 
-linkedin_url := "https://linkedin.com/in/alfie-lambert"
+sales_nav_id := "ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg"
 
-linkedin_url = url.QueryEscape(linkedin_url)
-
-url := "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+url := "https://api.lix-it.com/v1/person?sales_nav_id=" + sales_nav_id
 ```
 
 ### Postman
