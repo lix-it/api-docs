@@ -27,7 +27,7 @@ Lix expects for the API key to be included in all API requests to the server in 
 
 or with a query variable:
 
-`https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert&api_key=lixApiKey`
+`https://api.lix-it.com/v1/person?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg&api_key=lixApiKey`
 
 Please bear in mind to also specify the Content-Type as application/json format.
 
@@ -49,7 +49,7 @@ You must replace <code>lixApiKey</code> with your personal API key.
 
 import requests
 
-url = "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert"
+url = "https://api.lix-it.com/v1/person?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg"
 
 payload={}
 headers = {
@@ -76,7 +76,7 @@ import (
 
 func main() {
     // Create a new request
-    req, err := http.NewRequest("GET", "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert", nil)
+    req, err := http.NewRequest("GET", "https://api.lix-it.com/v1/person?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg", nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -108,7 +108,7 @@ func main() {
    
 const axios = require('axios');
 
-const url = "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert";
+const url = "https://api.lix-it.com/v1/person?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg";
 
 const headers = {
   'Authorization': lixApiKey,
@@ -129,7 +129,7 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI("https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert")
+uri = URI("https://api.lix-it.com/v1/person?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg")
 req = Net::HTTP::Get.new(uri)
 req['Authorization'] = 'lixApiKey' # Replace with your API key
 
@@ -147,7 +147,7 @@ puts JSON.parse(response.body)
 
    > With shell, you can just pass the correct header with each request
 
-curl "https://api.lix-it.com/v1/person?profile_link=https://linkedin.com/in/alfie-lambert" \
+curl "https://api.lix-it.com/v1/person?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg" \
   -H "Authorization: lixApiKey"
 
   > Make sure to replace lixApiKey with your API key.

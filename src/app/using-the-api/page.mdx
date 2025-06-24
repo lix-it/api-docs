@@ -31,68 +31,37 @@ There is more information on how to URI encode values in Postman [here](https://
 
 
 
-```bash {{ title: 'Shell' }}
-import (
-  "net/url"
-)
-linkedin_url := "https://linkedin.com/in/alfie-lambert"
-linkedin_url = url.QueryEscape(linkedin_url)
-url := "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+```go {{ title: 'Go' }}
+sales_nav_id := "ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg"
+url := "https://api.lix-it.com/v1/person?sales_nav_id=" + sales_nav_id
 ```
 
 
-```bash {{ title: 'Ruby' }}
-import (
-  "net/url"
-)
-linkedin_url := "https://linkedin.com/in/alfie-lambert"
-linkedin_url = url.QueryEscape(linkedin_url)
-url := "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+```go {{ title: 'Go' }}
+sales_nav_id := "ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg"
+url := "https://api.lix-it.com/v1/person?sales_nav_id=" + sales_nav_id
 ```
 
 
 
 
 ```python
-import urllib.parse
-
-linkedin_url = "https://linkedin.com/in/alfie-lambert"
-
-linkedin_url = urllib.parse.quote(linkedin_url, safe='')
-
-url = "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
-
-import (
-  "net/url"
-)
-linkedin_url := "https://linkedin.com/in/alfie-lambert"
-linkedin_url = url.QueryEscape(linkedin_url)
-url := "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+sales_nav_id = "ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg"
+url = "https://api.lix-it.com/v1/person?sales_nav_id=" + sales_nav_id
 ```
 
 
 ```javascript
-const encoded = encodeURIComponent('https://linkedin.com/in/alfie-lambert');
-const url = "https://api.lix-it.com/v1/person?profile_link=" + encoded;
-
-import (
-  "net/url"
-)
-linkedin_url := "https://linkedin.com/in/alfie-lambert"
-linkedin_url = url.QueryEscape(linkedin_url)
-url := "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+const sales_nav_id = 'ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg';
+const url = "https://api.lix-it.com/v1/person?sales_nav_id=" + sales_nav_id;
 ```
 
 
 
 
-```bash {{ title: 'Go' }}
-import (
-  "net/url"
-)
-linkedin_url := "https://linkedin.com/in/alfie-lambert"
-linkedin_url = url.QueryEscape(linkedin_url)
-url := "https://api.lix-it.com/v1/person?profile_link=" + linkedin_url
+```go {{ title: 'Go' }}
+sales_nav_id := "ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg"
+url := "https://api.lix-it.com/v1/person?sales_nav_id=" + sales_nav_id
 ```
 
 
