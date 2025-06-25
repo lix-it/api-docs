@@ -672,3 +672,89 @@ sales_nav_url | The link to the Sales Navigator profile for the company
 Parameter | Description
 --------- | -----------
 viewer_id | The LinkedIn ID of the account you would like to view this organisation as
+# Post Comments
+
+Get comments for a LinkedIn post by URN.
+
+## HTTP Request
+
+`GET https://api.lix-it.com/v1/enrich/post/comments`
+
+## Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+post_urn | | **Required.** The LinkedIn post URN.
+viewer_id | | The LinkedIn viewer ID.
+start | 0 | Starting index for pagination.
+pagination_token | | Token for pagination continuation.
+
+## Response
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "comments": [
+    {
+      "comment_urn": "urn:li:comment:123456789",
+      "text": "Great insights! Thanks for sharing this valuable information.",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7123456789012345678?commentUrn=urn:li:comment:123456789",
+      "created_at": "2024-01-15T10:30:00Z",
+      "post_urn": "urn:li:activity:7123456789012345678",
+      "num_reactions": 5,
+      "num_replies": 2,
+      "author": {
+        "name": "Jane Smith",
+        "link": "https://www.linkedin.com/in/janesmith",
+        "li_id": "jane-smith-123",
+        "headline": "Senior Software Engineer at TechCorp",
+        "profile_image_url": "https://media.licdn.com/dms/image/example/profile.jpg"
+      },
+      "reaction_breakdown": [
+        {
+          "reaction_type": "LIKE",
+          "count": 3
+        },
+        {
+          "reaction_type": "INSIGHTFUL",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "comment_urn": "urn:li:comment:987654321",
+      "text": "I completely agree with your analysis. This trend is definitely worth watching.",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7123456789012345678?commentUrn=urn:li:comment:987654321",
+      "created_at": "2024-01-14T16:30:00Z",
+      "post_urn": "urn:li:activity:7123456789012345678",
+      "num_reactions": 3,
+      "num_replies": 1,
+      "author": {
+        "name": "John Doe",
+        "link": "https://www.linkedin.com/in/johndoe",
+        "li_id": "john-doe-456",
+        "headline": "Product Manager at InnovateCorp",
+        "profile_image_url": "https://media.licdn.com/dms/image/example/profile2.jpg"
+      },
+      "reaction_breakdown": [
+        {
+          "reaction_type": "LIKE",
+          "count": 2
+        },
+        {
+          "reaction_type": "CELEBRATE",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "paging": {
+    "total": 15,
+    "start": 0,
+    "count": 10
+  },
+  "pagination_token": "AQEDAQEDARIAAAFnY2VkZWY...",
+  "source": "LINKEDIN_API"
+}
+```
