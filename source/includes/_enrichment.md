@@ -672,3 +672,103 @@ sales_nav_url | The link to the Sales Navigator profile for the company
 Parameter | Description
 --------- | -----------
 viewer_id | The LinkedIn ID of the account you would like to view this organisation as
+# Post Comments
+
+Get comments for a LinkedIn post by URN.
+
+## HTTP Request
+
+`GET https://api.lix-it.com/v1/enrich/post/comments`
+
+## Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+post_urn | | **Required.** The LinkedIn post URN.
+viewer_id | | The LinkedIn viewer ID.
+start | 0 | Starting index for pagination.
+pagination_token | | Token for pagination continuation.
+
+## Response
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "postCommentsResponse": {
+    "data": {
+      "socialDashCommentsByUrn*urn:li:activity:7123456789012345678": {
+        "urn": "urn:li:activity:7123456789012345678",
+        "socialDetail": {
+          "comments": {
+            "paging": {
+              "count": 10,
+              "start": 0,
+              "total": 42
+            },
+            "elements": [
+              {
+                "socialDetail": {
+                  "urn": "urn:li:comment:(activity:7123456789012345678,7987654321098765432)",
+                  "actor": {
+                    "urn": "urn:li:person:XyZaBcDeF1",
+                    "name": {
+                      "text": "Jane Smith"
+                    },
+                    "headline": {
+                      "text": "Product Manager at Tech Innovations"
+                    },
+                    "profilePicture": {
+                      "displayImageUrn": "urn:li:digitalmediaAsset:C4D05AQHexample789012"
+                    }
+                  },
+                  "message": {
+                    "text": "Great insights! Looking forward to seeing how this develops."
+                  },
+                  "created": {
+                    "time": 1640995200000
+                  },
+                  "totalSocialActivityCounts": {
+                    "numLikes": 8,
+                    "numReplies": 2
+                  }
+                },
+                "replies": {
+                  "paging": {
+                    "count": 2,
+                    "start": 0,
+                    "total": 2
+                  },
+                  "elements": [
+                    {
+                      "socialDetail": {
+                        "urn": "urn:li:comment:(activity:7123456789012345678,7111222333444555666)",
+                        "actor": {
+                          "urn": "urn:li:person:MnOpQrStU2",
+                          "name": {
+                            "text": "Mike Johnson"
+                          },
+                          "headline": {
+                            "text": "Senior Developer at Code Solutions"
+                          }
+                        },
+                        "message": {
+                          "text": "Absolutely agree with your point!"
+                        },
+                        "created": {
+                          "time": 1640998800000
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "included": {}
+  }
+}
+```
