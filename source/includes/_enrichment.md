@@ -695,80 +695,66 @@ pagination_token | | Token for pagination continuation.
 
 ```json
 {
-  "postCommentsResponse": {
-    "data": {
-      "socialDashCommentsByUrn*urn:li:activity:7123456789012345678": {
-        "urn": "urn:li:activity:7123456789012345678",
-        "socialDetail": {
-          "comments": {
-            "paging": {
-              "count": 10,
-              "start": 0,
-              "total": 42
-            },
-            "elements": [
-              {
-                "socialDetail": {
-                  "urn": "urn:li:comment:(activity:7123456789012345678,7987654321098765432)",
-                  "actor": {
-                    "urn": "urn:li:person:XyZaBcDeF1",
-                    "name": {
-                      "text": "Jane Smith"
-                    },
-                    "headline": {
-                      "text": "Product Manager at Tech Innovations"
-                    },
-                    "profilePicture": {
-                      "displayImageUrn": "urn:li:digitalmediaAsset:C4D05AQHexample789012"
-                    }
-                  },
-                  "message": {
-                    "text": "Great insights! Looking forward to seeing how this develops."
-                  },
-                  "created": {
-                    "time": 1640995200000
-                  },
-                  "totalSocialActivityCounts": {
-                    "numLikes": 8,
-                    "numReplies": 2
-                  }
-                },
-                "replies": {
-                  "paging": {
-                    "count": 2,
-                    "start": 0,
-                    "total": 2
-                  },
-                  "elements": [
-                    {
-                      "socialDetail": {
-                        "urn": "urn:li:comment:(activity:7123456789012345678,7111222333444555666)",
-                        "actor": {
-                          "urn": "urn:li:person:MnOpQrStU2",
-                          "name": {
-                            "text": "Mike Johnson"
-                          },
-                          "headline": {
-                            "text": "Senior Developer at Code Solutions"
-                          }
-                        },
-                        "message": {
-                          "text": "Absolutely agree with your point!"
-                        },
-                        "created": {
-                          "time": 1640998800000
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
-          }
+  "comments": [
+    {
+      "comment_urn": "urn:li:comment:123456789",
+      "text": "Great insights! Thanks for sharing this valuable information.",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7123456789012345678?commentUrn=urn:li:comment:123456789",
+      "created_at": "2024-01-15T10:30:00Z",
+      "post_urn": "urn:li:activity:7123456789012345678",
+      "num_reactions": 5,
+      "num_replies": 2,
+      "author": {
+        "name": "Jane Smith",
+        "link": "https://www.linkedin.com/in/janesmith",
+        "li_id": "jane-smith-123",
+        "headline": "Senior Software Engineer at TechCorp",
+        "profile_image_url": "https://media.licdn.com/dms/image/example/profile.jpg"
+      },
+      "reaction_breakdown": [
+        {
+          "reaction_type": "LIKE",
+          "count": 3
+        },
+        {
+          "reaction_type": "INSIGHTFUL",
+          "count": 2
         }
-      }
+      ]
     },
-    "included": {}
-  }
+    {
+      "comment_urn": "urn:li:comment:987654321",
+      "text": "I completely agree with your analysis. This trend is definitely worth watching.",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7123456789012345678?commentUrn=urn:li:comment:987654321",
+      "created_at": "2024-01-14T16:30:00Z",
+      "post_urn": "urn:li:activity:7123456789012345678",
+      "num_reactions": 3,
+      "num_replies": 1,
+      "author": {
+        "name": "John Doe",
+        "link": "https://www.linkedin.com/in/johndoe",
+        "li_id": "john-doe-456",
+        "headline": "Product Manager at InnovateCorp",
+        "profile_image_url": "https://media.licdn.com/dms/image/example/profile2.jpg"
+      },
+      "reaction_breakdown": [
+        {
+          "reaction_type": "LIKE",
+          "count": 2
+        },
+        {
+          "reaction_type": "CELEBRATE",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "paging": {
+    "total": 15,
+    "start": 0,
+    "count": 10
+  },
+  "pagination_token": "AQEDAQEDARIAAAFnY2VkZWY...",
+  "source": "LINKEDIN_API"
 }
 ```
