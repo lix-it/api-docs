@@ -672,15 +672,16 @@ sales_nav_url | The link to the Sales Navigator profile for the company
 Parameter | Description
 --------- | -----------
 viewer_id | The LinkedIn ID of the account you would like to view this organisation as
-# Post Comments
+
+## Post Comments
 
 Get comments for a LinkedIn post by URN.
 
-## HTTP Request
+### HTTP Request
 
 `GET https://api.lix-it.com/v1/enrich/post/comments`
 
-## Query Parameters
+### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -689,7 +690,7 @@ viewer_id | | The LinkedIn viewer ID.
 start | 0 | Starting index for pagination.
 pagination_token | | Token for pagination continuation.
 
-## Response
+### Response
 
 > The above command returns JSON structured like this:
 
