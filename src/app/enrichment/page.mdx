@@ -159,6 +159,72 @@ Please be aware if some data points do not exist, these will be returned as null
 <Row>
 <Col>
 
+## Post Reactions
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
+
+This endpoint retrieves reactions for a specific LinkedIn post, including reaction types and reactor information.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/enrich/post/reactions`
+
+### URL Parameters
+
+#### Required parameters
+
+Parameter | Description
+--------- | -----------
+post_urn | The LinkedIn URN of the post, URI encoded. For example `urn%3Ali%3Aactivity%3A7019605025920286720`, which is the URI-encoded form of `urn:li:activity:7019605025920286720`.
+
+#### Optional parameters
+
+Parameter | Description
+--------- | -----------
+start | Starting offset for pagination (default: 0)
+pagination_token | Token for paginated results
+
+</Col>
+<Col sticky>
+
+<CodeGroup title="Post Reactions" tag="GET" label="/v1/enrich/post/reactions">
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/enrich/post/reactions?post_urn=urn%3Ali%3Aactivity%3A7019605025920286720"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/enrich/post/reactions?post_urn=urn%3Ali%3Aactivity%3A7019605025920286720" \
+  -H "Authorization: lixApiKey"
+```
+
+</CodeGroup>
+
+<Note variant="warning">
+Please be aware if some data points do not exist, these will be returned as null.
+</Note>
+
+</Col>
+</Row>
+
+---
+
+<Row>
+<Col>
+
 
 ## Person
 
