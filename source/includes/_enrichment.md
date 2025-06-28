@@ -720,6 +720,22 @@ pagination_token | | Token for pagination continuation.
         {
           "reaction_type": "INSIGHTFUL",
           "count": 2
+        },
+        {
+          "reaction_type": "CELEBRATE",
+          "count": 0
+        },
+        {
+          "reaction_type": "LOVE",
+          "count": 0
+        },
+        {
+          "reaction_type": "SUPPORT",
+          "count": 0
+        },
+        {
+          "reaction_type": "FUNNY",
+          "count": 0
         }
       ]
     },
@@ -729,8 +745,8 @@ pagination_token | | Token for pagination continuation.
       "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7123456789012345678?commentUrn=urn:li:comment:987654321",
       "created_at": "2024-01-14T16:30:00Z",
       "post_urn": "urn:li:activity:7123456789012345678",
-      "num_reactions": 3,
-      "num_replies": 1,
+      "num_reactions": 0,
+      "num_replies": 0,
       "author": {
         "name": "John Doe",
         "link": "https://www.linkedin.com/in/johndoe",
@@ -741,11 +757,27 @@ pagination_token | | Token for pagination continuation.
       "reaction_breakdown": [
         {
           "reaction_type": "LIKE",
-          "count": 2
+          "count": 0
         },
         {
           "reaction_type": "CELEBRATE",
-          "count": 1
+          "count": 0
+        },
+        {
+          "reaction_type": "LOVE",
+          "count": 0
+        },
+        {
+          "reaction_type": "SUPPORT",
+          "count": 0
+        },
+        {
+          "reaction_type": "INSIGHTFUL",
+          "count": 0
+        },
+        {
+          "reaction_type": "FUNNY",
+          "count": 0
         }
       ]
     }
@@ -755,8 +787,7 @@ pagination_token | | Token for pagination continuation.
     "start": 0,
     "count": 10
   },
-  "pagination_token": "AQEDAQEDARIAAAFnY2VkZWY...",
-  "source": "LINKEDIN_API"
+  "pagination_token": "AQEDAQEDARIAAAFnY2VkZWY..."
 }
 ```
 
@@ -824,8 +855,7 @@ curl "https://api.lix-it.com/v1/enrich/post/reactions?post_urn=urn%3Ali%3Aactivi
     "start": 0,
     "count": 10
   },
-  "pagination_token": "AQEDAQEDARIAAAFnY2VkZWY...",
-  "source": "LINKEDIN_API"
+  "pagination_token": "AQEDAQEDARIAAAFnY2VkZWY..."
 }
 ```
 
