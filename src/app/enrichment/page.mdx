@@ -211,6 +211,214 @@ curl "https://api.lix-it.com/v1/enrich/post/reactions?post_urn=urn%3Ali%3Aactivi
   -H "Authorization: lixApiKey"
 ```
 
+```json {{ title: 'Response' }}
+{
+  "reactions": [
+    {
+      "reactionType": "LIKE",
+      "actor": {
+        "name": "Sarah Johnson",
+        "link": "https://www.linkedin.com/in/sarah-johnson-example",
+        "liId": "sarah-johnson-example",
+        "headline": "Software Engineer at Tech Innovations",
+        "profileImageUrl": "https://media.licdn.com/dms/image/example/profile-photo-1.jpg"
+      }
+    },
+    {
+      "reactionType": "CELEBRATE",
+      "actor": {
+        "name": "Michael Chen",
+        "link": "https://www.linkedin.com/in/michael-chen-example",
+        "liId": "michael-chen-example",
+        "headline": "Data Scientist at Analytics Corp",
+        "profileImageUrl": "https://media.licdn.com/dms/image/example/profile-photo-2.jpg"
+      }
+    },
+    {
+      "reactionType": "INSIGHTFUL",
+      "actor": {
+        "name": "Emily Rodriguez",
+        "link": "https://www.linkedin.com/in/emily-rodriguez-example",
+        "liId": "emily-rodriguez-example",
+        "headline": "Product Manager at Innovation Labs",
+        "profileImageUrl": "https://media.licdn.com/dms/image/example/profile-photo-3.jpg"
+      }
+    }
+  ],
+  "paging": {
+    "total": 15,
+    "count": 3,
+    "start": 0
+  },
+  "paginationToken": "eyJzdGFydCI6MywicG9zdFVybiI6InVybjpsaTphY3Rpdml0eTo3MDE5NjA1MDI1OTIwMjg2NzIwIn0="
+}
+```
+
+</CodeGroup>
+
+<Note variant="warning">
+Please be aware if some data points do not exist, these will be returned as null.
+</Note>
+
+</Col>
+</Row>
+
+---
+
+<Row>
+<Col>
+
+## Post Comments
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
+
+This endpoint retrieves comments for a specific LinkedIn post, including comment details, author information, and engagement metrics.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/enrich/post/comments`
+
+### URL Parameters
+
+#### Required parameters
+
+Parameter | Description
+--------- | -----------
+post_urn | The LinkedIn URN of the post, URI encoded. For example `urn%3Ali%3Aactivity%3A7019605025920286720`, which is the URI-encoded form of `urn:li:activity:7019605025920286720`.
+
+#### Optional parameters
+
+Parameter | Description
+--------- | -----------
+start | Starting offset for pagination (default: 0)
+pagination_token | Token for paginated results
+
+</Col>
+<Col sticky>
+
+<CodeGroup title="Post Comments" tag="GET" label="/v1/enrich/post/comments">
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/enrich/post/comments?post_urn=urn%3Ali%3Aactivity%3A7019605025920286720"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/enrich/post/comments?post_urn=urn%3Ali%3Aactivity%3A7019605025920286720" \
+  -H "Authorization: lixApiKey"
+```
+
+```json {{ title: 'Response' }}
+{
+  "comments": [
+    {
+      "commentUrn": "urn:li:comment:(activity:7019605025920286720,7019605123456789012)",
+      "text": "Great insights! Thanks for sharing this valuable information.",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7019605025920286720?commentUrn=7019605123456789012",
+      "createdAt": "2023-01-15T10:30:00Z",
+      "postUrn": "urn:li:activity:7019605025920286720",
+      "numReactions": 5,
+      "numReplies": 2,
+      "author": {
+        "name": "Jane Smith",
+        "link": "https://www.linkedin.com/in/jane-smith-example",
+        "salesNavLink": "https://www.linkedin.com/sales/lead/ACwAAABcDEFgBhABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        "liId": "jane-smith-example",
+        "headline": "Senior Marketing Manager at Example Corp",
+        "profileImageUrl": "https://media.licdn.com/dms/image/example/profile-photo.jpg"
+      },
+      "reactionBreakdown": [
+        {
+          "reactionType": "LIKE",
+          "count": 3
+        },
+        {
+          "reactionType": "CELEBRATE",
+          "count": 2
+        },
+        {
+          "reactionType": "LOVE",
+          "count": 0
+        },
+        {
+          "reactionType": "SUPPORT",
+          "count": 0
+        },
+        {
+          "reactionType": "INSIGHTFUL",
+          "count": 0
+        },
+        {
+          "reactionType": "FUNNY",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "commentUrn": "urn:li:comment:(activity:7019605025920286720,7019605987654321098)",
+      "text": "I completely agree with your perspective on this topic.",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7019605025920286720?commentUrn=7019605987654321098",
+      "createdAt": "2023-01-15T11:45:00Z",
+      "postUrn": "urn:li:activity:7019605025920286720",
+      "numReactions": 0,
+      "numReplies": 0,
+      "author": {
+        "name": "John Doe",
+        "link": "https://www.linkedin.com/in/john-doe-example",
+        "salesNavLink": "https://www.linkedin.com/sales/lead/ACwAAABcDEFgBhABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        "liId": "john-doe-example",
+        "headline": "Product Manager at Tech Solutions Inc",
+        "profileImageUrl": "https://media.licdn.com/dms/image/example/profile-photo-2.jpg"
+      },
+      "reactionBreakdown": [
+        {
+          "reactionType": "LIKE",
+          "count": 0
+        },
+        {
+          "reactionType": "CELEBRATE",
+          "count": 0
+        },
+        {
+          "reactionType": "LOVE",
+          "count": 0
+        },
+        {
+          "reactionType": "SUPPORT",
+          "count": 0
+        },
+        {
+          "reactionType": "INSIGHTFUL",
+          "count": 0
+        },
+        {
+          "reactionType": "FUNNY",
+          "count": 0
+        }
+      ]
+    }
+  ],
+  "paging": {
+    "total": 25,
+    "count": 2,
+    "start": 0
+  },
+  "paginationToken": "eyJzdGFydCI6MiwicG9zdFVybiI6InVybjpsaTphY3Rpdml0eTo3MDE5NjA1MDI1OTIwMjg2NzIwIn0="
+}
+```
+
 </CodeGroup>
 
 <Note variant="warning">
