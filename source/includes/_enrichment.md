@@ -759,3 +759,93 @@ pagination_token | | Token for pagination continuation.
   "source": "LINKEDIN_API"
 }
 ```
+
+## Post Reactions
+
+<aside class="notice">
+Uses 1 Standard Credit.
+</aside>
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/enrich/post/reactions?post_urn=urn%3Ali%3Aactivity%3A7019605025920286720"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```shell
+curl "https://api.lix-it.com/v1/enrich/post/reactions?post_urn=urn%3Ali%3Aactivity%3A7019605025920286720" \
+  -H "Authorization: lixApiKey"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "reactions": [
+    {
+      "reaction_type": "LIKE",
+      "count": 45,
+      "reactors": [
+        {
+          "name": "Sarah Johnson",
+          "link": "https://www.linkedin.com/in/sarahjohnson",
+          "li_id": "sarah-johnson-789",
+          "headline": "Marketing Director at TechStart",
+          "profile_image_url": "https://media.licdn.com/dms/image/example/profile3.jpg"
+        }
+      ]
+    },
+    {
+      "reaction_type": "CELEBRATE",
+      "count": 23,
+      "reactors": [
+        {
+          "name": "Michael Chen",
+          "link": "https://www.linkedin.com/in/michaelchen",
+          "li_id": "michael-chen-456",
+          "headline": "Senior Developer at InnovateNow",
+          "profile_image_url": "https://media.licdn.com/dms/image/example/profile4.jpg"
+        }
+      ]
+    }
+  ],
+  "total_reactions": 68,
+  "paging": {
+    "total": 68,
+    "start": 0,
+    "count": 10
+  },
+  "pagination_token": "AQEDAQEDARIAAAFnY2VkZWY...",
+  "source": "LINKEDIN_API"
+}
+```
+
+This endpoint retrieves reactions for a specific LinkedIn post, including reaction types and reactor information.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/enrich/post/reactions`
+
+### URL Parameters
+
+#### Required parameters
+
+Parameter | Description
+--------- | -----------
+post_urn | The LinkedIn URN of the post, URI encoded. For example `urn%3Ali%3Aactivity%3A7019605025920286720`, which is the URI-encoded form of `urn:li:activity:7019605025920286720`.
+
+#### Optional parameters
+
+Parameter | Description
+--------- | -----------
+start | Starting offset for pagination (default: 0)
+pagination_token | Token for paginated results
