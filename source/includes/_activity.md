@@ -17,7 +17,7 @@ Retrieves up to 50 results per page.
 
 Parameter | Description
 --------- | -----------
-sales_nav_id | The Sales Navigator ID of the user whose activity you want to retrieve. You can obtain this from the Person IDs disambiguation endpoint at `/v1/person/ids`
+profile_link | The LinkedIn profile URL of the user whose activity you want to retrieve (e.g., https://www.linkedin.com/in/username)
 
 #### Optional Parameters
 Parameter | Description
@@ -26,7 +26,7 @@ start            | The start index of the posts to return. The default value is 
 viewer_id | The LinkedIn ID of the account you would like to view this search as
 
 ```shell
-curl "https://api.lix-it.com/v1/person/li/activity/posts?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg&start=0" \
+curl "https://api.lix-it.com/v1/person/li/activity/posts?profile_link=https://www.linkedin.com/in/alfie-lambert&start=0" \
   -H "Authorization: lixApiKey"
 ```
 
@@ -34,7 +34,7 @@ curl "https://api.lix-it.com/v1/person/li/activity/posts?sales_nav_id=ACoAAAXQSF
 import requests
 
 
-url = "https://api.lix-it.com/v1/person/li/activity/posts?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg&start=0"
+url = "https://api.lix-it.com/v1/person/li/activity/posts?profile_link=https://www.linkedin.com/in/alfie-lambert&start=0"
 
 payload={}
 headers = {
@@ -72,7 +72,7 @@ Retrieves up to 50 comments per page.
 
 Parameter | Description
 --------- | -----------
-sales_nav_id | The Sales Navigator ID of the user whose activity you want to retrieve. You can obtain this from the Person IDs disambiguation endpoint at `/v1/person/ids`
+profile_link | The LinkedIn profile URL of the user whose activity you want to retrieve (e.g., https://www.linkedin.com/in/username)
 
 #### Optional Parameters
 
@@ -82,7 +82,7 @@ start            | The start index of the comments to return. The default value 
 viewer_id | The LinkedIn ID of the account you would like to view this search as
 
 ```shell
-curl "https://api.lix-it.com/v1/person/li/activity/comments?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg&start=0" \
+curl "https://api.lix-it.com/v1/person/li/activity/comments?profile_link=https://www.linkedin.com/in/alfie-lambert&start=0" \
   -H "Authorization: lixApiKey"
 ```
 
@@ -90,7 +90,7 @@ curl "https://api.lix-it.com/v1/person/li/activity/comments?sales_nav_id=ACoAAAX
 import requests
 
 
-url = "https://api.lix-it.com/v1/person/li/activity/comments?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg&start=0"
+url = "https://api.lix-it.com/v1/person/li/activity/comments?profile_link=https://www.linkedin.com/in/alfie-lambert&start=0"
 
 payload={}
 headers = {
