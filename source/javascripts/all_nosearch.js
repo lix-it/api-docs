@@ -2,6 +2,8 @@
 //= require ./app/_copy
 //= require ./app/_toc
 //= require ./app/_lang
+//= require ./app/_cookie
+//= require ./app/_conditional
 
 function adjustLanguageSelectorWidth() {
   const elem = $('.dark-box > .lang-selector');
@@ -20,6 +22,10 @@ $(function() {
     adjustLanguageSelectorWidth();
   });
   adjustLanguageSelectorWidth();
+  
+  if (window.setupConditionalContent) {
+    window.setupConditionalContent();
+  }
 });
 
 window.onpopstate = function() {
