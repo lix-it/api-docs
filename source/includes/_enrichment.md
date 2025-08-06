@@ -879,3 +879,87 @@ Parameter | Description
 --------- | -----------
 start | Starting offset for pagination (default: 0)
 pagination_token | Token for paginated results
+
+## Company Followers
+
+<aside class="notice">
+Uses 1 Standard Credit.
+</aside>
+
+This endpoint retrieves followers for a specific LinkedIn company organisation.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/organisations/followers`
+
+### URL Parameters
+
+#### Required parameters
+
+Parameter | Description
+--------- | -----------
+profile_link | The LinkedIn organisation profile URL (either standard LinkedIn URL or Sales Navigator URL)
+viewer_id | The LinkedIn ID of the account you would like to view this data as
+
+#### Optional parameters
+
+Parameter | Description
+--------- | -----------
+start | Starting offset for pagination (default: 0)
+count | Number of followers to return (default: 100)
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/organisations/followers?profile_link=https://www.linkedin.com/company/example-corp&viewer_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```shell
+curl "https://api.lix-it.com/v1/organisations/followers?profile_link=https://www.linkedin.com/company/example-corp&viewer_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg" \
+  -H "Authorization: lixApiKey"
+```
+
+```json
+{
+  "followers": [
+    {
+      "publicIdentifier": "john-doe-example",
+      "firstName": "John",
+      "lastName": "Doe",
+      "profilePictureUrl": "https://media.licdn.com/dms/image/example/profile-photo.jpg",
+      "entityUrn": "urn:li:fsd_profile:ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg",
+      "headline": "Software Engineer at Tech Innovations",
+      "followedAt": "July 2024",
+      "memberDistance": "DISTANCE_2"
+    },
+    {
+      "publicIdentifier": "jane-smith-example",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "profilePictureUrl": "https://media.licdn.com/dms/image/example/profile-photo-2.jpg",
+      "entityUrn": "urn:li:fsd_profile:ACoAAABcDEFgBhABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "headline": "Product Manager at Innovation Labs",
+      "followedAt": "June 2024",
+      "memberDistance": "DISTANCE_1"
+    }
+  ],
+  "paging": {
+    "total": 1250,
+    "count": 2,
+    "start": 0
+  }
+}
+```
+
+<aside class="notice">
+Please be aware if some data points do not exist, these will be returned as null.
+</aside>
