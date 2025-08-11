@@ -604,6 +604,56 @@ Parameter | Description
 --------- | -----------
 viewer_id | The LinkedIn ID of the account you would like to view this profile as
 
+## Person Extended
+
+The person extended endpoint returns extended profile information, specifically whether the person is a LinkedIn Top Voice.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/person/extended`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+profile_link | true | The LinkedIn profile link of the person
+viewer_id | false | The LinkedIn ID of the viewing account
+
+### Example
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/person/extended"
+
+querystring = {"profile_link":"https://www.linkedin.com/in/johnsmith/"}
+
+headers = {
+    'accept': "application/json",
+    'authorization': "Bearer YOUR_API_KEY"
+}
+
+response = requests.request("GET", url, headers=headers, params=querystring)
+
+print(response.text)
+```
+
+```shell
+curl --request GET \
+  --url 'https://api.lix-it.com/v1/person/extended?profile_link=https%3A//www.linkedin.com/in/johnsmith/' \
+  --header 'accept: application/json' \
+  --header 'authorization: Bearer YOUR_API_KEY'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "topVoice": true
+}
+```
+
+This endpoint uses **1 Standard Credit**.
 
 ## Organisation
 <aside class="notice">
