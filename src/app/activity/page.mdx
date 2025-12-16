@@ -31,6 +31,7 @@ Parameter | Description
 sales_nav_id | The Sales Navigator ID of the user whose posts you want to retrieve. You can obtain this from the Person IDs disambiguation endpoint at `/v1/person/ids`
 page | The page number to retrieve (optional, default: 1)
 per_page | Number of results per page (optional, default: 25, max: 50)
+pagination_token | Token for paginated results (optional). Use the token from the previous response to get the next page.
 
 <CodeGroup title="Get Posts" tag="GET" label="/v1/person/li/activity/posts">
 ```bash {{ title: 'Shell' }}
@@ -121,7 +122,8 @@ The response includes a list of posts and pagination information:
     "count": 25,
     "start": 0,
     "total": 2500
-  }
+  },
+  "pagination_token": "eyJwYWdpbmF0aW9uVG9rZW4iOiJleUowYjJ0bGJpSTZJbVY1..."
 }
 ```
 
@@ -144,6 +146,7 @@ Parameter | Description
 sales_nav_id | The Sales Navigator ID of the user whose comments you want to retrieve. You can obtain this from the Person IDs disambiguation endpoint at `/v1/person/ids`
 page | The page number to retrieve (optional, default: 1)
 per_page | Number of results per page (optional, default: 25, max: 50)
+pagination_token | Token for paginated results (optional). Use the token from the previous response to get the next page.
 
 <CodeGroup title="Get Comments" tag="GET" label="/v1/person/li/activity/comments">
 ```bash {{ title: 'Shell' }}
@@ -234,6 +237,7 @@ The response includes a list of comments and pagination information:
     "count": 25,
     "start": 0,
     "total": 100
-  }
+  },
+  "pagination_token": "eyJwYWdpbmF0aW9uVG9rZW4iOiJleUowYjJ0bGJpSTZJbVY1..."
 }
 ```
