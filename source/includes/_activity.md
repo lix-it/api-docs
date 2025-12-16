@@ -24,6 +24,7 @@ Parameter | Description
 --------- | -----------
 start            | The start index of the posts to return. The default value is 0.
 viewer_id | The LinkedIn ID of the account you would like to view this search as
+pagination_token | Token for paginated results. Use the token from the previous response to get the next page.
 
 ```shell
 curl "https://api.lix-it.com/v1/person/li/activity/posts?profile_link=https://www.linkedin.com/in/alfie-lambert&start=0" \
@@ -52,6 +53,7 @@ print(response.json())
 {
     "posts": [ Post ],
     "paging": { "count": 25, "start": 0, "total": 2500 },
+    "pagination_token": "eyJwYWdpbmF0aW9uVG9rZW4iOiJleUowYjJ0bGJpSTZJbVY1..."
 }
 ```
 
@@ -80,6 +82,7 @@ Parameter | Description
 --------- | -----------
 start            | The start index of the comments to return. The default value is 0.
 viewer_id | The LinkedIn ID of the account you would like to view this search as
+pagination_token | Token for paginated results. Use the token from the previous response to get the next page.
 
 ```shell
 curl "https://api.lix-it.com/v1/person/li/activity/comments?profile_link=https://www.linkedin.com/in/alfie-lambert&start=0" \
@@ -108,5 +111,6 @@ print(response.json())
 {
     "comments": [ Comment ],
     "paging": { "count": 25, "start": 0, "total": 2500 },
+    "pagination_token": "eyJwYWdpbmF0aW9uVG9rZW4iOiJleUowYjJ0bGJpSTZJbVY1..."
 }
 ```
