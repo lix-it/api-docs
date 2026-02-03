@@ -723,6 +723,74 @@ Parameter | Description
 --------- | -----------
 viewer_id | The LinkedIn ID of the account you would like to view this organisation as
 
+## Organisation by Website
+
+<aside class="notice">
+Uses 1 Organisation credit.
+</aside>
+
+This endpoint retrieves organisation information by website URL or domain. The endpoint automatically extracts the domain from full URLs (e.g., `https://www.acme.com` becomes `acme.com`) and searches for matching organisations.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/organisations/by-website`
+
+### URL Parameters
+
+#### Required parameters
+
+Parameter | Description
+--------- | -----------
+website | The website URL or domain to look up (e.g., `https://www.acme.com` or `acme.com`)
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/organisations/by-website?website=https://www.acme.com"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```shell
+curl "https://api.lix-it.com/v1/organisations/by-website?website=https://www.acme.com" \
+  -H "Authorization: lixApiKey"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "organisations": [
+        {
+            "name": "Acme Corporation",
+            "link": "https://www.linkedin.com/company/acme-corp",
+            "industry": "Technology",
+            "website": "https://www.acme.com",
+            "description": "Acme Corporation is a leading technology company providing innovative solutions.",
+            "headquarters": "San Francisco, US",
+            "companyType": "Private Company",
+            "liEmployeeCount": "500",
+            "size": "201-500",
+            "specialities": "Software Development, Cloud Computing, AI",
+            "followers": "15000",
+            "salesNavLink": "https://www.linkedin.com/sales/accounts/insights?companyId=12345",
+            "logoUrl": "https://media.licdn.com/dms/image/example/company-logo"
+        }
+    ]
+}
+```
+
+<aside class="notice">
+The endpoint returns up to 5 matching organisations. If no organisations are found for the given domain, an empty array is returned.
+</aside>
+
 ## Post Comments
 
 Get comments for a LinkedIn post by URN.
