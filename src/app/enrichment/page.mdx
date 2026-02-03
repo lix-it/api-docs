@@ -942,33 +942,33 @@ curl "https://api.lix-it.com/v1/person?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0q
 <Row>
 <Col>
 
-## Organisation by Domain
+## Organisation by Website
 
 <Note variant="purple">
 Uses 1 Organisation Credit.
 </Note>
 
-This endpoint looks up organisations by their website domain. It queries an internal database of email domains associated with organisations and returns up to 5 matching organisations.
+This endpoint looks up organisations by their website URL or domain. It automatically extracts the domain from the provided website URL and queries an internal database of email domains associated with organisations, returning up to 5 matching organisations.
 
 ### HTTP Request
 
-`GET https://api.lix-it.com/v1/organisations/by-domain/{domain}`
+`GET https://api.lix-it.com/v1/organisations/by-website`
 
-### Path Parameters
+### Query Parameters
 
 Parameter | Description
 --------- | -----------
-domain | The website domain to look up (e.g., "example.com")
+website | The website URL or domain to look up (e.g., "https://www.acme.com" or "acme.com")
 
 </Col>
 <Col sticky>
 
-<CodeGroup title="Organisation by Domain" tag="GET" label="/v1/organisations/by-domain/{domain}">
+<CodeGroup title="Organisation by Website" tag="GET" label="/v1/organisations/by-website">
 
 ```python
 import requests
 
-url = "https://api.lix-it.com/v1/organisations/by-domain/acme.com"
+url = "https://api.lix-it.com/v1/organisations/by-website?website=https://www.acme.com"
 
 payload={}
 headers = {
@@ -981,7 +981,7 @@ print(response.json())
 ```
 
 ```bash {{ title: 'Shell' }}
-curl "https://api.lix-it.com/v1/organisations/by-domain/acme.com" \
+curl "https://api.lix-it.com/v1/organisations/by-website?website=https://www.acme.com" \
   -H "Authorization: lixApiKey"
 ```
 
