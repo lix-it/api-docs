@@ -942,14 +942,110 @@ curl "https://api.lix-it.com/v1/person?sales_nav_id=ACoAAAXQSFkBYBAvJOtLzKQz7X0q
 <Row>
 <Col>
 
+## Organisation by Website
+
+<Note variant="purple">
+Uses 1 Organisation Credit.
+</Note>
+
+This endpoint looks up organisations by their website URL or domain. It automatically extracts the domain from the provided website URL and queries an internal database of email domains associated with organisations, returning up to 5 matching organisations.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/organisations/by-website`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+website | The website URL or domain to look up (e.g., "https://www.acme.com" or "acme.com")
+
+</Col>
+<Col sticky>
+
+<CodeGroup title="Organisation by Website" tag="GET" label="/v1/organisations/by-website">
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/organisations/by-website?website=https://www.acme.com"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/organisations/by-website?website=https://www.acme.com" \
+  -H "Authorization: lixApiKey"
+```
+
+```json {{ title: 'Response' }}
+{
+  "organisations": [
+    {
+      "org": {
+        "id": "12345",
+        "name": "Acme Corporation",
+        "liID": "acme-corp",
+        "salesNavID": "123456789",
+        "uuid": "abc123-def456-ghi789"
+      },
+      "profile": {
+        "name": "Acme Corporation",
+        "industry": "Technology",
+        "size": "1001-5000",
+        "logoUrl": "https://media.licdn.com/dms/image/example/company-logo.jpg",
+        "hqCountry": "United States",
+        "foundedYear": 2010,
+        "website": "https://www.acme.com",
+        "description": "Acme Corporation is a leading technology company.",
+        "orgType": "Public Company",
+        "employeeCount": 2500,
+        "specialities": "Software, Cloud Computing, AI",
+        "followerCount": 50000,
+        "jobOpeningsCount": 25,
+        "headquartersAddress": "San Francisco, CA",
+        "salesNavUrl": "https://www.linkedin.com/sales/company/123456789",
+        "linkedinUrl": "https://www.linkedin.com/company/acme-corp"
+      }
+    }
+  ],
+  "paging": {
+    "total": 1,
+    "count": 1,
+    "start": 0
+  }
+}
+```
+
+</CodeGroup>
+
+<Note variant="warning">
+Please be aware if some data points do not exist, these will be returned as null.
+</Note>
+
+</Col>
+</Row>
+
+---
+
+<Row>
+<Col>
+
 
 
 ## Organisation
 <Note variant="purple">
-Uses 1 Standard Credit.
+Uses 1 Organisation Credit.
 </Note>
 
-This endpoint retrieves a specific profile.
+This endpoint retrieves a specific organisation profile by LinkedIn URL.
 
 ### HTTP Request
 
