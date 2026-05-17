@@ -13,6 +13,7 @@ toc_footers:
   - We are not affiliated with LinkedIn.
 
 includes:
+  - agents
   - lix_account
   - account
   - disambiguation
@@ -50,6 +51,14 @@ Currently we have code examples for the following languages:
 - Java
 
 Should you have further questions, feel free to contact our tech team via email at [help@lix-it.com](mailto:help@lix-it.com) or by using the web chat in the bottom right of your screen.
+
+<aside class="notice">
+  <strong>Using an AI agent?</strong> These docs are also served over SSH
+  at <code>ssh lix.sh</code> so agents can explore them with
+  <code>ls</code>, <code>cat</code>, <code>grep</code>, and
+  <code>find</code>. See the <a href="#for-ai-agents">For AI Agents</a>
+  section below.
+</aside>
 
 # API Productivity
 
