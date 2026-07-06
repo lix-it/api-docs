@@ -503,16 +503,16 @@ print(response.json())
 
 ## Sales Navigator Lead List
 
-This endpoint retrieves a single page of a saved Sales Navigator lead list. Use the [Sales Navigator Leads Search](#sales-navigator-leads-search) endpoint and pass the URL of the lead list (`https://www.linkedin.com/sales/lists/people/{listId}`) as the `url` parameter.
+This endpoint retrieves a single page of a saved Sales Navigator lead list.
 
 The `viewer_id` parameter is required and must be the LinkedIn ID of the account that owns the list.
 
-To paginate through the list, append a `page` parameter to the list URL, e.g. `https://www.linkedin.com/sales/lists/people/{listId}?page=2`. Each page contains 25 results.
+To paginate through the list, use the `page` parameter. Each page contains 25 results.
 
 <aside class="notice"> Uses 1 Standard Credit.</aside>
 
 ### HTTP Request
-`GET https://api.lix-it.com/v1/li/sales/search/people`
+`GET https://api.lix-it.com/v1/li/sales/lists/people`
 
 ### URL Parameters
 
@@ -520,29 +520,24 @@ To paginate through the list, append a `page` parameter to the list URL, e.g. `h
 
 Parameter | Description
 --------- | -----------
-url       | The url-encoded LinkedIn lead list URL
+list_id   | The ID of the lead list, e.g. `6743848588473139200` for `https://www.linkedin.com/sales/lists/people/6743848588473139200`
 viewer_id | The LinkedIn ID of the account that owns the list
 
 #### Optional Parameters
 Parameter | Description
 --------- | -----------
+page      | The page of the list to retrieve, starting at 1
 sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 ```shell
-curl "https://api.lix-it.com/v1/li/sales/search/people?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U&url=https%3A%2F%2Fwww.linkedin.com%2Fsales%2Flists%2Fpeople%2F6743848588473139200%3Fpage%3D1" \
+curl "https://api.lix-it.com/v1/li/sales/lists/people?list_id=6743848588473139200&viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U&page=1" \
   -H "Authorization: lixApiKey"
 ```
 
 ```python
 import requests
-import urllib.parse
 
-linkedin_url = "https://www.linkedin.com/sales/lists/people/6743848588473139200?page=1"
-
-# encode the URL
-linkedin_url = urllib.parse.quote(linkedin_url, safe='')
-
-url = "https://api.lix-it.com/v1/li/sales/search/people?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U&url=" + linkedin_url
+url = "https://api.lix-it.com/v1/li/sales/lists/people?list_id=6743848588473139200&viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U&page=1"
 
 payload={}
 headers = {
@@ -570,16 +565,16 @@ print(response.json())
 
 ## Sales Navigator Account List
 
-This endpoint retrieves a single page of a saved Sales Navigator account list. Use the [Sales Navigator Accounts Search](#sales-navigator-accounts-search) endpoint and pass the URL of the account list (`https://www.linkedin.com/sales/lists/company/{listId}`) as the `url` parameter.
+This endpoint retrieves a single page of a saved Sales Navigator account list.
 
 The `viewer_id` parameter is required and must be the LinkedIn ID of the account that owns the list.
 
-To paginate through the list, append a `page` parameter to the list URL, e.g. `https://www.linkedin.com/sales/lists/company/{listId}?page=2`. Each page contains 25 results.
+To paginate through the list, use the `page` parameter. Each page contains 25 results.
 
 <aside class="notice"> Uses 1 Standard Credit.</aside>
 
 ### HTTP Request
-`GET https://api.lix-it.com/v1/li/sales/search/orgs`
+`GET https://api.lix-it.com/v1/li/sales/lists/orgs`
 
 ### URL Parameters
 
@@ -587,29 +582,24 @@ To paginate through the list, append a `page` parameter to the list URL, e.g. `h
 
 Parameter | Description
 --------- | -----------
-url       | The url-encoded LinkedIn account list URL
+list_id   | The ID of the account list, e.g. `6743848588473139200` for `https://www.linkedin.com/sales/lists/company/6743848588473139200`
 viewer_id | The LinkedIn ID of the account that owns the list
 
 #### Optional Parameters
 Parameter | Description
 --------- | -----------
+page      | The page of the list to retrieve, starting at 1
 sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 ```shell
-curl "https://api.lix-it.com/v1/li/sales/search/orgs?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U&url=https%3A%2F%2Fwww.linkedin.com%2Fsales%2Flists%2Fcompany%2F6743848588473139200%3Fpage%3D1" \
+curl "https://api.lix-it.com/v1/li/sales/lists/orgs?list_id=6743848588473139200&viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U&page=1" \
   -H "Authorization: lixApiKey"
 ```
 
 ```python
 import requests
-import urllib.parse
 
-linkedin_url = "https://www.linkedin.com/sales/lists/company/6743848588473139200?page=1"
-
-# encode the URL
-linkedin_url = urllib.parse.quote(linkedin_url, safe='')
-
-url = "https://api.lix-it.com/v1/li/sales/search/orgs?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U&url=" + linkedin_url
+url = "https://api.lix-it.com/v1/li/sales/lists/orgs?list_id=6743848588473139200&viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U&page=1"
 
 payload={}
 headers = {
