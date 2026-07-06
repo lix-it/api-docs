@@ -501,6 +501,140 @@ print(response.json())
 }
 ```
 
+## Sales Navigator Lead List
+
+This endpoint retrieves a single page of a saved Sales Navigator lead list. Use the [Sales Navigator Leads Search](#sales-navigator-leads-search) endpoint and pass the URL of the lead list (`https://www.linkedin.com/sales/lists/people/{listId}`) as the `url` parameter.
+
+The `viewer_id` parameter is required and must be the LinkedIn ID of the account that owns the list.
+
+To paginate through the list, append a `page` parameter to the list URL, e.g. `https://www.linkedin.com/sales/lists/people/{listId}?page=2`. Each page contains 25 results.
+
+<aside class="notice"> Uses 1 Standard Credit.</aside>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/li/sales/search/people`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+url       | The url-encoded LinkedIn lead list URL
+viewer_id | The LinkedIn ID of the account that owns the list
+
+#### Optional Parameters
+Parameter | Description
+--------- | -----------
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
+
+```shell
+curl "https://api.lix-it.com/v1/li/sales/search/people?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U&url=https%3A%2F%2Fwww.linkedin.com%2Fsales%2Flists%2Fpeople%2F6743848588473139200%3Fpage%3D1" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+import urllib.parse
+
+linkedin_url = "https://www.linkedin.com/sales/lists/people/6743848588473139200?page=1"
+
+# encode the URL
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/li/sales/search/people?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U&url=" + linkedin_url
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "searchResponse": {
+    "people": [ Person ],
+    "paging": { "count": 25, "start": 0, "total": 250 },
+  },
+  "meta": {
+    "sequenceId": "jAkFkdjfi19kFdf"
+  }
+}
+```
+
+## Sales Navigator Account List
+
+This endpoint retrieves a single page of a saved Sales Navigator account list. Use the [Sales Navigator Accounts Search](#sales-navigator-accounts-search) endpoint and pass the URL of the account list (`https://www.linkedin.com/sales/lists/company/{listId}`) as the `url` parameter.
+
+The `viewer_id` parameter is required and must be the LinkedIn ID of the account that owns the list.
+
+To paginate through the list, append a `page` parameter to the list URL, e.g. `https://www.linkedin.com/sales/lists/company/{listId}?page=2`. Each page contains 25 results.
+
+<aside class="notice"> Uses 1 Standard Credit.</aside>
+
+### HTTP Request
+`GET https://api.lix-it.com/v1/li/sales/search/orgs`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+url       | The url-encoded LinkedIn account list URL
+viewer_id | The LinkedIn ID of the account that owns the list
+
+#### Optional Parameters
+Parameter | Description
+--------- | -----------
+sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
+
+```shell
+curl "https://api.lix-it.com/v1/li/sales/search/orgs?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U&url=https%3A%2F%2Fwww.linkedin.com%2Fsales%2Flists%2Fcompany%2F6743848588473139200%3Fpage%3D1" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+import urllib.parse
+
+linkedin_url = "https://www.linkedin.com/sales/lists/company/6743848588473139200?page=1"
+
+# encode the URL
+linkedin_url = urllib.parse.quote(linkedin_url, safe='')
+
+url = "https://api.lix-it.com/v1/li/sales/search/orgs?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U&url=" + linkedin_url
+
+payload={}
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "searchResponse": {
+    "people": [ Organisation ],
+    "paging": { "count": 25, "start": 0, "total": 250 },
+  },
+  "meta": {
+    "sequenceId": "jAkFkdjfi19kFdf"
+  }
+}
+```
+
 ## Search Facet Typeahead
 
 This endpoint retrieves typeaheads for a LinkedIn search facet.
