@@ -604,6 +604,85 @@ Parameter | Description
 --------- | -----------
 viewer_id | The LinkedIn ID of the account you would like to view this profile as
 
+## Person Employment
+
+<aside class="notice">
+Uses 1 Standard Credit.
+</aside>
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/person/employment?profile_link=https://www.linkedin.com/in/jane-doe-example"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```shell
+curl "https://api.lix-it.com/v1/person/employment?profile_link=https://www.linkedin.com/in/jane-doe-example" \
+  -H "Authorization: lixApiKey"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "experiences": [
+        {
+            "title": "Senior Software Engineer",
+            "companyName": "Tech Solutions Inc",
+            "companyUrn": "urn:li:fsd_company:12345678",
+            "location": "London, England, United Kingdom",
+            "employmentType": "Full-time",
+            "startDate": {
+                "year": 2021,
+                "month": 3
+            }
+        },
+        {
+            "title": "Software Engineering Consultant",
+            "companyName": "Acme Consulting",
+            "companyUrn": "urn:li:fsd_company:87654321",
+            "location": "Remote",
+            "employmentType": "Contract",
+            "startDate": {
+                "year": 2019,
+                "month": 6
+            },
+            "endDate": {
+                "year": 2021,
+                "month": 2
+            }
+        }
+    ]
+}
+```
+
+This endpoint retrieves a person's employment experiences along with the employment type of each position (e.g. "Full-time", "Part-time", "Contract", "Internship"). Employment type is not available from the standard Person endpoint, so this is a separate enrichment.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/person/employment`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+profile_link | true* | The LinkedIn profile URL of the person (e.g., https://www.linkedin.com/in/username)
+profile_id | true* | The public identifier of the person (e.g., "username"). Either profile_link or profile_id must be provided.
+viewer_id | false | The LinkedIn ID of the account you would like to view this profile as
+
+<aside class="notice">
+If some data points do not exist (for example a position without an employment type or end date), these fields will be omitted from the response.
+</aside>
+
 ## Person Extended
 
 The person extended endpoint returns extended profile information, specifically whether the person is a LinkedIn Top Voice.
