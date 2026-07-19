@@ -625,6 +625,136 @@ print(response.json())
 }
 ```
 
+## Sales Navigator Messages
+
+This endpoint retrieves and sends Sales Navigator messages.
+
+The `viewer_id` parameter is required and must be the LinkedIn ID of the account you would like to use to read or send messages.
+
+<aside class="notice"> Uses 1 Standard Credit.</aside>
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/li/sales/messages`
+
+`POST https://api.lix-it.com/v1/li/sales/messages`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to use to read or send messages.
+
+#### Optional GET Parameters
+
+Parameter | Description
+--------- | -----------
+thread_id | The ID of the thread to retrieve. When omitted, a list of inbox threads is returned.
+filter | The inbox filter. Defaults to `INBOX`.
+count | The number of threads or messages to return. Defaults to `20` for a list and `1` for a thread.
+message_count | The number of messages to include when retrieving a thread. Defaults to `10`.
+page_starts_at | A pagination cursor for listing threads, returned from a previous list request.
+
+#### Required POST Body Parameters
+
+Parameter | Description
+--------- | -----------
+thread_id | The ID of the thread to send the message to.
+body | The message body.
+
+#### Optional POST Body Parameters
+
+Parameter | Description
+--------- | -----------
+subject | The message subject.
+copy_to_crm | Whether to copy the message to a connected CRM. Defaults to `false`.
+
+```shell
+# Retrieve inbox threads
+curl "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U" \
+  -H "Authorization: lixApiKey"
+
+# Retrieve a thread
+curl "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U&thread_id=2-YWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==" \
+  -H "Authorization: lixApiKey"
+
+# Send a message
+curl -X POST "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U" \
+  -H "Authorization: lixApiKey" \
+  -H "Content-Type: application/json" \
+  -d '{"thread_id":"2-YWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==","body":"Hi, just reaching out."}'
+```
+
+```python
+import requests
+
+# Retrieve inbox threads
+url = "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U"
+
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.json())
+
+# Send a message
+url = "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U"
+
+payload = {
+    "thread_id": "2-YWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==",
+    "body": "Hi, just reaching out."
+}
+
+headers = {
+  'Content-type': 'application/json',
+  'Authorization': lix_api_key
+}
+
+response = requests.request("POST", url, headers=headers, json=payload)
+
+print(response.json())
+```
+
+> The above retrieve commands return JSON structured like this:
+
+```json
+{
+  "data": {
+    "elements": [
+      {
+        "entityUrn": "urn:li:fs_salesMessagingThread:2-YWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==",
+        "unreadMessageCount": 0,
+        "totalMessageCount": 3,
+        "messages": [
+          {
+            "id": "urn:li:fs_salesMessagingMessage:2-YWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==-1",
+            "body": "Hi, just reaching out.",
+            "deliveredAt": 1784478694558
+          }
+        ]
+      }
+    ],
+    "paging": {
+      "count": 20,
+      "start": 0,
+      "total": 1
+    }
+  },
+  "included": [
+    {
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "fullName": "Jane Doe",
+      "objectUrn": "urn:li:member:123456789"
+    }
+  ]
+}
+```
+
 ## Search Facet Typeahead
 
 This endpoint retrieves typeaheads for a LinkedIn search facet.
