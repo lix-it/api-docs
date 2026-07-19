@@ -218,6 +218,7 @@ export const navigation = [
       { title: 'Enrichment API', href: '/enrichment' },
       { title: 'LinkedIn Search API', href: '/linkedin-search' },
       { title: 'LookC API', href: '/lookc' },
+      { title: 'Messages API', href: '/messages' },
       { title: 'LIX AI API', href: '/lix-ai' },
       { title: 'Contact Information API', href: '/contact' },
 

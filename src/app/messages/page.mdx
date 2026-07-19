@@ -1,0 +1,272 @@
+export const metadata = {
+  title: 'LinkedIn Messages API',
+  description:
+    'Learn how to retrieve and send LinkedIn messages using the Lix Messages API. viewer_id is required for both endpoints.',
+}
+
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# LinkedIn Messages API
+
+Retrieve and send LinkedIn messages for a given conversation. `viewer_id` is required for both endpoints.
+
+## Get Messages
+
+Retrieve the messages in a LinkedIn conversation.
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/li/messages`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to view this conversation as.
+conversation_urn | The LinkedIn conversation URN, e.g. `urn:li:msg_conversation:(urn:li:fsd_profile:<viewer_id>,<conversation_id>)`.
+
+#### Optional Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+sync_token | | A sync token returned from a previous request. Omit for the initial load.
+delivered_at | | A timestamp anchor for pagination around a specific message.
+count_before | 0 | Number of messages to load before the anchor.
+count_after | 0 | Number of messages to load after the anchor.
+
+<CodeGroup title="Get Messages" tag="GET" label="/v1/li/messages">
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/li/messages?viewer_id=ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4&conversation_urn=urn%3Ali%3Amsg_conversation%3A%28urn%3Ali%3Afsd_profile%3AACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4%2C2-OGFlYjMwMDItZmZhYS00YmI0LTgxNDEtN2JiNTQ1MzIxODFkXzEwMA%3D%3D%29" \
+  -H "Authorization: lixApiKey"
+```
+
+```python {{ title: 'Python' }}
+import requests
+import urllib.parse
+
+conversation_urn = "urn:li:msg_conversation:(urn:li:fsd_profile:ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4,2-OGFlYjMwMDItZmZhYS00YmI0LTgxNDEtN2JiNTQ1MzIxODFkXzEwMA==)"
+encoded_urn = urllib.parse.quote(conversation_urn, safe='')
+
+url = f"https://api.lix-it.com/v1/li/messages?viewer_id=ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4&conversation_urn={encoded_urn}"
+
+headers = {
+    'Authorization': 'lixApiKey'
+}
+
+response = requests.get(url, headers=headers)
+print(response.json())
+```
+
+```go {{ title: 'Go' }}
+package main
+
+import (
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "log"
+)
+
+func main() {
+    req, err := http.NewRequest("GET", "https://api.lix-it.com/v1/li/messages?viewer_id=ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4&conversation_urn=urn%3Ali%3Amsg_conversation%3A%28urn%3Ali%3Afsd_profile%3AACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4%2C2-OGFlYjMwMDItZmZhYS00YmI0LTgxNDEtN2JiNTQ1MzIxODFkXzEwMA%3D%3D%29", nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    req.Header.Set("Authorization", "lixApiKey")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer resp.Body.Close()
+
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    fmt.Println(string(body))
+}
+```
+
+```javascript {{ title: 'Node.js' }}
+const axios = require('axios');
+
+const url = "https://api.lix-it.com/v1/li/messages?viewer_id=ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4&conversation_urn=urn%3Ali%3Amsg_conversation%3A%28urn%3Ali%3Afsd_profile%3AACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4%2C2-OGFlYjMwMDItZmZhYS00YmI0LTgxNDEtN2JiNTQ1MzIxODFkXzEwMA%3D%3D%29";
+const headers = {
+    'Authorization': 'lixApiKey'
+};
+
+axios.get(url, { headers })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
+```
+</CodeGroup>
+
+The response includes a list of messages and a sync token:
+
+```json
+{
+  "messages": [
+    {
+      "backendUrn": "urn:li:messagingMessage:2-...",
+      "conversationUrn": "urn:li:msg_conversation:(...)",
+      "backendConversationUrn": "urn:li:messagingThread:...",
+      "deliveredAt": "1784478668446",
+      "bodyText": "Hey Lars, we launched a new version of OpenLore...",
+      "originToken": "f7f4fe26-31b1-483b-b82d-a7f0533a4a56",
+      "senderHostIdentityUrn": "urn:li:fsd_profile:ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4",
+      "senderFirstName": "Adil",
+      "senderLastName": "A",
+      "senderHeadline": "CEO at Lix",
+      "senderProfileUrl": "https://www.linkedin.com/in/adil-a-...",
+      "senderPublicIdentifier": "adil-a-...",
+      "senderProfilePictureUrl": "https://media.licdn.com/dms/image/..."
+    }
+  ],
+  "syncToken": "..."
+}
+```
+
+## Send Message
+
+Send a message to an existing LinkedIn conversation.
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
+
+### HTTP Request
+
+`POST https://api.lix-it.com/v1/li/messages`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to send the message as.
+
+### Body Parameters
+
+Parameter | Description
+--------- | -----------
+conversation_urn | The LinkedIn conversation URN.
+body | The message text to send.
+
+<CodeGroup title="Send Message" tag="POST" label="/v1/li/messages">
+```bash {{ title: 'Shell' }}
+curl -X POST "https://api.lix-it.com/v1/li/messages?viewer_id=ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4" \
+  -H "Authorization: lixApiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "conversation_urn": "urn:li:msg_conversation:(urn:li:fsd_profile:ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4,2-OGFlYjMwMDItZmZhYS00YmI0LTgxNDEtN2JiNTQ1MzIxODFkXzEwMA==)",
+    "body": "Hey Lars, we launched a new version of OpenLore with Google OKF support."
+  }'
+```
+
+```python {{ title: 'Python' }}
+import requests
+
+url = "https://api.lix-it.com/v1/li/messages?viewer_id=ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4"
+
+payload = {
+    "conversation_urn": "urn:li:msg_conversation:(urn:li:fsd_profile:ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4,2-OGFlYjMwMDItZmZhYS00YmI0LTgxNDEtN2JiNTQ1MzIxODFkXzEwMA==)",
+    "body": "Hey Lars, we launched a new version of OpenLore with Google OKF support."
+}
+
+headers = {
+    'Authorization': 'lixApiKey',
+    'Content-Type': 'application/json'
+}
+
+response = requests.post(url, headers=headers, json=payload)
+print(response.json())
+```
+
+```go {{ title: 'Go' }}
+package main
+
+import (
+    "bytes"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "log"
+)
+
+func main() {
+    payload := []byte(`{
+        "conversation_urn": "urn:li:msg_conversation:(urn:li:fsd_profile:ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4,2-OGFlYjMwMDItZmZhYS00YmI0LTgxNDEtN2JiNTQ1MzIxODFkXzEwMA==)",
+        "body": "Hey Lars, we launched a new version of OpenLore with Google OKF support."
+    }`)
+
+    req, err := http.NewRequest("POST", "https://api.lix-it.com/v1/li/messages?viewer_id=ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4", bytes.NewBuffer(payload))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    req.Header.Set("Authorization", "lixApiKey")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer resp.Body.Close()
+
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    fmt.Println(string(body))
+}
+```
+
+```javascript {{ title: 'Node.js' }}
+const axios = require('axios');
+
+const url = "https://api.lix-it.com/v1/li/messages?viewer_id=ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4";
+const payload = {
+    conversation_urn: "urn:li:msg_conversation:(urn:li:fsd_profile:ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4,2-OGFlYjMwMDItZmZhYS00YmI0LTgxNDEtN2JiNTQ1MzIxODFkXzEwMA==)",
+    body: "Hey Lars, we launched a new version of OpenLore with Google OKF support."
+};
+const headers = {
+    'Authorization': 'lixApiKey',
+    'Content-Type': 'application/json'
+};
+
+axios.post(url, payload, { headers })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
+```
+</CodeGroup>
+
+The response includes the sent message:
+
+```json
+{
+  "message": {
+    "backendUrn": "urn:li:messagingMessage:2-...",
+    "conversationUrn": "urn:li:msg_conversation:(...)",
+    "backendConversationUrn": "urn:li:messagingThread:...",
+    "deliveredAt": "1784478668446",
+    "bodyText": "Hey Lars, we launched a new version of OpenLore...",
+    "originToken": "f7f4fe26-31b1-483b-b82d-a7f0533a4a56",
+    "senderHostIdentityUrn": "urn:li:fsd_profile:ACoAABo4FvUBi32WkuNris96r_pxCYv_g1GWYA4"
+  }
+}
+```
