@@ -625,17 +625,179 @@ print(response.json())
 }
 ```
 
-## Sales Navigator Messages
+## Sales Navigator Message Threads
 
-This endpoint retrieves and sends Sales Navigator messages.
+This endpoint retrieves a list of Sales Navigator inbox threads.
 
-The `viewer_id` parameter is required and must be the LinkedIn ID of the account you would like to use to read or send messages.
+The `viewer_id` parameter is required and must be the LinkedIn ID of the account you would like to use to read messages.
 
 <aside class="notice"> Uses 1 Standard Credit.</aside>
 
 ### HTTP Request
 
-`GET https://api.lix-it.com/v1/li/sales/messages`
+`GET https://api.lix-it.com/v1/li/sales/messages/threads`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to use to read messages.
+
+#### Optional Parameters
+
+Parameter | Description
+--------- | -----------
+filter | The inbox filter. Defaults to `INBOX`.
+count | The number of threads to return. Defaults to `20`.
+page_starts_at | A timestamp cursor for paginating threads. Omit for the first page and pass the `nextPageStartsAt` value from the last thread of the previous page for subsequent pages.
+
+```shell
+curl "https://api.lix-it.com/v1/li/sales/messages/threads?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/li/sales/messages/threads?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U"
+
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.json())
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "entityUrn": "urn:li:collectionResponse:PopkTstlxyeYnbhlfZ+d6lNy7REhOw2OZvOIwW4GP3A=",
+    "elements": [
+      {
+        "id": "2-YWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==",
+        "nextPageStartsAt": 1783442049093,
+        "totalMessageCount": 3,
+        "unreadMessageCount": 0,
+        "archived": false,
+        "messages": [
+          {
+            "id": "2-MTc4MzQ0MjA0OTA5NGIyNjM0OS0xMDAmYWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==",
+            "type": "INMAIL",
+            "body": "Hi, just reaching out.",
+            "deliveredAt": 1783442049094
+          }
+        ],
+        "participants": [
+          "urn:li:fs_salesProfile:(ACwAADsVyAUBSlwfupCn2OxQAEXgNtvpQ7WMdjE,NAME_SEARCH,sSow)"
+        ]
+      }
+    ]
+  },
+  "included": [
+    {
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "fullName": "Jane Doe",
+      "objectUrn": "urn:li:member:123456789"
+    }
+  ]
+}
+```
+
+## Sales Navigator Message Thread
+
+This endpoint retrieves a single Sales Navigator message thread by `thread_id`.
+
+The `viewer_id` parameter is required and must be the LinkedIn ID of the account you would like to use to read messages.
+
+<aside class="notice"> Uses 1 Standard Credit.</aside>
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/li/sales/messages/threads/{thread_id}`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+thread_id | The ID of the thread to retrieve. This is a path parameter.
+viewer_id | The LinkedIn ID of the account you would like to use to read messages.
+
+#### Optional Parameters
+
+Parameter | Description
+--------- | -----------
+count | Defaults to `1`.
+message_count | The number of messages to return in the thread. Defaults to `10`.
+
+```shell
+curl "https://api.lix-it.com/v1/li/sales/messages/threads/2-YWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/li/sales/messages/threads/2-YWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U"
+
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.json())
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "id": "2-YWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==",
+    "totalMessageCount": 3,
+    "unreadMessageCount": 0,
+    "archived": false,
+    "messages": [
+      {
+        "id": "2-MTc4MzQ0MjA0OTA5NGIyNjM0OS0xMDAmYWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==",
+        "type": "INMAIL",
+        "body": "Hi, just reaching out.",
+        "deliveredAt": 1783442049094
+      }
+    ],
+    "participants": [
+      "urn:li:fs_salesProfile:(ACwAADsVyAUBSlwfupCn2OxQAEXgNtvpQ7WMdjE,NAME_SEARCH,sSow)"
+    ]
+  },
+  "included": [
+    {
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "fullName": "Jane Doe",
+      "objectUrn": "urn:li:member:123456789"
+    }
+  ]
+}
+```
+
+## Send a Sales Navigator Message
+
+This endpoint sends a Sales Navigator message to an existing thread.
+
+The `viewer_id` query parameter is required and must be the LinkedIn ID of the account you would like to use to send the message.
+
+<aside class="notice"> Uses 1 Standard Credit.</aside>
+
+### HTTP Request
 
 `POST https://api.lix-it.com/v1/li/sales/messages`
 
@@ -645,26 +807,18 @@ The `viewer_id` parameter is required and must be the LinkedIn ID of the account
 
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to use to read or send messages.
+viewer_id | The LinkedIn ID of the account you would like to use to send the message.
 
-#### Optional GET Parameters
+### Body Parameters
 
-Parameter | Description
---------- | -----------
-thread_id | The ID of the thread to retrieve. When omitted, a list of inbox threads is returned.
-filter | The inbox filter. Defaults to `INBOX`.
-count | The number of threads or messages to return. Defaults to `20` for a list and `1` for a thread.
-message_count | The number of messages to include when retrieving a thread. Defaults to `10`.
-page_starts_at | A pagination cursor for listing threads, returned from a previous list request.
-
-#### Required POST Body Parameters
+#### Required Parameters
 
 Parameter | Description
 --------- | -----------
 thread_id | The ID of the thread to send the message to.
 body | The message body.
 
-#### Optional POST Body Parameters
+#### Optional Parameters
 
 Parameter | Description
 --------- | -----------
@@ -672,15 +826,6 @@ subject | The message subject.
 copy_to_crm | Whether to copy the message to a connected CRM. Defaults to `false`.
 
 ```shell
-# Retrieve inbox threads
-curl "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U" \
-  -H "Authorization: lixApiKey"
-
-# Retrieve a thread
-curl "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U&thread_id=2-YWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==" \
-  -H "Authorization: lixApiKey"
-
-# Send a message
 curl -X POST "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U" \
   -H "Authorization: lixApiKey" \
   -H "Content-Type: application/json" \
@@ -690,18 +835,6 @@ curl -X POST "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0B
 ```python
 import requests
 
-# Retrieve inbox threads
-url = "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U"
-
-headers = {
-  'Authorization': lix_api_key
-}
-
-response = requests.request("GET", url, headers=headers)
-
-print(response.json())
-
-# Send a message
 url = "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U"
 
 payload = {
@@ -719,39 +852,24 @@ response = requests.request("POST", url, headers=headers, json=payload)
 print(response.json())
 ```
 
-> The above retrieve commands return JSON structured like this:
+> The above command returns JSON structured like this:
 
 ```json
 {
   "data": {
-    "elements": [
+    "id": "2-YWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==",
+    "totalMessageCount": 4,
+    "unreadMessageCount": 0,
+    "messages": [
       {
-        "entityUrn": "urn:li:fs_salesMessagingThread:2-YWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==",
-        "unreadMessageCount": 0,
-        "totalMessageCount": 3,
-        "messages": [
-          {
-            "id": "urn:li:fs_salesMessagingMessage:2-YWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==-1",
-            "body": "Hi, just reaching out.",
-            "deliveredAt": 1784478694558
-          }
-        ]
+        "id": "2-MTc4MzQ0MjA0OTA5NGIyNjM0OS0xMDAmYWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==",
+        "type": "INMAIL",
+        "body": "Hi, just reaching out.",
+        "deliveredAt": 1783442049094
       }
-    ],
-    "paging": {
-      "count": 20,
-      "start": 0,
-      "total": 1
-    }
+    ]
   },
-  "included": [
-    {
-      "firstName": "Jane",
-      "lastName": "Doe",
-      "fullName": "Jane Doe",
-      "objectUrn": "urn:li:member:123456789"
-    }
-  ]
+  "included": []
 }
 ```
 
