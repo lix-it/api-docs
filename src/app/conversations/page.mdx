@@ -1,0 +1,145 @@
+export const metadata = {
+  title: 'LinkedIn Conversations API',
+  description:
+    'Learn how to retrieve LinkedIn conversations using the Lix Conversations API. viewer_id is required.',
+}
+
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# LinkedIn Conversations API
+
+Retrieve the list of LinkedIn conversations for a viewer account. `viewer_id` is required.
+
+<Note variant="purple">
+Uses 1 Standard Credit.
+</Note>
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/li/conversations`
+
+### URL Parameters
+
+#### Required Parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The Lix viewer id of the account you would like to fetch conversations for.
+
+#### Optional Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+sequence_id | | A Lix sequence id returned from a previous request. Pass it back to load the next page of conversations.
+count | 20 | Maximum number of conversations to return per page.
+
+<CodeGroup title="Get Conversations" tag="GET" label="/v1/li/conversations">
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/li/conversations?viewer_id=YOUR_VIEWER_ID" \
+  -H "Authorization: lixApiKey"
+```
+
+```python {{ title: 'Python' }}
+import requests
+
+url = "https://api.lix-it.com/v1/li/conversations?viewer_id=YOUR_VIEWER_ID"
+
+headers = {
+    'Authorization': 'lixApiKey'
+}
+
+response = requests.get(url, headers=headers)
+print(response.json())
+```
+
+```go {{ title: 'Go' }}
+package main
+
+import (
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "log"
+)
+
+func main() {
+    req, err := http.NewRequest("GET", "https://api.lix-it.com/v1/li/conversations?viewer_id=YOUR_VIEWER_ID", nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    req.Header.Set("Authorization", "lixApiKey")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer resp.Body.Close()
+
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    fmt.Println(string(body))
+}
+```
+
+```javascript {{ title: 'Node.js' }}
+const axios = require('axios');
+
+const url = "https://api.lix-it.com/v1/li/conversations?viewer_id=YOUR_VIEWER_ID";
+const headers = {
+    'Authorization': 'lixApiKey'
+};
+
+axios.get(url, { headers })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
+```
+</CodeGroup>
+
+The response includes a list of conversations and a `sequence_id` for pagination:
+
+```json
+{
+  "conversations": [
+    {
+      "backendUrn": "urn:li:messagingThread:2-...",
+      "conversationUrn": "urn:li:msg_conversation:(...)",
+      "title": "Jane Doe",
+      "createdAt": "1784478668446",
+      "lastActivityAt": "1784478668446",
+      "unreadCount": 0,
+      "read": true,
+      "groupChat": false,
+      "conversationUrl": "https://www.linkedin.com/messaging/thread/YOUR_CONVERSATION_ID/",
+      "participants": [
+        {
+          "hostIdentityUrn": "urn:li:fsd_profile:YOUR_VIEWER_ID",
+          "firstName": "Jane",
+          "lastName": "Doe",
+          "headline": "CEO at Example",
+          "profileUrl": "https://www.linkedin.com/in/YOUR_PUBLIC_ID",
+          "publicIdentifier": "your-public-id",
+          "profilePictureUrl": "https://media.licdn.com/dms/image/..."
+        }
+      ],
+      "lastMessage": {
+        "backendUrn": "urn:li:messagingMessage:2-...",
+        "conversationUrn": "urn:li:msg_conversation:(...)",
+        "deliveredAt": "1784478668446",
+        "bodyText": "Hey, we launched a new version of our product...",
+        "originToken": "f7f4fe26-31b1-483b-b82d-a7f0533a4a56",
+        "senderHostIdentityUrn": "urn:li:fsd_profile:YOUR_VIEWER_ID",
+        "senderFirstName": "Jane",
+        "senderLastName": "Doe"
+      }
+    }
+  ],
+  "sequenceId": "YOUR_SEQUENCE_ID"
+}
+```
