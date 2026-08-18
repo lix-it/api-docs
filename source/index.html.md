@@ -20,6 +20,7 @@ includes:
   - enrichment
   - activity
   - linkedin
+  - messages
   - lookc
   - ai
   - contact
