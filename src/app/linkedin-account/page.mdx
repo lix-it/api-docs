@@ -81,3 +81,76 @@ The above commands return JSON structured like this:
 </Col>
 
 </Row>
+
+---
+
+<Row>
+
+<Col>
+
+## Get LinkedIn Account
+
+This endpoint retrieves a LinkedIn account attached to your team.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/account/linkedin/account`
+
+### URL Parameters
+
+Parameter | Description
+|--------- | -----------
+viewer_id | The LinkedIn ID of the account to retrieve.
+
+</Col>
+
+  <Col sticky>
+
+<CodeGroup title="Get LinkedIn Account" tag="GET" label="/v1/account/linkedin/account">
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/account/linkedin/account?viewer_id=alfie-lambert" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+import json
+url = "https://api.lix-it.com/v1/account/linkedin/account"
+headers = {
+  'Authorization': lix_api_key
+}
+params = {
+  'viewer_id': 'alfie-lambert'
+}
+response = requests.request("GET", url, headers=headers, params=params)
+print(response.json())
+```
+
+</CodeGroup>
+
+The above command returns JSON structured like this:
+
+```json
+{
+  "viewerId": "alfie-lambert",
+  "linkedInReady": true,
+  "salesNavigatorReady": false,
+  "warmup": {
+    "status": "warming",
+    "details": {
+      "active_days": 2,
+      "daily_limit": 100,
+      "hourly_limit": 40,
+      "max_daily_limit": 500,
+      "max_hourly_limit": 100
+    }
+  }
+}
+```
+
+The `warmup` object is only present when the account warmup feature is enabled for the account. When warmup is complete the `status` field becomes `"completed"` and the `active_days` and limits reflect the final tier.
+
+</Col>
+
+</Row>
