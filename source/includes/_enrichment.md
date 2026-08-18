@@ -742,6 +742,15 @@ This endpoint sends a LinkedIn connection request with an optional note from a s
 Uses 1 Standard Credit.
 </aside>
 
+<aside class="warning">
+Weekly send limits apply to each LinkedIn account:
+
+- **Sales Navigator accounts:** 100 connection requests per week
+- **Standard LinkedIn accounts:** 50 connection requests per week
+
+The limit is reset at 00:00 UTC on Monday. If the limit is exceeded the API returns `429 Too Many Requests` with a `Retry-After` header.
+</aside>
+
 ```python
 import requests
 import json
@@ -778,6 +787,17 @@ curl --request POST \
 {
   "success": true,
   "entity_urn": "urn:li:fsd_invitation:1234567890123456789"
+}
+```
+
+If the weekly send limit is reached, the API returns:
+
+```json
+{
+  "error": {
+    "type": "rate_limit",
+    "message": "weekly connection request limit reached"
+  }
 }
 ```
 
