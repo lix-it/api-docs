@@ -51,8 +51,7 @@ This endpoint is free to use.
 Field     | Description
 --------- | -----------
 requestsRemaining | The number of requests remaining for the day.
-refreshesAt | The unix timestamp in seconds of when the daily allowance will refresh.
-refreshesAtISO | The ISO 8601 timestamp of when the daily allowance will refresh.
+refreshesAt | The ISO 8601 timestamp of when the daily allowance will refresh.
 
 ```shell
 curl "https://api.lix-it.com/v1/account/allowances/daily \
@@ -78,7 +77,6 @@ print(response.json())
 ```json
 {
   "requestsRemaining": 10000,
-  "refreshesAt": 1696512494, // represents the unix timestamp in seconds of when the daily allowance will refresh
-  "refreshesAtISO": "2023-10-05T14:48:14Z" // represents the ISO 8601 timestamp of when the daily allowance will refresh
+  "refreshesAt": "2023-10-05T14:48:14Z" // represents the ISO 8601 timestamp of when the daily allowance will refresh
 }
 ```
