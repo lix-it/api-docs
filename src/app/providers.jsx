@@ -3,6 +3,8 @@
 import { useEffect } from 'react'
 import { ThemeProvider, useTheme } from 'next-themes'
 
+import { LixAuthProvider } from '@/components/AuthGate'
+
 function ThemeWatcher() {
   let { resolvedTheme, setTheme } = useTheme()
 
@@ -30,8 +32,10 @@ function ThemeWatcher() {
 export function Providers({ children }) {
   return (
     <ThemeProvider attribute="class" disableTransitionOnChange>
-      <ThemeWatcher />
-      {children}
+      <LixAuthProvider>
+        <ThemeWatcher />
+        {children}
+      </LixAuthProvider>
     </ThemeProvider>
   )
 }

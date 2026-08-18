@@ -3,11 +3,13 @@ import clsx from 'clsx'
 import cn from "classnames"; // A utility for conditionally joining classNames together
 
 
+import { AuthGate } from '@/components/AuthGate'
 import { Feedback } from '@/components/Feedback'
 import { Heading } from '@/components/Heading'
 import { Prose } from '@/components/Prose'
 
 export const a = Link
+export { AuthGate }
 export { Button } from '@/components/Button'
 export { CodeGroup, Code as code, Pre as pre } from '@/components/Code'
 
