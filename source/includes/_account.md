@@ -108,7 +108,7 @@ This endpoint retrieves LinkedIn accounts attached to your team.
 
 ### HTTP Request
 
-`PUT https://api.lix-it.com/v1/account/linkedin/account`
+`GET https://api.lix-it.com/v1/account/linkedin/account`
 
 ### Query Parameters
 
@@ -118,7 +118,7 @@ viewer_id   | The LinkedIn account ID to retrieve.
 
 ```shell
 curl -X GET "https://api.lix-it.com/v1/account/linkedin/account?viewer_id=alfie-lambert" \
-  -H "Authorization: lixApiKey
+  -H "Authorization: lixApiKey"
 ```
 
 ```python
@@ -135,7 +135,20 @@ print(response.json())
 > The above command returns JSON structured like this:
 ```json
 {
-  "viewer_id": "alfie-lambert",
-  "numAvailableTokens": 10
+  "viewerId": "alfie-lambert",
+  "linkedInReady": true,
+  "salesNavigatorReady": false,
+  "warmup": {
+    "status": "warming",
+    "details": {
+      "active_days": 2,
+      "daily_limit": 100,
+      "hourly_limit": 40,
+      "max_daily_limit": 500,
+      "max_hourly_limit": 100
+    }
+  }
 }
 ```
+
+The `warmup` object is only present when the account warmup feature is enabled for the account. When warmup is complete the `status` field becomes `"completed"` and the `active_days` and limits reflect the final tier.
