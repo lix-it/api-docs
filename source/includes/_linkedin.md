@@ -56,10 +56,8 @@ print(response.json())
 
 ```json
 {
-  "searchResponse": {
-    "people": [ Person ],
-    "paging": { "count": 25, "start": 0, "total": 1000 },
-  },
+  "people": [ Person ],
+  "paging": { "count": 25, "start": 0, "total": 1000 }
 }
 ```
 
@@ -116,10 +114,8 @@ print(response.json())
 
 ```json
 {
-  "searchResponse": {
-    "people": [ JobPosting ],
-    "paging": { "count": 10, "start": 0, "total": 1000 },
-  },
+  "jobPostings": [ JobPosting ],
+  "paging": { "count": 10, "start": 0, "total": 1000 }
 }
 ```
 
@@ -246,10 +242,11 @@ print(response.json())
 
 ```json
 {
-  "searchResponse": {
-    "posts": [ Post ],
-    "paging": { "count": 10, "start": 0, "total": 1000 },
-  },
+  "posts": [ Post ],
+  "paging": { "count": 10, "start": 0, "total": 1000 },
+  "meta": {
+    "sequenceId": "jAkFkdjfi19kFdf"
+  }
 }
 ```
 
@@ -306,10 +303,8 @@ print(response.json())
 
 ```json
 {
-  "searchResponse": {
-    "posts": [ Org ],
-    "paging": { "count": 10, "start": 0, "total": 1000 },
-  },
+  "orgs": [ Org ],
+  "paging": { "count": 10, "start": 0, "total": 1000 }
 }
 ```
 
@@ -366,10 +361,8 @@ print(response.json())
 
 ```json
 {
-  "searchResponse": {
-    "people": [ Person ],
-    "paging": { "count": 25, "start": 0, "total": 2500 },
-  },
+  "people": [ Person ],
+  "paging": { "count": 25, "start": 0, "total": 2500 },
   "meta": {
     "sequenceId": "jAkFkdjfi19kFdf"
   }
@@ -491,10 +484,8 @@ print(response.json())
 
 ```json
 {
-  "searchResponse": {
-    "people": [ Organisation ],
-    "paging": { "count": 25, "start": 0, "total": 2500 },
-  },
+  "organisations": [ Organisation ],
+  "paging": { "count": 25, "start": 0, "total": 2500 },
   "meta": {
     "sequenceId": "jAkFkdjfi19kFdf"
   }
@@ -553,10 +544,8 @@ print(response.json())
 
 ```json
 {
-  "searchResponse": {
-    "people": [ Person ],
-    "paging": { "count": 25, "start": 0, "total": 250 },
-  },
+  "people": [ Person ],
+  "paging": { "count": 25, "start": 0, "total": 250 },
   "meta": {
     "sequenceId": "jAkFkdjfi19kFdf"
   }
@@ -615,10 +604,8 @@ print(response.json())
 
 ```json
 {
-  "searchResponse": {
-    "people": [ Organisation ],
-    "paging": { "count": 25, "start": 0, "total": 250 },
-  },
+  "organisations": [ Organisation ],
+  "paging": { "count": 25, "start": 0, "total": 250 },
   "meta": {
     "sequenceId": "jAkFkdjfi19kFdf"
   }
