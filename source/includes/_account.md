@@ -141,14 +141,14 @@ print(response.json())
   "warmup": {
     "status": "warming",
     "details": {
-      "active_days": 2,
-      "daily_limit": 100,
-      "hourly_limit": 40,
-      "max_daily_limit": 500,
-      "max_hourly_limit": 100
+      "consecutiveActiveDays": 2,
+      "currentDailyLimit": 100,
+      "currentHourlyLimit": 40,
+      "maxDailyLimit": 500,
+      "maxHourlyLimit": 100
     }
   }
 }
 ```
 
-The `warmup` object is only present when the account warmup feature is enabled for the account. When warmup is complete the `status` field becomes `"completed"` and the `active_days` and limits reflect the final tier.
+The `warmup` object is only present when the account warmup feature is enabled for the account. When warmup is complete the `status` field becomes `"completed"` and the `consecutiveActiveDays` and limit fields reflect the final tier.
