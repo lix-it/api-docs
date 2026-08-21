@@ -144,8 +144,8 @@ print(response.json())
       "consecutiveActiveDays": 2,
       "currentDailyLimit": 100,
       "currentHourlyLimit": 40,
-      "maxDailyLimit": 500,
-      "maxHourlyLimit": 100
+      "targetDailyLimit": 500,
+      "targetHourlyLimit": 100
     }
   }
 }
