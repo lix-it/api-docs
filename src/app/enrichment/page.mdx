@@ -1042,6 +1042,15 @@ Uses 1 Standard Credit.
 
 This endpoint sends a LinkedIn connection request with an optional note from a standard LinkedIn account.
 
+<Note variant="warning">
+Weekly send limits apply to each LinkedIn account:
+
+- **Sales Navigator accounts:** 100 connection requests per week
+- **Standard LinkedIn accounts:** 50 connection requests per week
+
+The limit is reset at 00:00 UTC on Monday. If the limit is exceeded the API returns `429 Too Many Requests` with a `Retry-After` header.
+</Note>
+
 ### HTTP Request
 
 `POST https://api.lix-it.com/v1/connections/send`
@@ -1094,6 +1103,15 @@ curl --request POST \
 {
   "success": true,
   "entity_urn": "urn:li:fsd_invitation:1234567890123456789"
+}
+```
+
+```json {{ title: '429 Response' }}
+{
+  "error": {
+    "type": "rate_limit",
+    "message": "weekly connection request limit reached"
+  }
 }
 ```
 
