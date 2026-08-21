@@ -7,7 +7,7 @@ const LixAuthContext = createContext(false)
 const useIsomorphicLayoutEffect =
   typeof window === 'undefined' ? useEffect : useLayoutEffect
 
-const AUTH_COOKIE_NAMES = ['ajs_user_id']
+const AUTH_COOKIE_NAMES = ['lix_user_id']
 
 export function hasLixWwwAuthToken() {
   if (typeof document === 'undefined') {
