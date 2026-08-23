@@ -152,3 +152,55 @@ print(response.json())
 ```
 
 The `warmup` object is only present when the account warmup feature is enabled for the account. When warmup is complete the `status` field becomes `"completed"` and the `consecutiveActiveDays` and `dailyAvailable`/`hourlyAvailable` fields reach their `dailyTotal`/`hourlyTotal` values.
+
+## List LinkedIn Accounts
+
+This endpoint retrieves the connected account statuses for every LinkedIn account attached to your team. Results are ordered by the account ID in the database and returned in pages of 5. The warmup status for each account is fetched in parallel.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/account/linkedin/accounts`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+page      | Optional. The page number to retrieve, starting from 1. Defaults to 1. Each page contains up to 5 accounts.
+
+```shell
+curl -X GET "https://api.lix-it.com/v1/account/linkedin/accounts?page=1" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+url = "https://api.lix-it.com/v1/account/linkedin/accounts?page=1"
+headers = {
+  'Authorization': lix_api_key
+}
+response = requests.request("GET", url, headers=headers)
+print(response.json())
+```
+
+> The above command returns JSON structured like this:
+```json
+[
+  {
+    "viewerId": "alfie-lambert",
+    "linkedInReady": true,
+    "salesNavigatorReady": false,
+    "warmup": {
+      "status": "warming",
+      "details": {
+        "consecutiveActiveDays": 2,
+        "dailyAvailable": 100,
+        "hourlyAvailable": 40,
+        "dailyTotal": 500,
+        "hourlyTotal": 100
+      }
+    }
+  }
+]
+```
+
+The `warmup` object is only present when the account warmup feature is enabled for the account. When warmup is complete the `status` field becomes `"completed"` and the `consecutiveActiveDays` and `dailyAvailable`/`hourlyAvailable` fields reach their `dailyTotal`/`hourlyTotal` values.
