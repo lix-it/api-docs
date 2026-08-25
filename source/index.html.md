@@ -20,8 +20,8 @@ includes:
   - enrichment
   - activity
   - linkedin
-  - conversations
   - messages
+  - linkedin_network
   - lookc
   - ai
   - contact
