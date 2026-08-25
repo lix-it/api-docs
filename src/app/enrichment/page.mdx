@@ -1125,6 +1125,75 @@ curl --request POST \
 <Row>
 <Col>
 
+## Get Connection Request Remaining
+
+This endpoint returns the number of LinkedIn connection requests an account can still send in the current calendar week and when the weekly limit will reset.
+
+<Note variant="warning">
+Weekly send limits apply to each LinkedIn account:
+
+- **Sales Navigator accounts:** 100 connection requests per week
+- **Standard LinkedIn accounts:** 50 connection requests per week
+
+The limit resets at 00:00 UTC on Monday.
+</Note>
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/account/connections/remaining`
+
+### Query Parameters
+
+#### Required parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to check
+
+</Col>
+<Col sticky>
+
+<CodeGroup title="Get Connection Request Remaining" tag="GET" label="/v1/account/connections/remaining">
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/account/connections/remaining?viewer_id=ACoAACABCDEF1234567"
+
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.json())
+```
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/account/connections/remaining?viewer_id=ACoAACABCDEF1234567" \
+  -H "Authorization: lixApiKey"
+```
+
+```json {{ title: 'Response' }}
+{
+  "viewerId": "ACoAACABCDEF1234567",
+  "weeklyLimit": 50,
+  "used": 12,
+  "remaining": 38,
+  "nextRefresh": "2026-08-24T00:00:00Z"
+}
+```
+
+</CodeGroup>
+
+</Col>
+</Row>
+
+---
+
+<Row>
+<Col>
+
 ## Organisation by Website
 
 <Note variant="purple">
