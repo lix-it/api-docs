@@ -79,3 +79,59 @@ viewer_id | true | The LinkedIn ID of the account you would like to send the con
 profile_link | true* | The LinkedIn profile URL of the person you would like to connect with
 profile_id | true* | The public identifier of the person you would like to connect with (e.g., "jane-doe-example"). Either profile_link or profile_id must be provided.
 message | false | A personalised note to send with the connection request. Maximum 300 characters.
+
+## Get Connection Request Remaining
+
+This endpoint returns the number of LinkedIn connection requests an account can still send in the current calendar week and when the weekly limit will reset.
+
+<aside class="warning">
+Weekly send limits apply to each LinkedIn account:
+
+- **Sales Navigator accounts:** 100 connection requests per week
+- **Standard LinkedIn accounts:** 50 connection requests per week
+
+The limit resets at 00:00 UTC on Monday.
+</aside>
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/account/connections/remaining?viewer_id=ACoAACABCDEF1234567"
+
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.json())
+```
+
+```shell
+curl "https://api.lix-it.com/v1/account/connections/remaining?viewer_id=ACoAACABCDEF1234567" \
+  -H "Authorization: lixApiKey"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "viewerId": "ACoAACABCDEF1234567",
+  "weeklyLimit": 50,
+  "used": 12,
+  "remaining": 38,
+  "nextRefresh": "2026-08-24T00:00:00Z"
+}
+```
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/account/connections/remaining`
+
+### URL Parameters
+
+#### Required parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The LinkedIn ID of the account you would like to check
