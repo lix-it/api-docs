@@ -12,7 +12,11 @@ import { createStore, useStore } from 'zustand'
 import { useLixAuth } from '@/components/AuthGate'
 import { remToPx } from '@/lib/remToPx'
 
-const AUTH_GATED_SECTION_TITLES = ['Send Connection', 'Send Message']
+const AUTH_GATED_SECTION_TITLES = [
+  'Send Connection',
+  'Send Message',
+  'Get Connection Request Remaining',
+]
 
 function filterGatedSections(sections, isAuthed) {
   if (!sections || isAuthed) return sections
