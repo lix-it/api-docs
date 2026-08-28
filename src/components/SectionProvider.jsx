@@ -9,7 +9,21 @@ import {
 } from 'react'
 import { createStore, useStore } from 'zustand'
 
+import { useLixAuth } from '@/components/AuthGate'
 import { remToPx } from '@/lib/remToPx'
+
+const AUTH_GATED_SECTION_TITLES = [
+  'Send Connection',
+  'Send Message',
+  'Get Connection Request Remaining',
+]
+
+function filterGatedSections(sections, isAuthed) {
+  if (!sections || isAuthed) return sections
+  return sections.filter(
+    (section) => !AUTH_GATED_SECTION_TITLES.includes(section.title),
+  )
+}
 
 function createSectionStore(sections) {
   return createStore()((set) => ({
@@ -103,13 +117,18 @@ const useIsomorphicLayoutEffect =
   typeof window === 'undefined' ? useEffect : useLayoutEffect
 
 export function SectionProvider({ sections, children }) {
-  let [sectionStore] = useState(() => createSectionStore(sections))
+  let isAuthed = useLixAuth()
+  let [sectionStore] = useState(() =>
+    createSectionStore(filterGatedSections(sections, isAuthed)),
+  )
 
   useVisibleSections(sectionStore)
 
   useIsomorphicLayoutEffect(() => {
-    sectionStore.setState({ sections })
-  }, [sectionStore, sections])
+    sectionStore.setState({
+      sections: filterGatedSections(sections, isAuthed),
+    })
+  }, [sectionStore, sections, isAuthed])
 
   return (
     <SectionStoreContext.Provider value={sectionStore}>
