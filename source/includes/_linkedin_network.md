@@ -82,7 +82,7 @@ message | false | A personalised note to send with the connection request. Maxim
 
 ## Get Connection Request Remaining
 
-This endpoint returns the number of LinkedIn connection requests an account can still send in the current calendar week and when the weekly limit will reset.
+This endpoint returns the number of LinkedIn connection requests an account can still send in the current calendar week, when the weekly limit will reset, and whether the account currently has a Sales Navigator token.
 
 <aside class="warning">
 Weekly send limits apply to each LinkedIn account:
@@ -117,6 +117,7 @@ curl "https://api.lix-it.com/v1/account/connections/remaining?viewer_id=ACoAACAB
 ```json
 {
   "viewerId": "ACoAACABCDEF1234567",
+  "salesNavReady": false,
   "weeklyLimit": 50,
   "used": 12,
   "remaining": 38,
