@@ -21,11 +21,27 @@ under the License.
       page_content += partial("includes/#{include}")
     end
   end
+
+  page_content = gate_sections(page_content)
 %>
 
 <!doctype html>
-<html>
+<html class="lix-no-auth">
   <head>
+    <script>
+      (function () {
+        function hasCookie(name) {
+          return document.cookie.split(';').some(function (c) {
+            return c.trim().indexOf(name + '=') === 0;
+          });
+        }
+
+        if (hasCookie('lix_user_id')) {
+          document.documentElement.classList.remove('lix-no-auth');
+          document.documentElement.classList.add('lix-auth');
+        }
+      })();
+    </script>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

@@ -631,3 +631,13 @@ html, body {
 .copy-clipboard:hover {
   opacity: 0.8;
 }
+
+html.lix-no-auth .auth-gated {
+  display: none;
+}
+
+html.lix-no-auth .toc-wrapper li:has(> a[href="#send-connection"]),
+html.lix-no-auth .toc-wrapper li:has(> a[href="#send-message"]),
+html.lix-no-auth .toc-wrapper li:has(> a[href="#get-connection-request-remaining"]) {
+  display: none;
+}
