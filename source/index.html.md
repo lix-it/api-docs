@@ -18,6 +18,7 @@ includes:
   - account
   - disambiguation
   - enrichment
+  - data_dictionary
   - activity
   - linkedin
   - messages
