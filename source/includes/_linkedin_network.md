@@ -82,7 +82,7 @@ message | false | A personalised note to send with the connection request. Maxim
 
 ## Get Connection Request Remaining
 
-This endpoint returns the number of LinkedIn connection requests an account can still send in the current calendar week and when the weekly limit will reset.
+This endpoint returns the number of LinkedIn connection requests an account can still send in the current calendar week, when the weekly limit will reset.
 
 <aside class="warning">
 Weekly send limits apply to each LinkedIn account:
