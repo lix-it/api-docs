@@ -14,6 +14,7 @@ toc_footers:
 
 includes:
   - agents
+  - mcp
   - lix_account
   - account
   - disambiguation
