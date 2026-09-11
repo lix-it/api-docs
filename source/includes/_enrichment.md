@@ -134,6 +134,10 @@ curl "https://api.lix-it.com/v1/person?profile_link=https://www.linkedin.com/in/
   -H "Authorization: lixApiKey"
 ```
 
+<aside class="notice">
+<code>liCreatedAt</code> is the date the LinkedIn profile was created, as an RFC 3339 timestamp. It is omitted when LinkedIn does not provide it.
+</aside>
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -145,6 +149,7 @@ curl "https://api.lix-it.com/v1/person?profile_link=https://www.linkedin.com/in/
     "aboutSummaryText": "In my early 20s, I realised I was going nowhere fast. I applied to an access course, received a 100% distinction rate and got into Cambridge University (#1 in the world rankings that year). While there, I fell into marketing startups and fell in love. \n\nSince University I've worked with startups and scale-ups, primarily in B2B data, AI & Data Science. I've trained and retrained in a few different disciplines, cofounded two startups and successfully raised funds. I'm at my happiest when I'm solving problems and making things happen.",
     "salesNavLink": "https://linkedin.com/sales/lead/ACoAAAXQSFkBYBAvJOtLzKQz7X0qXjByqI9m7Tg,NAME_SEARCH,undefined",
     "link": "https://www.linkedin.com/in/alfie-lambert",
+    "liCreatedAt": "2013-05-02T19:09:40.840Z",
     "experience": [
         {
             "description": "Eliminate hours spent combing through disconnected data. BizCrunch provides insights like debt-to-asset ratios, estimated turnover and ownerships structures, right from the start. Freeing up your time to make contact, forge relationships and close deals.",
