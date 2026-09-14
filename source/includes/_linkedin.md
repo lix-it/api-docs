@@ -392,6 +392,8 @@ person_titles       | The job titles for the people you would like to search for
 locations            | The locations for the people you would like to search for, encoded as a JSON array of an id, text pair. For example, `locations=[105763813,Colorado\\, United States]`.
 organisations | The current organistaion of the person, encoded as a JSON array of an id, text pair. For example, `organisations=[1337,LinkedIn]`.
 keywords      | Search profile keywords.
+connection_degree | The degree of connection to the viewer, encoded as a JSON array of an id, text pair. The ids are `F` (1st degree), `S` (2nd degree) and `O` (3rd+ degree). For example, `connection_degree=[F,1st],[S,2nd]`.
+connection_of | Only return people connected to the given Sales Navigator profile, encoded as an id, text pair. For example, `connection_of=[ACwAACdXvzUBSOUr9fT8vyHpH5S0iqx8KNmzFKY,Jane Doe]`.
 
 #### Optional Parameters
 Parameter | Description
