@@ -22,6 +22,7 @@ Parameter | Description
 viewer_id | The LinkedIn ID of the account you want to get the connections from.
 count     | Set as high a number as you can here - 1,000 works.
 start     | The start offset for the search paging.
+include_profile_pictures | Optional. Set to `false` to omit the `profile_picture` field (signed image URLs) from each connection, roughly halving the response size. Defaults to `true`.
 
 
 ```shell
@@ -45,7 +46,7 @@ print(response.json())
 {
   "connections_response": {
     "elements": [ Connection ],
-    "paging": { "count": 10 }
+    "paging": { "count": 10, "start": 0, "total": 247 }
   }
 }
 ```
