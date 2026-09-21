@@ -228,6 +228,8 @@ print(response.json())
 }
 ```
 
+Pass the returned `sequenceId` back as `sequence_id` to fetch the next (older) page of conversations. When `sequenceId` is absent from the response there are no more pages.
+
 ## Sales Navigator Message Threads
 
 This endpoint retrieves a list of Sales Navigator inbox threads.
