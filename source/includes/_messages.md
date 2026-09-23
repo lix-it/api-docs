@@ -396,9 +396,11 @@ print(response.json())
 
 ## Send a Sales Navigator Message
 
-This endpoint sends a Sales Navigator message to an existing thread.
+This endpoint sends a Sales Navigator message. Pass `thread_id` to reply to an existing thread, or `recipients` with a `subject` to start a new InMail conversation. The two are mutually exclusive.
 
 The `viewer_id` query parameter is required and must be the LinkedIn ID of the account you would like to use to send the message.
+
+<aside class="warning">Starting a new InMail conversation consumes an InMail credit and is rejected when a recipient has an InMail restriction.</aside>
 
 <aside class="notice"> Uses 1 Standard Credit.</aside>
 
@@ -420,14 +422,14 @@ viewer_id | The LinkedIn ID of the account you would like to use to send the mes
 
 Parameter | Description
 --------- | -----------
-thread_id | The ID of the thread to send the message to.
 body | The message body.
+thread_id **or** recipients | To reply to a thread, pass `thread_id`. To start a new InMail conversation, pass `recipients`: a list of Sales Navigator lead URNs (`urn:li:fs_salesProfile:...`). You must provide exactly one of these two parameters.
 
 #### Optional Parameters
 
 Parameter | Description
 --------- | -----------
-subject | The message subject.
+subject | The message subject. Required when `recipients` is set.
 copy_to_crm | Whether to copy the message to a connected CRM. Defaults to `false`.
 
 ```shell
@@ -435,6 +437,12 @@ curl -X POST "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0B
   -H "Authorization: lixApiKey" \
   -H "Content-Type: application/json" \
   -d '{"thread_id":"2-YWM0MmFiNmItZWM3My00MDYyLWIyZjgtNDE0NDMwNmVlOTExXzEwMA==","body":"Hi, just reaching out."}'
+
+# To start a new InMail conversation instead:
+curl -X POST "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U" \
+  -H "Authorization: lixApiKey" \
+  -H "Content-Type: application/json" \
+  -d '{"recipients":["urn:li:fs_salesProfile:(ACoAAA1234567AbCdEfGhIjKlMnOpQr,AGSA,xyz)"],"subject":"Quick question","body":"Hi, just reaching out."}'
 ```
 
 ```python
