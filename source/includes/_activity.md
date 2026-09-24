@@ -23,7 +23,7 @@ profile_link | The LinkedIn profile URL of the user whose activity you want to r
 Parameter | Description
 --------- | -----------
 start            | The start index of the posts to return. The default value is 0.
-viewer_id | The LinkedIn ID of the account you would like to view this search as
+viewer_id | The Lix viewer id of the account you would like to view this search as
 pagination_token | Token for paginated results. Use the token from the previous response to get the next page.
 
 ```shell
@@ -81,7 +81,7 @@ profile_link | The LinkedIn profile URL of the user whose activity you want to r
 Parameter | Description
 --------- | -----------
 start            | The start index of the comments to return. The default value is 0.
-viewer_id | The LinkedIn ID of the account you would like to view this search as
+viewer_id | The Lix viewer id of the account you would like to view this search as
 pagination_token | Token for paginated results. Use the token from the previous response to get the next page.
 
 ```shell
@@ -139,7 +139,7 @@ profile_link | The LinkedIn profile URL of the user whose reactions you want to 
 Parameter | Description
 --------- | -----------
 start            | The start index of the reactions to return. The default value is 0.
-viewer_id | The LinkedIn ID of the account you would like to view this search as
+viewer_id | The Lix viewer id of the account you would like to view this search as
 pagination_token | Token for paginated results. Use the token from the previous response to get the next page.
 
 ```shell
