@@ -22,7 +22,7 @@ url       | The url-encoded LinkedIn search URL
 #### Optional Parameters
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to view this search as
+viewer_id | The Lix viewer id of the account you would like to view this search as
 sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 ```shell
@@ -81,7 +81,7 @@ url       | The url-encoded LinkedIn search URL
 #### Optional Parameters
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to view this search as
+viewer_id | The Lix viewer id of the account you would like to view this search as
 sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 ```shell
@@ -143,7 +143,7 @@ job_id | The LinkedIn ID of the job posting.
 
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to view this post as.
+viewer_id | The Lix viewer id of the account you would like to view this post as.
 
 ```python
 import requests
@@ -209,7 +209,7 @@ start     | The start offset of the page.
 #### Optional Parameters
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to view this search as
+viewer_id | The Lix viewer id of the account you would like to view this search as
 sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 ```shell
@@ -270,7 +270,7 @@ url       | The url-encoded LinkedIn search URL
 #### Optional Parameters
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to view this search as
+viewer_id | The Lix viewer id of the account you would like to view this search as
 sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 ```shell
@@ -328,7 +328,7 @@ url       | The url-encoded LinkedIn search URL
 #### Optional Parameters
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to view this search as
+viewer_id | The Lix viewer id of the account you would like to view this search as
 sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 ```shell
@@ -398,7 +398,7 @@ connection_of | Only return people connected to the given Sales Navigator profil
 #### Optional Parameters
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to view this search as
+viewer_id | The Lix viewer id of the account you would like to view this search as
 sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 ```shell
@@ -453,7 +453,7 @@ url       | The url-encoded LinkedIn search URL
 #### Optional Parameters
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to view this search as
+viewer_id | The Lix viewer id of the account you would like to view this search as
 sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 ```shell
@@ -498,7 +498,7 @@ print(response.json())
 
 This endpoint retrieves a single page of a saved Sales Navigator lead list.
 
-The `viewer_id` parameter is required and must be the LinkedIn ID of the account that owns the list.
+The `viewer_id` parameter is required and must be the Lix viewer id of the account that owns the list.
 
 To paginate through the list, use the `page` parameter. Each page contains 25 results.
 
@@ -514,7 +514,7 @@ To paginate through the list, use the `page` parameter. Each page contains 25 re
 Parameter | Description
 --------- | -----------
 list_id   | The ID of the lead list, e.g. `6743848588473139200` for `https://www.linkedin.com/sales/lists/people/6743848588473139200`
-viewer_id | The LinkedIn ID of the account that owns the list
+viewer_id | The Lix viewer id of the account that owns the list
 
 #### Optional Parameters
 Parameter | Description
@@ -558,7 +558,7 @@ print(response.json())
 
 This endpoint retrieves a single page of a saved Sales Navigator account list.
 
-The `viewer_id` parameter is required and must be the LinkedIn ID of the account that owns the list.
+The `viewer_id` parameter is required and must be the Lix viewer id of the account that owns the list.
 
 To paginate through the list, use the `page` parameter. Each page contains 25 results.
 
@@ -574,7 +574,7 @@ To paginate through the list, use the `page` parameter. Each page contains 25 re
 Parameter | Description
 --------- | -----------
 list_id   | The ID of the account list, e.g. `6743848588473139200` for `https://www.linkedin.com/sales/lists/company/6743848588473139200`
-viewer_id | The LinkedIn ID of the account that owns the list
+viewer_id | The Lix viewer id of the account that owns the list
 
 #### Optional Parameters
 Parameter | Description
@@ -640,7 +640,7 @@ Parameter | Description
 --------- | -----------
 count     | The number of typeaheads you would like to return. The default is 100.
 start     | The index of the first typeahead you would like to return. The default is 0.
-viewer_id | The LinkedIn ID of the account you would like to view this search as
+viewer_id | The Lix viewer id of the account you would like to view this search as
 
 ```shell
 curl "https://api.lix-it.com/v1/search/sales/facet?query=E&type=SENIORITY&count=100&start=0" \
@@ -721,7 +721,7 @@ skills       | The skills of the candidates you would like to search for. This i
 #### Optional URL Query Parameters
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to view this search as
+viewer_id | The Lix viewer id of the account you would like to view this search as
 sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
 
 #### Optional JSON Body Parameters
@@ -801,7 +801,7 @@ Parameter | Description
 --------- | -----------
 count     | The number of typeaheads you would like to return. The default is 100.
 start     | The index of the first typeahead you would like to return. The default is 0.
-viewer_id | The LinkedIn ID of the account you would like to view this search as
+viewer_id | The Lix viewer id of the account you would like to view this search as
 
 ```shell
 curl "http://api.lix-it.com/v1/li/recruiter/search/facet?query=Javascrip&type=skill&count=100&start=0" \
