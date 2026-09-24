@@ -31,6 +31,14 @@ or with a query variable:
 
 Please bear in mind to also specify the Content-Type as application/json format.
 
+### OAuth access tokens
+
+If you have signed in through the Lix MCP server (or another Lix OAuth client), you can use the OAuth access token you were issued directly, without exchanging it for an API key. Send it using the `Bearer` scheme:
+
+`Authorization: Bearer oauthAccessToken`
+
+A bare `Authorization` value (no scheme) is always treated as an API key, so existing integrations are unaffected. OAuth requests use the credits and daily allowance of the team you are currently signed in to, and are rate limited per team.
+
 <Note variant="info">
 You must replace <code>lixApiKey</code> with your personal API key.
 </Note>
