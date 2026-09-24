@@ -16,6 +16,7 @@ const AUTH_GATED_SECTION_TITLES = [
   'Send Connection',
   'Send Message',
   'Get Connection Request Remaining',
+  'Person Object',
 ]
 
 function filterGatedSections(sections, isAuthed) {
