@@ -36,7 +36,7 @@ job_id | The LinkedIn ID of the job posting
 
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to view this profile as
+viewer_id | The Lix viewer id of the account you would like to view this profile as
 
 ```python
 import requests
@@ -86,7 +86,7 @@ post_urn | The LinkedIn URN of the post, URI encoded. For example `urn%3Ali%3Aac
 
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to view this post as.
+viewer_id | The Lix viewer id of the account you would like to view this post as.
 
 ```python
 import requests
@@ -607,7 +607,7 @@ profile_link | The LinkedIn profile URL of the person (e.g., https://www.linkedi
 
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to view this profile as
+viewer_id | The Lix viewer id of the account you would like to view this profile as
 
 ## Person Employment
 
@@ -682,7 +682,7 @@ Parameter | Required | Description
 --------- | -------- | -----------
 profile_link | true* | The LinkedIn profile URL of the person (e.g., https://www.linkedin.com/in/username)
 profile_id | true* | The public identifier of the person (e.g., "username"). Either profile_link or profile_id must be provided.
-viewer_id | false | The LinkedIn ID of the account you would like to view this profile as
+viewer_id | false | The Lix viewer id of the account you would like to view this profile as
 
 <aside class="notice">
 If some data points do not exist (for example a position without an employment type or end date), these fields will be omitted from the response.
@@ -701,7 +701,7 @@ The person extended endpoint returns extended profile information, specifically 
 Parameter | Required | Description
 --------- | -------- | -----------
 profile_link | true | The LinkedIn profile link of the person
-viewer_id | false | The LinkedIn ID of the viewing account
+viewer_id | false | The Lix viewer id of the viewing account
 
 ### Example
 
@@ -805,7 +805,7 @@ sales_nav_url | The link to the Sales Navigator profile for the company
 
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to view this organisation as
+viewer_id | The Lix viewer id of the account you would like to view this organisation as
 
 ## Post Comments
 
@@ -1033,7 +1033,7 @@ This endpoint retrieves followers for a specific LinkedIn company organisation.
 Parameter | Description
 --------- | -----------
 profile_link | The LinkedIn organisation profile URL (either standard LinkedIn URL or Sales Navigator URL)
-viewer_id | The LinkedIn ID of the account you would like to view this data as
+viewer_id | The Lix viewer id of the account you would like to view this data as
 
 #### Optional parameters
 

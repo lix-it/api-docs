@@ -234,7 +234,7 @@ Pass the returned `sequenceId` back as `sequence_id` to fetch the next (older) p
 
 This endpoint retrieves a list of Sales Navigator inbox threads.
 
-The `viewer_id` parameter is required and must be the LinkedIn ID of the account you would like to use to read messages.
+The `viewer_id` parameter is required and must be the Lix viewer id of the account you would like to use to read messages.
 
 <aside class="notice"> Uses 1 Standard Credit.</aside>
 
@@ -248,7 +248,7 @@ The `viewer_id` parameter is required and must be the LinkedIn ID of the account
 
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to use to read messages.
+viewer_id | The Lix viewer id of the account you would like to use to read messages.
 
 #### Optional Parameters
 
@@ -319,7 +319,7 @@ print(response.json())
 
 This endpoint retrieves a single Sales Navigator message thread by `thread_id`.
 
-The `viewer_id` parameter is required and must be the LinkedIn ID of the account you would like to use to read messages.
+The `viewer_id` parameter is required and must be the Lix viewer id of the account you would like to use to read messages.
 
 <aside class="notice"> Uses 1 Standard Credit.</aside>
 
@@ -334,7 +334,7 @@ The `viewer_id` parameter is required and must be the LinkedIn ID of the account
 Parameter | Description
 --------- | -----------
 thread_id | The ID of the thread to retrieve. This is a path parameter.
-viewer_id | The LinkedIn ID of the account you would like to use to read messages.
+viewer_id | The Lix viewer id of the account you would like to use to read messages.
 
 #### Optional Parameters
 
@@ -398,7 +398,7 @@ print(response.json())
 
 This endpoint sends a Sales Navigator message. Pass `thread_id` to reply to an existing thread, or `recipients` with a `subject` to start a new InMail conversation. The two are mutually exclusive.
 
-The `viewer_id` query parameter is required and must be the LinkedIn ID of the account you would like to use to send the message.
+The `viewer_id` query parameter is required and must be the Lix viewer id of the account you would like to use to send the message.
 
 <aside class="warning">Starting a new InMail conversation consumes an InMail credit and is rejected when a recipient has an InMail restriction.</aside>
 
@@ -414,7 +414,7 @@ The `viewer_id` query parameter is required and must be the LinkedIn ID of the a
 
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to use to send the message.
+viewer_id | The Lix viewer id of the account you would like to use to send the message.
 
 ### Body Parameters
 
@@ -423,7 +423,7 @@ viewer_id | The LinkedIn ID of the account you would like to use to send the mes
 Parameter | Description
 --------- | -----------
 body | The message body.
-thread_id **or** recipients | To reply to a thread, pass `thread_id`. To start a new InMail conversation, pass `recipients`: a list of Sales Navigator lead URNs (`urn:li:fs_salesProfile:...`). You must provide exactly one of these two parameters.
+thread_id **or** recipients | To reply to a thread, pass `thread_id`. To start a new InMail conversation, pass `recipients`. You must provide exactly one of these two parameters. Each recipient may be a Sales Navigator lead URN (`urn:li:fs_salesProfile:(<sales id>,<auth type>,<auth token>)`, e.g. `urn:li:fs_salesProfile:(ACwAADsVyAUBSlwfupCn2OxQAEXgNtvpQ7WMdjE,NAME_SEARCH,sSow)`), a `linkedin.com/sales/lead` or `/sales/people` URL, or a bare Sales Navigator profile ID (`ACwAA…`, i.e. the `li_urn`/`sales_nav_id` returned by person and search endpoints). IDs and links are resolved to fresh URNs server-side, so you do not need to mint auth tokens yourself. The `salesNavLink` returned by [Sales Navigator Leads Search](#sales-navigator-leads-search) is a convenient source.
 
 #### Optional Parameters
 
@@ -442,7 +442,7 @@ curl -X POST "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0B
 curl -X POST "https://api.lix-it.com/v1/li/sales/messages?viewer_id=ACwAAAd2ql0BjIz3QGaG7pMbLYAJTx3fnRcE8-U" \
   -H "Authorization: lixApiKey" \
   -H "Content-Type: application/json" \
-  -d '{"recipients":["urn:li:fs_salesProfile:(ACoAAA1234567AbCdEfGhIjKlMnOpQr,AGSA,xyz)"],"subject":"Quick question","body":"Hi, just reaching out."}'
+  -d '{"recipients":["urn:li:fs_salesProfile:(ACwAADsVyAUBSlwfupCn2OxQAEXgNtvpQ7WMdjE,NAME_SEARCH,sSow)"],"subject":"Quick question","body":"Hi, just reaching out."}'
 ```
 
 ```python

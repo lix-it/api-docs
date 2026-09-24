@@ -75,7 +75,7 @@ If the weekly send limit is reached, the API returns:
 
 Parameter | Required | Description
 --------- | -------- | -----------
-viewer_id | true | The LinkedIn ID of the account you would like to send the connection request from
+viewer_id | true | The Lix viewer id of the account you would like to send the connection request from
 profile_link | true* | The LinkedIn profile URL of the person you would like to connect with
 profile_id | true* | The public identifier of the person you would like to connect with (e.g., "jane-doe-example"). Either profile_link or profile_id must be provided.
 message | false | A personalised note to send with the connection request. Maximum 300 characters.
@@ -134,4 +134,4 @@ curl "https://api.lix-it.com/v1/account/connections/remaining?viewer_id=ACoAACAB
 
 Parameter | Description
 --------- | -----------
-viewer_id | The LinkedIn ID of the account you would like to check
+viewer_id | The Lix viewer id of the account you would like to check
