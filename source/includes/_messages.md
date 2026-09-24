@@ -423,7 +423,7 @@ viewer_id | The Lix viewer id of the account you would like to use to send the m
 Parameter | Description
 --------- | -----------
 body | The message body.
-thread_id **or** recipients | To reply to a thread, pass `thread_id`. To start a new InMail conversation, pass `recipients`: a list of Sales Navigator lead URNs in the form `urn:li:fs_salesProfile:(<sales id>,<auth type>,<auth token>)`, e.g. `urn:li:fs_salesProfile:(ACwAADsVyAUBSlwfupCn2OxQAEXgNtvpQ7WMdjE,NAME_SEARCH,sSow)`. You must provide exactly one of these two parameters. You can get a lead's URN from the `salesNavLink` returned by [Sales Navigator Leads Search](#sales-navigator-leads-search): take the part after `/sales/lead/` and wrap it as `urn:li:fs_salesProfile:(...)`. The auth token is viewer- and session-bound, so obtain it as the same viewer you send from.
+thread_id **or** recipients | To reply to a thread, pass `thread_id`. To start a new InMail conversation, pass `recipients`. You must provide exactly one of these two parameters. Each recipient may be a Sales Navigator lead URN (`urn:li:fs_salesProfile:(<sales id>,<auth type>,<auth token>)`, e.g. `urn:li:fs_salesProfile:(ACwAADsVyAUBSlwfupCn2OxQAEXgNtvpQ7WMdjE,NAME_SEARCH,sSow)`), a `linkedin.com/sales/lead` or `/sales/people` URL, or a bare Sales Navigator profile ID (`ACwAA…`, i.e. the `li_urn`/`sales_nav_id` returned by person and search endpoints). IDs and links are resolved to fresh URNs server-side, so you do not need to mint auth tokens yourself. The `salesNavLink` returned by [Sales Navigator Leads Search](#sales-navigator-leads-search) is a convenient source.
 
 #### Optional Parameters
 
