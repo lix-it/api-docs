@@ -49,3 +49,47 @@ print(response.json())
   "alternatives": ["*****@lix-it.com"]
 }
 ```
+
+### Response status
+
+`status` | Description
+-------- | -----------
+VALID    | The email address passed validation. `email` contains the address.
+RISKY    | An email address was found but could not be fully validated. `email` contains the best guess and `alternatives` may contain other candidates.
+UNKNOWN  | No email address could be found for this profile. `email` is empty and `alternatives` is an empty list.
+
+A profile with no email address is not an error. The API returns `200` with `status` set to `UNKNOWN`:
+
+> No email found:
+
+```json
+{
+  "email": "",
+  "status": "UNKNOWN",
+  "alternatives": []
+}
+```
+
+### Errors
+
+Errors return a JSON body with an error `type`, a `message` and a `traceId`. Include the `traceId` when contacting support about a failed request.
+
+> Profile not found:
+
+```json
+{
+  "error": {
+    "type": "not_found",
+    "message": "profile not found"
+  },
+  "traceId": "11d1ce488f16efb4"
+}
+```
+
+HTTP Code | `type` | Description
+--------- | ------ | -----------
+400 | params_invalid | `url` is missing or is not a valid LinkedIn profile URL.
+400 | viewer_invalid | LinkedIn refused the request. Check the URL is valid.
+404 | not_found | The LinkedIn profile does not exist.
+500 | api_error | Internal error. Retry the request, and contact support with the `traceId` if it persists.
+503 | queued | The lookup has been queued. Retry the request in a few minutes.
