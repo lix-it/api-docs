@@ -28,9 +28,12 @@ Please be aware if some data points do not exist, these will be returned as null
 
 #### Required parameters
 
+Provide one of `job_id` or `url`.
+
 Parameter | Description
 --------- | -----------
-job_id | The LinkedIn ID of the job posting
+job_id | The LinkedIn ID of the job posting, e.g. `4456776049`
+url | A LinkedIn job URL, URL-encoded, e.g. `https://www.linkedin.com/jobs/view/4456776049`, `https://www.linkedin.com/jobs/view/<title>-4456776049` or a jobs search URL with `currentJobId=4456776049`. Ignored if `job_id` is set.
 
 #### Optional parameters
 
