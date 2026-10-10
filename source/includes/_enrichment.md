@@ -1100,3 +1100,140 @@ curl "https://api.lix-it.com/v1/organisations/followers?profile_link=https://www
 <aside class="notice">
 Please be aware if some data points do not exist, these will be returned as null.
 </aside>
+
+## LinkedIn Analytics
+
+<aside class="notice">
+Uses 1 Standard Credit.
+</aside>
+
+Retrieve the LinkedIn creator analytics shown on your LinkedIn dashboard, content performance, audience insights, or analytics for a single post.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/li/analytics`
+
+### URL Parameters
+
+#### Required parameters
+
+Parameter | Description
+--------- | -----------
+type | One of `overview` (LinkedIn dashboard summary), `content` (content analytics), `audience` (audience/follower analytics) or `post` (analytics for a single post).
+
+#### Optional parameters
+
+Parameter | Description
+--------- | -----------
+post_urn | Required when `type=post`. The LinkedIn URN of the post (URI encoded, e.g. `urn%3Ali%3Aactivity%3A7514260226263465984`) or the bare activity id (e.g. `7514260226263465984`) — the URN is constructed automatically.
+start_date | Start date `YYYY-MM-DD`. Must be given with `end_date`. Applies to `content` and `audience`.
+end_date | End date `YYYY-MM-DD`. Must be given with `start_date`.
+viewer_id | The Lix viewer id of the account you would like to view analytics for.
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/li/analytics?type=post&post_urn=urn%3Ali%3Aactivity%3A7514260226263465984"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```shell
+curl "https://api.lix-it.com/v1/li/analytics?type=audience" \
+  -H "Authorization: lixApiKey"
+```
+
+> Example response
+
+```json
+{
+  "metrics": [
+    {"label": "Impressions", "value": "285"},
+    {"label": "Social engagements", "value": "23"}
+  ],
+  "charts": [
+    {
+      "name": "New followers",
+      "data": [{"x": "2025-10-11T00:00:00Z", "y": "3"}]
+    }
+  ],
+  "states": {
+    "commentCount-urn:li:activity:7514260226263465984": "2",
+    "ReactionType_LIKE_urn:li:activity:7514260226263465984": "14"
+  }
+}
+```
+
+## LinkedIn Analytics Export
+
+<aside class="notice">
+Uses 1 Standard Credit.
+</aside>
+
+Export the LinkedIn creator analytics spreadsheet (the file produced by the "Export" button on the analytics page) for a date range, e.g. the last 365 days.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/li/analytics/export`
+
+### URL Parameters
+
+#### Required parameters
+
+Parameter | Description
+--------- | -----------
+start_date | Start date `YYYY-MM-DD`.
+end_date | End date `YYYY-MM-DD`.
+
+#### Optional parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The Lix viewer id of the account you would like to export analytics for.
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/li/analytics/export?start_date=2025-10-11&end_date=2026-10-10"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```shell
+curl "https://api.lix-it.com/v1/li/analytics/export?start_date=2025-10-11&end_date=2026-10-10" \
+  -H "Authorization: lixApiKey"
+```
+
+> Example response (truncated)
+
+```json
+{
+  "fileName": "analytics_export_2025-10-11_2026-10-10.xlsx",
+  "downloadUrl": "https://www.linkedin.com/ambry/?x-li-ambry-ep=...",
+  "fileContents": "<base64>",
+  "sheets": [
+    {
+      "name": "DISCOVERY",
+      "rows": [
+        {"cells": ["Impressions", "26587"]},
+        {"cells": ["Members reached", "17264"]}
+      ]
+    },
+    {"name": "ENGAGEMENT", "rows": []}
+  ]
+}
+```
