@@ -30,9 +30,26 @@ print(response.json())
 ```json
 {
   "emailBalance": 10000,
-  "linkedInBalance": 50000
+  "linkedInBalance": 50000,
+  "lookcBalance": 2500,
+  "autoTopUpEnabled": {
+    "standard": true,
+    "org": false
+  }
 }
 ```
+
+Field | Description
+----- | -----------
+`linkedInBalance` | Standard credits remaining (people/company lookups, enrichment, MCP server).
+`lookcBalance` | Org credits remaining (LookC organisation and employee lookups).
+`emailBalance` | Email credits remaining.
+`autoTopUpEnabled.standard` | `true` if automatic top-up is switched on for standard credits. When enabled, a balance below your threshold is replenished automatically from your saved payment method.
+`autoTopUpEnabled.org` | `true` if automatic top-up is switched on for org credits.
+
+Enterprise accounts are invoiced manually, so both `autoTopUpEnabled` flags are always `false` for them. If the auto top-up lookup fails, `autoTopUpEnabled` is `null` (unknown) rather than `false`; the balances are still returned.
+
+Auto top-up is configured in your Lix account under **Team settings → Auto top-up**.
 
 ## Daily Allowance
 
