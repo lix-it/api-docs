@@ -35,8 +35,7 @@ print(response.json())
   "autoTopUpEnabled": {
     "standard": true,
     "org": false
-  },
-  "enterprise": false
+  }
 }
 ```
 
@@ -47,9 +46,8 @@ Field | Description
 `emailBalance` | Email credits remaining.
 `autoTopUpEnabled.standard` | `true` if automatic top-up is switched on for standard credits. When enabled, a balance below your threshold is replenished automatically from your saved payment method.
 `autoTopUpEnabled.org` | `true` if automatic top-up is switched on for org credits.
-`enterprise` | `true` for enterprise accounts, which are invoiced manually: auto top-up does not apply to them and both `autoTopUpEnabled` flags are `false`.
 
-If the auto top-up lookup fails, `autoTopUpEnabled` and `enterprise` are `null` (unknown) rather than `false`; the balances are still returned.
+Enterprise accounts are invoiced manually, so both `autoTopUpEnabled` flags are always `false` for them. If the auto top-up lookup fails, `autoTopUpEnabled` is `null` (unknown) rather than `false`; the balances are still returned.
 
 Auto top-up is configured in your Lix account under **Team settings → Auto top-up**.
 
