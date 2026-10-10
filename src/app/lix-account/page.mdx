@@ -15,7 +15,7 @@ The Lix Account API provides endpoints for managing and monitoring your Lix acco
 
 ## Balances
 
-Retrieve the current balance of your account. Returns the number of email credits and Standard Credits available.
+Retrieve the current balance of your account. Returns the number of standard, org and email credits available, and whether automatic top-up is enabled for each credit type.
 
 ### HTTP Request
 
@@ -92,9 +92,24 @@ The response will include your current credit balances:
 ```json
 {
   "emailBalance": 10000,
-  "linkedInBalance": 50000
+  "linkedInBalance": 50000,
+  "lookcBalance": 2500,
+  "autoTopUpEnabled": {
+    "standard": true,
+    "org": false
+  }
 }
 ```
+
+| Field | Description |
+| ----- | ----------- |
+| `linkedInBalance` | Standard credits remaining (people/company lookups, enrichment, MCP server). |
+| `lookcBalance` | Org credits remaining (LookC organisation and employee lookups). |
+| `emailBalance` | Email credits remaining. |
+| `autoTopUpEnabled.standard` | `true` if automatic top-up is switched on for standard credits. When enabled, a balance below your threshold is replenished automatically from your saved payment method. |
+| `autoTopUpEnabled.org` | `true` if automatic top-up is switched on for org credits. |
+
+Auto top-up is configured in your Lix account under **Team settings → Auto top-up**.
 
 ## Daily Allowance
 
@@ -195,7 +210,7 @@ The `refreshesAt` field represents the Unix timestamp (in seconds) when the dail
 
 ## Balances
 
-Retrieve the current balance of your account. Returns the number of email credits and Standard Credits available.
+Retrieve the current balance of your account. Returns the number of standard, org and email credits available, and whether automatic top-up is enabled for each credit type.
 
 ### HTTP Request
 
