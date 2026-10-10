@@ -47,6 +47,8 @@ Field | Description
 `autoTopUpEnabled.standard` | `true` if automatic top-up is switched on for standard credits. When enabled, a balance below your threshold is replenished automatically from your saved payment method.
 `autoTopUpEnabled.org` | `true` if automatic top-up is switched on for org credits.
 
+Enterprise accounts are invoiced manually, so both `autoTopUpEnabled` flags are always `false` for them.
+
 Auto top-up is configured in your Lix account under **Team settings → Auto top-up**.
 
 ## Daily Allowance
