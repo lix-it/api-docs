@@ -1405,7 +1405,7 @@ type | One of `overview` (LinkedIn dashboard summary), `content` (content analyt
 
 Parameter | Description
 --------- | -----------
-post_urn | Required when `type=post`. The LinkedIn URN of the post, URI encoded, e.g. `urn%3Ali%3Aactivity%3A7514260226263465984`.
+post_urn | Required when `type=post`. The LinkedIn URN of the post (URI encoded, e.g. `urn%3Ali%3Aactivity%3A7514260226263465984`) or the bare activity id (e.g. `7514260226263465984`) — the URN is constructed automatically.
 start_date | Start date `YYYY-MM-DD`. Must be given with `end_date`. Applies to `content` and `audience`.
 end_date | End date `YYYY-MM-DD`. Must be given with `start_date`.
 viewer_id | The Lix viewer id of the account you would like to view analytics for.
