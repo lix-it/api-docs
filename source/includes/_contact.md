@@ -57,6 +57,7 @@ print(response.json())
 VALID    | The email address passed validation. `email` contains the address.
 RISKY    | An email address was found but could not be fully validated. `email` contains the best guess and `alternatives` may contain other candidates.
 UNKNOWN  | No email address could be found for this profile. `email` is empty and `alternatives` is an empty list.
+WITHHELD | The person has opted out under a privacy regulation (e.g. GDPR, CCPA), so their contact information is withheld. `email` is empty. No credit is charged for a `WITHHELD` response.
 
 A profile with no email address is not an error. The API returns `200` with `status` set to `UNKNOWN`:
 
