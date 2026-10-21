@@ -779,7 +779,7 @@ curl "https://api.lix-it.com/v1/person/network?profile_link=https://www.linkedin
 }
 ```
 
-This endpoint returns a person's LinkedIn network counts - their follower count and connection count, as shown on their profile page. `following`/`followable` describe the viewing account's relationship to the profile.
+This endpoint returns a person's LinkedIn network counts - their follower count and connection count, as shown on their profile page. `following`/`followable` describe the viewing account's relationship to the profile and are only returned when `viewer_id` is provided.
 
 ### HTTP Request
 
