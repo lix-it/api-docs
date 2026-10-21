@@ -742,6 +742,57 @@ curl --request GET \
 
 This endpoint uses **1 Standard Credit**.
 
+## Person Network
+
+<aside class="notice">
+Uses 1 Standard Credit.
+</aside>
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/person/network?profile_link=https://www.linkedin.com/in/jane-doe-example"
+
+payload={}
+headers = {
+  'Authorization': [lixApiKey]
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.json())
+```
+
+```shell
+curl "https://api.lix-it.com/v1/person/network?profile_link=https://www.linkedin.com/in/jane-doe-example" \
+  -H "Authorization: lixApiKey"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "followersCount": "15846",
+    "connectionsCount": "500",
+    "following": false,
+    "followable": true
+}
+```
+
+This endpoint returns a person's LinkedIn network counts - their follower count and connection count, as shown on their profile page. `following`/`followable` describe the viewing account's relationship to the profile and are only returned when `viewer_id` is provided.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/person/network`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+profile_link | true* | The LinkedIn profile URL of the person (e.g., https://www.linkedin.com/in/username)
+profile_id | true* | The public identifier of the person (e.g., "username"). Either profile_link or profile_id must be provided.
+viewer_id | false | The Lix viewer id of the account you would like to view this profile as
+
 ## Organisation
 <aside class="notice">
 Uses 1 Organisation credit.
