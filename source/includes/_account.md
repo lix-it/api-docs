@@ -105,7 +105,7 @@ print(response.json())
 
 ## Get LinkedIn Account
 
-This endpoint retrieves LinkedIn accounts attached to your team.
+This endpoint retrieves LinkedIn accounts attached to your team. The account must be shared with you (see [LinkedIn account sharing](#linkedin-account-sharing)); otherwise the request fails with `401` and `viewer_invalid`.
 
 ### HTTP Request
 
@@ -156,7 +156,9 @@ The `warmup` object is only present when the account warmup feature is enabled f
 
 ## List LinkedIn Accounts
 
-This endpoint retrieves the connected account statuses for every LinkedIn account attached to your team. Results are ordered by the account ID in the database and returned in pages of 5. The warmup status for each account is fetched in parallel.
+This endpoint retrieves the connected account statuses for the LinkedIn accounts attached to your team **that are shared with you** (see [LinkedIn account sharing](#linkedin-account-sharing)). Results are ordered by the account ID in the database and returned in pages of 5. The warmup status for each account is fetched in parallel.
+
+Each account includes a `sharing` field with its effective sharing mode: `"team"` when any team member may use it, `"connector"` when only the connector, explicitly granted users, and the team owner may use it.
 
 ### HTTP Request
 
@@ -190,6 +192,7 @@ print(response.json())
     "viewerId": "alfie-lambert",
     "linkedInReady": true,
     "salesNavigatorReady": false,
+    "sharing": "team",
     "warmup": {
       "status": "warming",
       "details": {
@@ -205,3 +208,14 @@ print(response.json())
 ```
 
 The `warmup` object is only present when the account warmup feature is enabled for the account. When warmup is complete the `status` field becomes `"completed"` and the `consecutiveActiveDays` and `dailyAvailable`/`hourlyAvailable` fields reach their `dailyTotal`/`hourlyTotal` values.
+
+## LinkedIn account sharing
+
+Teams control which members may act as a given LinkedIn account (`viewer_id`) through the API and MCP:
+
+- **Team default** — each team has a `li_account_sharing` setting: `"team"` (every member may use every team account, the default) or `"connector"` (members may only use accounts they connected themselves, plus accounts they have been granted).
+- **Per-account override** — an account's `sharing` may be `"team"` or `"connector"` to override the team default, or `"inherit"` to follow it.
+- **Grants** — individual members can be granted access to specific accounts.
+- The **team owner** may always use every team account, and the **connector** (the member who connected the account) may always use their own accounts.
+
+If you pass a `viewer_id` you may not use, the request fails with `401` and error type `viewer_invalid` with the message `viewer is not shared with you; ask the account owner or your team owner`. The API never falls back to another account.
