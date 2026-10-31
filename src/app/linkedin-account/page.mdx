@@ -91,7 +91,7 @@ The above commands return JSON structured like this:
 
 ## Get LinkedIn Account
 
-This endpoint retrieves a LinkedIn account attached to your team.
+This endpoint retrieves a LinkedIn account attached to your team. The account must be shared with you (see [LinkedIn account sharing](#linkedin-account-sharing)); otherwise the request fails with `401` and `viewer_invalid`.
 
 ### HTTP Request
 
@@ -151,6 +151,100 @@ The above command returns JSON structured like this:
 ```
 
 The `warmup` object is only present when the account warmup feature is enabled for the account. When warmup is complete the `status` field becomes `"completed"` and the `active_days` and limits reflect the final tier.
+
+</Col>
+
+</Row>
+
+<Row>
+
+<Col>
+
+## List LinkedIn Accounts
+
+This endpoint retrieves the connected account statuses for the LinkedIn accounts attached to your team **that are shared with you** (see [LinkedIn account sharing](#linkedin-account-sharing)). Results are ordered by the account ID in the database and returned in pages of 5.
+
+Each account includes a `sharing` field with its effective sharing mode: `"team"` when any team member may use it, `"connector"` when only the connector, explicitly granted users, and the team owner may use it.
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/account/linkedin/accounts`
+
+### URL Parameters
+
+Parameter | Description
+|--------- | -----------
+page | Optional. The page number to retrieve, starting from 1. Defaults to 1. Each page contains up to 5 accounts.
+
+</Col>
+
+  <Col sticky>
+
+<CodeGroup title="List LinkedIn Accounts" tag="GET" label="/v1/account/linkedin/accounts">
+
+```bash {{ title: 'Shell' }}
+curl "https://api.lix-it.com/v1/account/linkedin/accounts?page=1" \
+  -H "Authorization: lixApiKey"
+```
+
+```python
+import requests
+url = "https://api.lix-it.com/v1/account/linkedin/accounts"
+headers = {
+  'Authorization': lix_api_key
+}
+params = {
+  'page': 1
+}
+response = requests.request("GET", url, headers=headers, params=params)
+print(response.json())
+```
+
+</CodeGroup>
+
+The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "viewerId": "alfie-lambert",
+    "linkedInReady": true,
+    "salesNavigatorReady": false,
+    "sharing": "team",
+    "warmup": {
+      "status": "warming",
+      "details": {
+        "active_days": 2,
+        "daily_limit": 100,
+        "hourly_limit": 40,
+        "max_daily_limit": 500,
+        "max_hourly_limit": 100
+      }
+    }
+  }
+]
+```
+
+</Col>
+
+</Row>
+
+<Row>
+
+<Col>
+
+## LinkedIn account sharing
+
+Teams control which members may act as a given LinkedIn account (`viewer_id`) through the API and MCP:
+
+- **Team default** — each team has a `li_account_sharing` setting: `"team"` (every member may use every team account, the default) or `"connector"` (members may only use accounts they connected themselves, plus accounts they have been granted).
+- **Per-account override** — an account's `sharing` may be `"team"` or `"connector"` to override the team default, or `"inherit"` to follow it.
+- **Grants** — individual members can be granted access to specific accounts.
+- The **team owner** may always use every team account, and the **connector** (the member who connected the account) may always use their own accounts.
+
+If you pass a `viewer_id` you may not use, the request fails with `401` and error type `viewer_invalid` with the message `viewer is not shared with you; ask the account owner or your team owner`. The API never falls back to another account.
+
+MCP users can list the accounts they may use with the `list_linkedin_accounts` tool.
 
 </Col>
 
