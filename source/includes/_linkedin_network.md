@@ -135,3 +135,97 @@ curl "https://api.lix-it.com/v1/account/connections/remaining?viewer_id=ACoAACAB
 Parameter | Description
 --------- | -----------
 viewer_id | The Lix viewer id of the account you would like to check
+
+## Get Invitations
+
+This endpoint lists pending LinkedIn connection invitations for a standard LinkedIn account — invitations the account has received and not yet actioned (`direction=received`), and invitations it has sent that are still pending (`direction=sent`).
+
+<aside class="notice">
+Uses 1 Standard Credit.
+</aside>
+
+```python
+import requests
+
+url = "https://api.lix-it.com/v1/li/invitations?viewer_id=ACoAACABCDEF1234567&direction=received&count=20"
+
+headers = {
+  'Authorization': lix_api_key
+}
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.json())
+```
+
+```shell
+curl "https://api.lix-it.com/v1/li/invitations?viewer_id=ACoAACABCDEF1234567&direction=received&count=20" \
+  -H "Authorization: lixApiKey"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "invitations": [
+    {
+      "invitationUrn": "urn:li:invitation:7560000000000000001",
+      "name": "Jane Doe",
+      "headline": "Machine Learning Engineer at Example Co",
+      "profileUrl": "https://www.linkedin.com/in/jane-doe-example/",
+      "publicIdentifier": "jane-doe-example",
+      "memberUrn": "urn:li:fsd_profile:ACoAABEXAMPLE000000000000000000000001",
+      "message": "Hi, I'd love to connect and hear more about your work.",
+      "sentTimeText": ""
+    },
+    {
+      "invitationUrn": "urn:li:invitation:7560000000000000002",
+      "name": "John Smith",
+      "headline": "Sales Director at Example Inc",
+      "profileUrl": "https://www.linkedin.com/in/john-smith-example/",
+      "publicIdentifier": "john-smith-example",
+      "memberUrn": "urn:li:fsd_profile:ACoAABEXAMPLE000000000000000000000002",
+      "message": "",
+      "sentTimeText": ""
+    }
+  ],
+  "total": "46"
+}
+```
+
+### HTTP Request
+
+`GET https://api.lix-it.com/v1/li/invitations`
+
+### URL Parameters
+
+#### Required parameters
+
+Parameter | Description
+--------- | -----------
+viewer_id | The Lix viewer id of the account you would like to list invitations for
+
+#### Optional parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+direction | received | `received` for invitations awaiting the account's response, or `sent` for invitations the account sent that are still pending
+count | 20 | Maximum number of invitations to return
+start | 0 | Zero-based offset into the invitation list, in LinkedIn's display order
+
+### Response fields
+
+`total` is the total number of pending invitations in the requested direction, as reported by LinkedIn (returned as a string).
+
+Each invitation object contains:
+
+Field | Description
+----- | -----------
+invitationUrn | The invitation's URN, e.g. `urn:li:invitation:7560000000000000001`
+name | The other member's display name — the inviter for received invitations, the invitee for sent ones
+headline | The member's headline as shown on the invitation card
+profileUrl | The member's canonical LinkedIn profile URL
+publicIdentifier | The member's public identifier (vanity name)
+memberUrn | The member's `urn:li:fsd_profile` URN
+message | The custom message attached to the invitation, when present. Empty when no message was attached
+sentTimeText | Relative timestamp rendered by LinkedIn, e.g. `Sent 15 minutes ago`. Only populated for sent invitations — LinkedIn does not display a timestamp on received ones
