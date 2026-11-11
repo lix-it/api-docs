@@ -175,8 +175,9 @@ curl "https://api.lix-it.com/v1/li/invitations?viewer_id=ACoAACABCDEF1234567&dir
       "profileUrl": "https://www.linkedin.com/in/jane-doe-example/",
       "publicIdentifier": "jane-doe-example",
       "memberUrn": "urn:li:fsd_profile:ACoAABEXAMPLE000000000000000000000001",
-      "message": "Hi, I'd love to connect and hear more about your work.",
-      "sentTimeText": ""
+      "message": "",
+      "sentTime": "1794263538243",
+      "customMessage": true
     },
     {
       "invitationUrn": "urn:li:invitation:7560000000000000002",
@@ -186,7 +187,8 @@ curl "https://api.lix-it.com/v1/li/invitations?viewer_id=ACoAACABCDEF1234567&dir
       "publicIdentifier": "john-smith-example",
       "memberUrn": "urn:li:fsd_profile:ACoAABEXAMPLE000000000000000000000002",
       "message": "",
-      "sentTimeText": ""
+      "sentTime": "1794247112000",
+      "customMessage": false
     }
   ],
   "total": "46"
@@ -227,5 +229,6 @@ headline | The member's headline as shown on the invitation card
 profileUrl | The member's canonical LinkedIn profile URL
 publicIdentifier | The member's public identifier (vanity name)
 memberUrn | The member's `urn:li:fsd_profile` URN
-message | The custom message attached to the invitation, when present. Empty when no message was attached
-sentTimeText | Relative timestamp rendered by LinkedIn, e.g. `Sent 15 minutes ago`. Only populated for sent invitations — LinkedIn does not display a timestamp on received ones
+message | The custom message attached to the invitation, when present. Only populated for sent invitations — for received ones LinkedIn exposes only whether a custom message exists (`customMessage`), not its text
+sentTime | Unix epoch milliseconds at which the invitation was sent (returned as a string)
+customMessage | `true` when the invitation carries a custom message
