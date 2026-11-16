@@ -214,6 +214,9 @@ Parameter | Description
 --------- | -----------
 viewer_id | The Lix viewer id of the account you would like to view this search as
 sequence_id | A randomly generated string by you that is used to maintain collection settings between requests. [See the section on Sequence IDs for more information](#sequence-ids-amp-pagination)
+viewer_geo_id | One LinkedIn location ID, e.g. `103112676` for Chicago, Illinois, United States. The search runs as the available account closest to that place. [See Viewer Location](#posts-search-viewer-location)
+viewer_job_function | One or more LinkedIn job function IDs, comma-separated, e.g. `10` for Finance or `10,1` for Finance and Accounting. An account whose holder works in one of them is preferred. Requires `viewer_geo_id`.
+viewer_max_distance_km | An integer. The furthest the account may be from the place, in km. With no value there is no limit. Requires `viewer_geo_id`.
 
 ```shell
 curl "https://api.lix-it.com/v1/li/linkedin/search/posts?url=https%3A%2F%2Fwww.linkedin.com%2Fsearch%2Fresults%2Fcontent%2F%3Fkeywords%3Dlix%26origin%3DSWITCH_SEARCH_VERTICAL%26sid%3DV2J" \
@@ -252,6 +255,96 @@ print(response.json())
   }
 }
 ```
+
+### Posts Search Viewer Location
+
+LinkedIn tailors post search results to the account that runs the search. By default Lix chooses that account for you. With `viewer_geo_id` you can say where the account should be based, and with `viewer_job_function` which job function you would prefer its holder to work in.
+
+These parameters choose the account that runs the search. They do not filter the posts: results can include posts from authors anywhere.
+
+<aside class="notice">Viewer location is switched on per team. Contact us to enable it for your team.</aside>
+
+Rules:
+
+- `viewer_geo_id` takes a single ID.
+- `viewer_id` cannot be combined with `viewer_geo_id`.
+- `viewer_geo_id`, `viewer_job_function` and `viewer_max_distance_km` must stay the same on every page of a `sequence_id`.
+
+#### Looking up the IDs
+
+Both parameters use LinkedIn's own IDs, which you look up with the [Search Facet Typeahead](#search-facet-typeahead) endpoint: use `type=BING_GEO` for locations and `type=FUNCTION` for job functions. The IDs do not change, so you only need to look each one up once.
+
+```shell
+curl "https://api.lix-it.com/v1/search/sales/facet?query=Chicago&type=BING_GEO" \
+  -H "Authorization: lixApiKey"
+
+curl "https://api.lix-it.com/v1/search/sales/facet?query=Fin&type=FUNCTION" \
+  -H "Authorization: lixApiKey"
+```
+
+#### How the account is chosen
+
+- We use the available account whose LinkedIn profile location is closest to the place you send, measured in km.
+- City and metro-area IDs behave the same way. "Chicago, Illinois" and "Greater Chicago Area" are nearly the same point, so either works.
+- There is no distance limit unless you set one. If we have no account in the place itself, the nearest one is used, however far away. Send `viewer_max_distance_km` to cap it.
+- If you send a country ID, e.g. `103644278` for the United States, any account in that country is used.
+- `viewer_job_function` is a preference, not a filter. The closest account whose holder's current job is in one of the functions you sent is used, however far away it is (still within `viewer_max_distance_km` when you send it). If no account matches, the closest account is used.
+- An account that is busy is skipped, so the same place can be served by different accounts on different runs.
+
+#### Pagination
+
+Send a `sequence_id` when you page through results. The account chosen for the first page is kept for every later page of that sequence, for as long as you keep requesting pages. A sequence that is idle for 30 minutes is released. Use a new `sequence_id` for each location and keyword combination.
+
+```shell
+curl "https://api.lix-it.com/v1/li/linkedin/search/posts?url=https%3A%2F%2Fwww.linkedin.com%2Fsearch%2Fresults%2Fcontent%2F%3Fkeywords%3Dprivate%2520credit&start=0&viewer_geo_id=103112676&viewer_job_function=10&viewer_max_distance_km=100&sequence_id=weekly-chicago-private-credit-01" \
+  -H "Authorization: lixApiKey"
+```
+
+> With viewer location, the response has two more `meta` fields:
+
+```json
+{
+  "posts": [ Post ],
+  "paging": { "count": 10, "start": 0, "total": 1000 },
+  "meta": {
+    "sequenceId": "weekly-chicago-private-credit-01",
+    "viewerDistanceKm": 12,
+    "viewerJobFunctionMatched": true
+  }
+}
+```
+
+#### Response Meta
+
+Field | Description
+----- | -----------
+meta.viewerDistanceKm | Distance in whole km between the place you sent and the account that ran the search. `0` for a country ID. Present when `viewer_geo_id` was sent.
+meta.viewerJobFunctionMatched | `true` if the account's holder works in one of the job functions you sent, `false` if the closest account was used instead. Present when `viewer_job_function` was sent.
+
+The response does not identify the account that was used.
+
+#### Errors
+
+Status | Type | When
+------ | ---- | ----
+400 | `params_invalid` | A viewer location parameter is missing or malformed; `viewer_geo_id` is not a known location; `viewer_job_function` is not a known job function; `viewer_geo_id` was combined with `viewer_id`; or the parameters changed within a sequence.
+403 | `params_invalid` | Viewer location is not enabled for your team.
+404 | `viewer_invalid` | We have no account in the requested country, or none within `viewer_max_distance_km`.
+503 | `queued` | The accounts that qualify are busy. Try again in a few minutes.
+
+None of these is charged.
+
+> Viewer location errors use the standard error format:
+
+```json
+{
+  "error": {
+    "type": "params_invalid",
+    "message": "viewer_geo_id is required"
+  }
+}
+```
+
 
 ## LinkedIn Org Search
 
