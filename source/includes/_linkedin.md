@@ -736,9 +736,9 @@ skills | The skills of the candidates. An array of filter objects (see below).
 postal_code | Search around a postal code. Requires `country_code`.
 country_code | The two-letter country code of `postal_code`, e.g. `gb`.
 distance | The radius around `postal_code`. LinkedIn defaults to 10.
-facet_selections | An array of facet selections. Each has a `type` and an array of `values`; each value has `value` (the facet value ID), `negated` and `required`.
+facet_selections | An array of facet selections. Each has a `type` and an array of `values`; each value has `value` (the facet value ID) and the optional booleans `negated` and `required` (both default to `false`).
 
-A filter object has the following attributes: `text` (required, the text to match); `entity` (optional, the LinkedIn entity URN, e.g. `urn:li:ts_skill:3289`); `negated` (exclude candidates that match); `required` (candidates must match).
+A filter object has the following attributes: `text` (required, the text to match); `entity` (optional, the LinkedIn entity URN, e.g. `urn:li:ts_skill:3289`); `negated` (optional, exclude candidates that match); `required` (optional, candidates must match). `negated` and `required` default to `false`.
 
 Supported `facet_selections` types:
 
@@ -787,7 +787,7 @@ headers = {
   'Authorization': lix_api_key
 }
 
-response = requests.request("GET", url, headers=headers, data=payload)
+response = requests.request("GET", linkedin_url, headers=headers, data=payload)
 
 print(response.json())
 ```
