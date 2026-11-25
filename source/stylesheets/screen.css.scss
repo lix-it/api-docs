@@ -633,11 +633,14 @@ html, body {
 }
 
 html.lix-no-auth .auth-gated {
-  display: none;
+  // beats the inline display the language switcher sets on code blocks
+  display: none !important;
 }
 
 html.lix-no-auth .toc-wrapper li:has(> a[href="#send-connection"]),
 html.lix-no-auth .toc-wrapper li:has(> a[href="#send-message"]),
-html.lix-no-auth .toc-wrapper li:has(> a[href="#get-connection-request-remaining"]) {
+html.lix-no-auth .toc-wrapper li:has(> a[href="#get-connection-request-remaining"]),
+html.lix-no-auth .toc-wrapper li:has(> a[href="#linkedin-recruiter-candidate-search"]),
+html.lix-no-auth .toc-wrapper li:has(> a[href="#recruiter-search-facet-typeahead"]) {
   display: none;
 }

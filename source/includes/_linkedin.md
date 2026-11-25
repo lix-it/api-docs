@@ -715,12 +715,6 @@ This endpoint retrieves a single search page for a LinkedIn Recruiter candidate 
 
 ### URL Parameters
 
-#### Required JSON Body Parameters
-
-Parameter | Description
---------- | -----------
-skills       | The skills of the candidates you would like to search for. This is an array of objects. Each object has the following attributes: `text` (the skill name); `entity` (the LinkedIn skill entity ID); `negated` (whether the skill should be negated); `required` (whether the skill is required); `selected` (whether the skill is selected).
-
 #### Optional URL Query Parameters
 Parameter | Description
 --------- | -----------
@@ -731,6 +725,33 @@ sequence_id | A randomly generated string by you that is used to maintain collec
 Parameter | Description
 --------- | -----------
 start | The index of the first candidate you would like to return. The default is 0.
+keywords | Free-text keywords.
+first_names | An array of first names to match.
+last_names | An array of last names to match.
+titles | The job titles of the candidates. An array of filter objects (see below).
+title_scope | Which positions `titles` applies to: `CURRENT`, `PAST`, `CURRENT_OR_PAST` (default) or `PAST_NOT_CURRENT`.
+companies | The companies of the candidates. An array of filter objects (see below).
+company_scope | Which positions `companies` applies to: `CURRENT`, `PAST`, `CURRENT_OR_PAST` (default) or `PAST_NOT_CURRENT`.
+skills | The skills of the candidates. An array of filter objects (see below).
+postal_code | Search around a postal code. Requires `country_code`.
+country_code | The two-letter country code of `postal_code`, e.g. `gb`.
+distance | The radius around `postal_code`. LinkedIn defaults to 10.
+facet_selections | An array of facet selections. Each has a `type` and an array of `values`; each value has `value` (the facet value ID) and the optional booleans `negated` and `required` (both default to `false`).
+
+A filter object has the following attributes: `text` (required, the text to match); `entity` (optional, the LinkedIn entity URN, e.g. `urn:li:ts_skill:3289`); `negated` (optional, exclude candidates that match); `required` (optional, candidates must match). `negated` and `required` default to `false`.
+
+Supported `facet_selections` types:
+
+Type | Example values
+---- | --------------
+SENIORITY | `3` (Entry), `4` (Senior), `5` (Manager)
+INDUSTRY | LinkedIn industry ID, e.g. `96` (IT Services and IT Consulting)
+COMPANY_SIZE | `A` (Self-employed), `B` (1-10), `C` (11-50), `D` (51-200)
+CURRENT_COMPANY | LinkedIn company ID, e.g. `1441` (Google)
+PAST_COMPANY | LinkedIn company ID
+GRADUATION_YEAR | e.g. `2015`
+NETWORK | `F` (1st), `S` (2nd), `A` (group members), `O` (3rd + everyone else)
+LANGUAGE | Profile language code, e.g. `en`, `fr`
 
 ```shell
 curl "https://api.lix-it.com/v1/li/recruiter/search/people" \
@@ -746,12 +767,19 @@ linkedin_url = "https://api.lix-it.com/v1/li/recruiter/search/people"
 
 payload=json.dumps({
     "start": 0,
+    "keywords": "engineer",
+    "titles": [{"text": "software engineer"}],
+    "title_scope": "CURRENT",
+    "companies": [{"text": "Google"}],
+    "company_scope": "CURRENT",
     "skills": [{
         "text": "Machine Learning",
         "entity": "urn:li:ts_skill:3289",
-        "negated": false,
-        "required": false,
-        "selected": true
+        "required": True
+    }],
+    "facet_selections": [{
+        "type": "SENIORITY",
+        "values": [{"value": "4"}]
     }]
 })
 headers = {
@@ -759,7 +787,7 @@ headers = {
   'Authorization': lix_api_key
 }
 
-response = requests.request("GET", url, headers=headers, data=payload)
+response = requests.request("GET", linkedin_url, headers=headers, data=payload)
 
 print(response.json())
 ```
