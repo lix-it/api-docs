@@ -633,7 +633,8 @@ html, body {
 }
 
 html.lix-no-auth .auth-gated {
-  display: none;
+  // beats the inline display the language switcher sets on code blocks
+  display: none !important;
 }
 
 html.lix-no-auth .toc-wrapper li:has(> a[href="#send-connection"]),
