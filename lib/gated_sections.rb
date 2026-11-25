@@ -1,6 +1,12 @@
 require 'nokogiri'
 
-GATED_SECTION_IDS = %w[send-connection send-message get-connection-request-remaining].freeze
+GATED_SECTION_IDS = %w[
+  send-connection
+  send-message
+  get-connection-request-remaining
+  linkedin-recruiter-candidate-search
+  recruiter-search-facet-typeahead
+].freeze
 
 def gate_sections(page_content)
   frag = Nokogiri::HTML::DocumentFragment.parse(page_content)
